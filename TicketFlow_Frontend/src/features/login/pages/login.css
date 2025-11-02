@@ -1,0 +1,114 @@
+.login {
+    display: flex;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(14px, 1vw + 0.5rem, 18px); 
+}
+
+.welcome-messages-section {
+    background-color: #e6eef9;
+    flex: 0.4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    color: #1a1a1a;
+    overflow: hidden;
+}
+
+.welcome-messages-section h2 {
+    font-size: clamp(1.8rem, 2vw, 3.5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #0c1d57;
+    border-bottom: 5px solid #0c1d57;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.p_welcomeMessage {
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
+    line-height: 1.5;
+    max-width: 320px;
+    color: #2f2f2f;
+}
+
+.register-section {
+    flex: 0.6;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem 1rem;
+    overflow-y: hidden;
+}
+
+.register-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0c1d57;
+}
+
+.p_indications {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.img_logo {
+    width: 60%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 1rem;
+    padding: 0.25rem;
+}
+
+.register-section button.btn_submit {
+    background-color: #0c63e4;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.register-section button.btn_submit:hover {
+    background-color: #0a4fb3;
+}
+
+.register-section form {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .login {
+        flex-direction: column;
+        height: auto;
+        max-height: none;
+        font-size: clamp(14px, 2vw, 16px);
+    }
+
+    .welcome-messages-section,
+    .register-section {
+        flex: none;
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .img_logo {
+        width: 200px;
+    }
+}

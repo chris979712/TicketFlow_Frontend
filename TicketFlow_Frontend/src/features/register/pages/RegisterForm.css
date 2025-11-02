@@ -1,0 +1,73 @@
+.sign-in-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-color: #f5f7fb;
+    padding: 2rem;
+    font-family: 'Poppins', sans-serif;
+    color: #1a1a1a;
+}
+
+.sign-in-div a {
+    align-self: flex-start;
+    color: #0c1d57;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    margin-left: 4.5rem;
+}
+
+.sign-in-div a:hover {
+    color: #0a4fb3;
+}
+
+.sign-in-div h1 {
+    font-size: 2rem;
+    color: #0c1d57;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.sign-in-div p {
+    font-size: 1rem;
+    max-width: 600px;
+    text-align: center;
+    color: #444;
+    margin-bottom: 2rem;
+}
+
+.register-form {
+    background-color: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    padding: 2rem 3rem;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .sign-in-div {
+        padding: 4rem;
+    }
+
+    .sign-in-div h1 {
+        font-size: 2.2rem;
+    }
+
+    .register-form {
+        padding: 3rem 4rem;
+        max-width: 480px;
+    }
+}
+
+.logo{
+    width: 350px;
+    margin-bottom: 1rem;
+    margin-top: -1.5rem;
+}

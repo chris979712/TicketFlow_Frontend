@@ -1,0 +1,94 @@
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-label {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #222;
+    text-align: center; 
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px 40px 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.btn-toggle-password {
+    position: absolute;
+    right: -35px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.input-field[type="text"] {
+    border-color: #1e3a8a; 
+    border-radius: 10px;
+    background-color: #f9fafb; 
+}
+
+.input-field[type="text"]:focus {
+    border-color: #3b82f6; 
+    box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
+}
+
+.input-field[type="text"]:hover {
+    border-color: #274bb1;
+}
+
+.input-field[type="email"] {
+    border-color: #1e3a8a; 
+    border-radius: 10px;
+    background-color: #f9fafb; 
+}
+
+.input-field[type="email"]:focus {
+    border-color: #3b82f6; 
+    box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
+}
+
+.input-field[type="email"]:hover {
+    border-color: #274bb1;
+}
+
+.input-field[type="password"] {
+    border-color: #1e3a8a; 
+    border-radius: 10px;
+    background-color: #f9fafb; 
+}
+
+.input-field[type="password"]:focus {
+    border-color: #3b82f6; 
+    box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
+}
+
+.input-field[type="password"]:hover {
+    border-color: #274bb1;
+}
+
+.error-input-message{
+    color: #e63946;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
