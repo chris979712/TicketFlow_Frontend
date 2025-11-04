@@ -9,7 +9,7 @@
 
 .welcome-messages-section {
     background-color: #e6eef9;
-    flex: 0.4;
+    flex: 0.35;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,7 +21,7 @@
 }
 
 .welcome-messages-section h2 {
-    font-size: clamp(1.8rem, 2vw, 3.5rem);
+    font-size: 3rem;
     font-weight: 800;
     text-transform: uppercase;
     color: #0c1d57;
@@ -32,14 +32,14 @@
 }
 
 .p_welcomeMessage {
-    font-size: clamp(0.9rem, 1vw, 1.1rem);
+    font-size: 1.5rem;
     line-height: 1.5;
     max-width: 320px;
     color: #2f2f2f;
 }
 
 .register-section {
-    flex: 0.6;
+    flex: 0.65;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -51,13 +51,15 @@
 }
 
 .register-section h2 {
-    font-size: 1.5rem;
+    font-size: 3.5rem;
     font-weight: 700;
     color: #0c1d57;
 }
 
 .p_indications {
-    font-size: 0.9rem;
+    font-size: 1.25rem;
+    padding-bottom: 1rem;
+    padding-top: 0.5rem;
     color: #333;
 }
 
@@ -85,12 +87,18 @@
 
 .register-section form {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 10px;
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
+    min-width: auto;
     margin: 0;
 }
+
+.register-section Input {
+    font-size: 1rem;
+}
+
 
 @media (max-width: 900px) {
     .login {
