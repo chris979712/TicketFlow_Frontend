@@ -4,7 +4,7 @@ import { ArrowLeftCircleIcon as ReturnIcon } from "lucide-react";
 import imagelogo from '../../../assets/TicketFlow_horizontal.png'
 import './RegisterForm.css'
 
-export function Register(){
+export default function Register(){
     return(
         <div className="sign-in-div">
             <Link to="/" ><ReturnIcon size={50} strokeWidth={3}></ReturnIcon></Link>

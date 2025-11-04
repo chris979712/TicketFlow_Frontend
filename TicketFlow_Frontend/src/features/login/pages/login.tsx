@@ -2,7 +2,7 @@ import { LoginForm } from "../components/LoginForm"
 import ticketFlowLogo from '../../../assets/TicketFlow_horizontal.png';
 import './login.css'
 
-export function Login(){
+export default function Login(){
     return(
         <div className="login">
             <section className="welcome-messages-section">

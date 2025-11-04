@@ -2,7 +2,7 @@ import { ArrowLeftSquareIcon as ReturnIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import './NotFound.css'
 
-export function NotFound(){
+export default function NotFound(){
     return (
         <div className="notfound-div">
             <h1>Recurso no encontrado</h1>

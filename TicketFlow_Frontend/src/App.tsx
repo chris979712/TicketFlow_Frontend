@@ -1,16 +1,24 @@
-import { Login } from "./features/login/pages/login"
-import { Register } from "./features/register/pages/Register";
-import { NotFound } from "./features/not-found/pages/NotFound";
 import { Routes, Route } from 'react-router-dom';
+import { Suspense, lazy } from "react";
+import { Loading } from './features/lazy-loading/Loading';
+const Login = lazy(() => import("./features/login/pages/login"));
+const Register = lazy(() => import("./features/register/pages/Register"));
+const DashboardOrganizer = lazy(() => import("./features/main-menu-organizer/pages/MenuOrganizer"));
+const DashboardAttendee = lazy(() => import("./features/main-menu-attendee/pages/MenuAttendee"));
+const NotFound = lazy(() => import("./features/not-found/pages/NotFound"));
 
 function App() {
 
   return (
-    <Routes>
-      <Route path="/" element={<Login />}/>
-      <Route path="/sign-in" element={<Register />}/>
-      <Route path="*" element={<NotFound />}></Route>
-    </Routes>
+    <Suspense fallback={<Loading/>}>
+        <Routes>
+          <Route path="/" element={<Login />}/>
+          <Route path="/sign-in" element={<Register />}/>
+          <Route path="/dashboard-organizer" element={<DashboardOrganizer/>}/>
+          <Route path="/dashboard-attendee" element={<DashboardAttendee/>}/>
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+    </Suspense>
   )
 }
 

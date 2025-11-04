@@ -1,6 +1,7 @@
 import axios from "axios";
 import { type ApiResponse } from "../../../schemas/api";
 const API_URL = import.meta.env.VITE_API_URL;
+const USER_TYPE = import.meta.env.VITE_USER_TYPE;
 
 export type RegisterParams = {
     name: string,
@@ -17,7 +18,7 @@ export async function RegisterUser(params: RegisterParams): Promise<ApiResponse>
             email: params.email,
             nickname: params.username,
             passwordHash: params.password,
-            role: 'attendee',
+            role: USER_TYPE,
             attendee: {
                 firstName: params.name,
                 lastName: params.firstLastName + params.seconLastName,
