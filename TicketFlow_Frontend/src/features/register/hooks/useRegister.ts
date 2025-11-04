@@ -24,9 +24,11 @@ export function useRegister(){
             if(!error){
                 const Data: RegisterParams ={name,firstLastName: firstlastname,seconLastName: secondlastname,email,username,password};
                 const response = await RegisterUser(Data);
-                if(response.status === 200){
+                if(response.status >= 200 && response.status < 300){
                     setAlert({type: "success", message: response.message!});
-                    navigate("/");
+                    setTimeout(() => {
+                        navigate("/");
+                    },3000)
                 }else{
                     if(response.status >= 400 && response.status < 500){
                         setAlert({type: "warning", message: response.message!})

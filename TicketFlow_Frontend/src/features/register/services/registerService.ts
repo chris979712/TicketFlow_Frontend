@@ -13,10 +13,10 @@ export type RegisterParams = {
 
 export async function RegisterUser(params: RegisterParams): Promise<ApiResponse>{
     try{
-        const ResponseFromApi = await axios.post(`${API_URL}/v1/user/register`, {
+        const ResponseFromApi = await axios.put(`${API_URL}/v1/user/register`, {
             email: params.email,
             nickname: params.username,
-            password: params.password,
+            passwordHash: params.password,
             role: 'attendee',
             attendee: {
                 firstName: params.name,
@@ -24,7 +24,7 @@ export async function RegisterUser(params: RegisterParams): Promise<ApiResponse>
                 middleName: ''
             }
         });
-        return {status: ResponseFromApi.status, message: "La cuenta ha sido creada de manera exitosa."}
+        return {status: ResponseFromApi.status, message: "La cuenta ha sido creada de manera exitosa, será redirigido al menú principal."}
     }catch(error: any){
         const status = error.response?.status || 0;
         let message = "Error desconocido.";

@@ -15,7 +15,7 @@ export const useLogIn = () =>{
         if(!error){
             const response = await loginUser(username,password);
             if(response.status === 200){
-                console.log("hola")
+                console.log(response.data)
             } else {
                 if(response.status >= 400 && response.status < 500){
                     setAlert({type: "warning", message: response.message!})

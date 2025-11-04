@@ -15,7 +15,7 @@ export async function loginUser(username: string, password: string): Promise<Api
         switch(status){
             case 400: message = "Solicitud inválida (faltan campos o formato incorrecto)."; break;
             case 401: message = "Credenciales incorrectas, por favor verifique su usuario y/o contraseña."; break;
-            case 404: message = "No se ha encontrado el usuario ingresado."; break;
+            case 404: message = "Credenciales incorrectas, por favor verifique su usuario y/o contraseña."; break;
             case 500: message = "Ha ocurrido un error al intentar realizar la operación."; break;
             case 0:   message = "No se pudo conectar con el servidor."; break;
         }
