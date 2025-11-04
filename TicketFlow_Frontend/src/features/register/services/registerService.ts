@@ -18,7 +18,7 @@ export async function RegisterUser(params: RegisterParams): Promise<ApiResponse>
             nickname: params.username,
             password: params.password,
             role: 'attendee',
-            attende: {
+            attendee: {
                 firstName: params.name,
                 lastName: params.firstLastName + params.seconLastName,
                 middleName: ''
