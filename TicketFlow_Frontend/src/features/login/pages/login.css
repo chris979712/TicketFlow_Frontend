@@ -71,6 +71,12 @@
     padding: 0.25rem;
 }
 
+.img_logo_horizontal {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+}
+
 .register-section button.btn_submit {
     background-color: #0c63e4;
     color: white;
@@ -118,5 +124,9 @@
 
     .img_logo {
         width: 200px;
+    }
+
+    .img_logo_horzontal{
+        width: 800px;
     }
 }
