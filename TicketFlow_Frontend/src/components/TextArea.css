@@ -1,0 +1,20 @@
+.textarea-field {
+    width: 100%; 
+    height: 100px; 
+    resize: none; 
+    padding: 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+.textarea-field:hover {
+    border-color: #274bb1;
+}
+
+.textarea-field:focus {
+    border-color: #3575d3;
+    outline: none;
+}

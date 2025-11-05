@@ -1,0 +1,25 @@
+.custom-timepicker-field {
+    width: 30%;
+    padding-left: 16px;
+    padding-right: 8px;
+    align-content: center;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.custom-timepicker-field .MuiInputBase-root {
+    border-radius: 10px;
+    background-color: #f9fafb;
+    border: 1px solid #1e3a8a;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.custom-timepicker-field .MuiInputBase-input {
+    padding: 10px 12px;
+    font-size: 1rem;
+}
+
+.custom-timepicker-field label {
+    color: #1e3a8a;
+    font-weight: 600;
+}

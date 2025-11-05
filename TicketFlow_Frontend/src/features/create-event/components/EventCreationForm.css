@@ -1,0 +1,84 @@
+.event-creation-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
+    padding: 2rem;
+    border: 0.15rem solid #1e3a8a;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #f9fafb;
+    width: 100%;
+    max-width: 1500px;
+    margin: 2rem auto;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.event-creation-form h2 {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.8rem;
+    color: #1e3a8a;
+    margin-bottom: 1rem;
+}
+
+.event-creation-form input,
+.event-creation-form select,
+.event-creation-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="file"] {
+    border: 1px dashed #1e3a8a;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background-color: #f3f4f6;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="file"]:hover {
+    background-color: #e5e7eb;
+}
+
+.time-picker-label {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #222;
+    margin-left: 180px;
+}
+
+.time-picker-group {
+    display: flex;
+    flex-direction: column;
+    grid-column: 0 / -1;
+    width: 800px;
+    box-sizing: border-box;
+    margin-left: 130px;
+}
+
+
+.time-picker-inputs > * {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+
+    .time-picker-group {
+        flex-direction: column;
+        margin-left: auto;
+    }
+
+    .time-picker-inputs {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-left: 50px;
+    }
+
+    .time-picker-label {
+        margin-left: 215px;
+        text-align: left;
+    }
+}
