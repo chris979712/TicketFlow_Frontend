@@ -35,6 +35,7 @@ const EventInformationSchema = Joi.object({
     }),
     startingHour: Joi.string().min(5).regex(RegexHour).required().messages({
         'any.required': "Por favor ingrese una hora de inicio para su evento.",
+        'string.empty': "Por favor ingrese una hora de inicio para su evento.",
         "string.min": "Verifique el formato de la hora de inicio ingresada.",
         "string.pattern.base": "Verifique el formato de la hora de inicio ingresada."
     }),

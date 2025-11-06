@@ -99,7 +99,7 @@ export function useCreateEvent(){
     }
 
     const ValidateDateStartingEvent = () => {
-        const EventDate = dayjs(eventDate,"DD-MM-YYYY");
+        const EventDate = dayjs(eventDate,"YYYY-MM-DD");
         const today = dayjs();
         const minAllowedDate = today.add(3,"month");
         let validationResult = false;
@@ -114,8 +114,8 @@ export function useCreateEvent(){
 
     const ValidateStartingEndHours = () => {
         let validationResult = false;
-        const StartingHour = dayjs(startingHour,"HH:mm");
-        const EndHour = dayjs(endingHour, "HH:mm");
+        const StartingHour = dayjs(startingHour,"HH:mm:ss");
+        const EndHour = dayjs(endingHour, "HH:mm:ss");
         if(!EndHour.isBefore(StartingHour)){
             validationResult = true;
         }else{
@@ -197,9 +197,9 @@ export function useCreateEvent(){
             PutNewEventImage(event_id);
         }else if(PutApiResponse.status === 401){
             setAlert({type: "error", message: PutApiResponse.message!})
-            //setTimeout(() => {
-            //    handleLogout();
-            //},2000)
+            setTimeout(() => {
+                handleLogout();
+            },2000)
         }else if(PutApiResponse.status >= 400 && PutApiResponse.status <= 499){
             setAlert({type: "warning", message: PutApiResponse.message!});
         }else{

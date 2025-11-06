@@ -5,7 +5,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 export async function GetEventAllLocations(): Promise<ApiResponse>{
     try{
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("authToken");
         const ResponseFromApi = await axios.get(`${API_URL}/v1/location/search/all`,{
             headers: {
                 Authorization: `Bearer ${token}`
@@ -28,7 +28,7 @@ export async function GetEventAllLocations(): Promise<ApiResponse>{
 
 export async function GetAllLocationSeats(idlocation: number){
     try{
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("authToken");
         const ResponseFromApi = await axios.get(`${API_URL}/v1/location/${idlocation}/layout`,{
             headers: {
                 Authorization: `Bearer ${token}`
@@ -51,7 +51,7 @@ export async function GetAllLocationSeats(idlocation: number){
 
 export async function PostEventWithSeats(eventName: string, category: string, description: string, event_date: string, start_time: string, end_time: string, company_id: number, event_location_id: number, seats: SeatProps[]): Promise<ApiResponse>{
     try{
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("authToken");
         const body = {
             event: {
                 event_name: eventName,
@@ -63,14 +63,7 @@ export async function PostEventWithSeats(eventName: string, category: string, de
                 company_id,
                 event_location_id
             },
-            inventory: seats.map(seat => (
-                {
-                    seat_id: seat.seat_id,
-                    base_price: seat.base_price,
-                    status: seat.status,
-                    category_label: seat.category_label
-                }
-            ))
+            inventory: seats
         };
         const ResponseFromApi = await axios.put(`${API_URL}/v1/eventseats/with-event`, body,{
             headers: {
@@ -95,7 +88,7 @@ export async function PostEventWithSeats(eventName: string, category: string, de
 
 export async function PutImageForAnEvent(image: File,imageType: string, altText: string, sortOrder: number,eventId:number){
     try{
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("authToken");
         const formData = new FormData();
         formData.append("image", image); 
         formData.append("imageType", imageType);

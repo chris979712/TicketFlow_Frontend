@@ -11,13 +11,13 @@
 }
 
 .notfound-container h1 {
-    font-size: 6rem;
+    font-size: 8rem;
     color: #0c1d57;
     margin-bottom: 1rem;
 }
 
 .notfound-container p {
-    font-size: 2rem;
+    font-size: 4rem;
     color: #555;
     margin-bottom: 2rem;
 }

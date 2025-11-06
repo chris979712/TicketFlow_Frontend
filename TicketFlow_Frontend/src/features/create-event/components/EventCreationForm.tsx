@@ -89,11 +89,7 @@ export function EventCreationForm(){
                     name="eventdate"
                     label="Fecha del evento:"
                     type="date"
-                    onChange={(e) => {
-                        const value = e.target.value;
-                        const [year,month,day] = value.split("-");
-                        setEventDate(`${day}-${month}-${year}`);
-                    }}
+                    onChange={(e) => setEventDate(e.target.value)} 
                     required
                 />
                 <Input 
@@ -109,10 +105,10 @@ export function EventCreationForm(){
                     <label className="time-picker-label">Horario del evento:</label>
                     <div className="time-picker-inputs">
                         <ResponsiveTimePickers label="Hora de inicio:" onChange={(newValue: Dayjs | null) => {
-                            if (newValue) setStartingHour(newValue.format("HH:mm"));
+                            if (newValue) setStartingHour(newValue.format("HH:mm:ss"));
                         }}/>
                         <ResponsiveTimePickers label="Hora de finalización:" onChange={(newValue: Dayjs | null) => {
-                            if (newValue) setEndingHour(newValue.format("HH:mm")); 
+                            if (newValue) setEndingHour(newValue.format("HH:mm:ss")); 
                         }}/>
                     </div>
                 </div>

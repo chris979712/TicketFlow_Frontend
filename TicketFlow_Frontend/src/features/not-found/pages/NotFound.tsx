@@ -6,7 +6,7 @@ export default function NotFound(){
     return (
         <div className="notfound-div">
             <h1>Recurso no encontrado</h1>
-            <p>El recurso que deseas buscar no existe o fue movido de lugar.</p>
+            <p>El recurso que deseas buscar no existe, fue movido de lugar o no cuenta con los permisos necesarios para acceder a el.</p>
             <Link to="/" className="back-link"><ReturnIcon size={50}></ReturnIcon></Link>
         </div>
     );
