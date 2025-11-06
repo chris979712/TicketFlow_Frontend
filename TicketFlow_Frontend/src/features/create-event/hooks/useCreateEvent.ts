@@ -86,8 +86,12 @@ export function useCreateEvent(){
         const DataResult = ValidateEventInformation(eventName,description,category,location,eventDate,startingHour,endingHour);
         if(!DataResult.error && ValidatePricesSectionConfigurations()){
             if(ValidateDateStartingEvent() && ValidateStartingEndHours()){
-                SetConfigurationPricesToSeats();
-                CreateEventWithSeats();
+                if(!eventPromotional){
+                    setErrorValidation("Por favor ingrese una imagen promocional para su evento.")
+                }else{
+                    SetConfigurationPricesToSeats();
+                    CreateEventWithSeats();
+                }
             }
         }else{
             setErrorValidation(DataResult.error!.details[0].message)
