@@ -178,10 +178,13 @@ export function useCreateEvent(){
         const PutApiResponse = await PutImageForAnEvent(eventPromotional!,"cover",eventName,event_id,event_id);
         if(PutApiResponse.status === 201){
             setAlert({type: "success", message: "El evento ha sido creado de manera exitosa."})
+            setTimeout(() => {
+                Navigate("/dashboard-organizer")
+            },2000)
         }else if(PutApiResponse.status === 401){
             setAlert({type: "error", message: PutApiResponse.message!})
             setTimeout(() => {
-                Navigate("/dashboard-organizer")
+                Navigate("/")
             },2000)
         }else if(PutApiResponse.status >= 400 && PutApiResponse.status <= 499){
             setAlert({type: "warning", message: PutApiResponse.message!});
