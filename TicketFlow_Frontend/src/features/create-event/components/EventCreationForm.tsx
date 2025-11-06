@@ -6,11 +6,12 @@ import {ResponsiveTimePickers} from "../../../components/Timer"
 import './EventCreationForm.css'
 import React, { useEffect, useState, useRef } from "react"
 import dayjs, { Dayjs } from "dayjs"
-import { GetEventAllLocations, GetAllLocationSeats, PostEventWithSeats} from "../services/EventCreation"
+import { GetEventAllLocations, GetAllLocationSeats, PostEventWithSeats, PutImageForAnEvent} from "../services/EventCreation"
 import { Alert } from "../../../components/Alert"
 import { useAlert } from "../../../hooks/useAlert"
 import { useHandleSession } from "../../../hooks/useHandleSession"
 import { ValidateSectionConfiguration } from "../../../schemas/section.Schema"
+import { useNavigate } from "react-router-dom"
 const DEFAULT_STATUS_SEAT = import.meta.env.VITE_DEFAULT_STATUS_SEAT;
 const AVAILABLE_STATUS_SEAT = import.meta.env.VITE_AVAILABLE_STATUS_SEATE;
 
@@ -58,6 +59,7 @@ export function EventCreationForm(){
     const {alert,setAlert} = useAlert();
     const {handleLogout} = useHandleSession();
     const firstRender = useRef(true);
+    const Navigate = useNavigate();
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
@@ -159,10 +161,27 @@ export function EventCreationForm(){
         setConfiguredSeats(seatsConfigured);
     }
 
+    const PutNewEventImage = async (event_id: number) => {
+        const PutApiResponse = await PutImageForAnEvent(eventPromotional!,"cover",eventName,event_id,event_id);
+        if(PutApiResponse.status === 201){
+            setAlert({type: "success", message: "El evento ha sido creado de manera exitosa."})
+        }else if(PutApiResponse.status === 401){
+            setAlert({type: "error", message: PutApiResponse.message!})
+            setTimeout(() => {
+                Navigate("/dashboard-organizer")
+            },2000)
+        }else if(PutApiResponse.status >= 400 && PutApiResponse.status <= 499){
+            setAlert({type: "warning", message: PutApiResponse.message!});
+        }else{
+            setAlert({type: "error", message: PutApiResponse.message!});
+        }
+    }
+
     const CreateEventWithSeats = async () => {
         const PutApiResponse = await PostEventWithSeats(eventName,category,description,eventDate,startingHour,endingHour,2,location,seatsConfigured);
-        if(PutApiResponse.status >= 200 && PutApiResponse.status<=299){
-            setAlert({type: "success", message: "Evento creado"});
+        if(PutApiResponse.status == 201){
+            const {event_id} = PutApiResponse.data;
+            PutNewEventImage(event_id);
         }else if(PutApiResponse.status === 401){
             setAlert({type: "error", message: PutApiResponse.message!})
             setTimeout(() => {

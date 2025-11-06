@@ -92,3 +92,32 @@ export async function PostEventWithSeats(eventName: string, category: string, de
         return {status, message};
     }
 }
+
+export async function PutImageForAnEvent(image: File,imageType: string, altText: string, sortOrder: number,eventId:number){
+    try{
+        const token = localStorage.getItem("token");
+        const formData = new FormData();
+        formData.append("image", image); 
+        formData.append("imageType", imageType);
+        formData.append("altText", altText);
+        formData.append("sortOrder", sortOrder.toString());
+        const ResponseFromApi = await axios.put(`${API_URL}/v1/event/img/${eventId}/new`, formData, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "multipart/form-data"
+            }
+        });
+        return {status: ResponseFromApi.status, data: ResponseFromApi.data};
+    }catch(error: any){
+        const status = error.response?.status || 0;
+        let message = "Error desconocido.";
+        switch(status){
+            case 400: message = "Evento creado, la imagen no ha podido ser insertada."; break;
+            case 401: message = "Sesión expirada, por favor vuelva a iniciar sesión."; break;
+            case 403: message = "Solo un organizador puede subir una foto de eventos."; break;
+            case 404: message = "No se ha encontrado el evento a asignar la foto."; break;
+            case 500: message = "Error interno al realizar la petición."; break;
+        }
+        return {status, message}
+    }
+}
