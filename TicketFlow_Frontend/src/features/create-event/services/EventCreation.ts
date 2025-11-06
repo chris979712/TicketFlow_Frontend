@@ -1,6 +1,6 @@
 import axios from "axios";
 import {type ApiResponse} from "../../../schemas/api.ts";
-import type { SeatProps } from "../components/EventCreationForm.tsx";
+import type { SeatProps } from "../hooks/useCreateEvent.ts";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export async function GetEventAllLocations(): Promise<ApiResponse>{
