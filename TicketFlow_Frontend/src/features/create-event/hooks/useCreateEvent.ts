@@ -94,6 +94,7 @@ export function useCreateEvent(){
                 }
             }
         }else{
+            setAlert({type: "error", message:DataResult.error!.details[0].message})
             setErrorValidation(DataResult.error!.details[0].message)
         }
     }
