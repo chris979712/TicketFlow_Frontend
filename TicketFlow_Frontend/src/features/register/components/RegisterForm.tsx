@@ -2,9 +2,10 @@ import { Input } from "../../../components/Input";
 import './RegisterForm.css'
 import { Alert } from "../../../components/Alert";
 import { useRegister } from "../hooks/useRegister";
+import { Loader } from "../../../components/Loader";
 
 export function RegisterForm(){
-    const {alert,setAlert,setName,setFirstlastname,setSecondlastname,setEmail,setUsername,setPassword,setPasswordConfirmation,errorValidation,handleSubmit} = useRegister();
+    const {alert,setAlert,setName,setFirstlastname,setSecondlastname,setEmail,setUsername,setPassword,setPasswordConfirmation,errorValidation,handleSubmit,loading} = useRegister();
     return(
         <>
             {
@@ -84,7 +85,7 @@ export function RegisterForm(){
                     onChange={(e) => setPasswordConfirmation(e.target.value)}
                 />
                 <p><strong>Recuerde que su contraseña debe incluir al menos ocho caracteres, incluyendo por lo menos una letra mayúscula, una letra minúscula, un número y un caracter especial. </strong></p>
-                <button type="submit" className="btn-submit">Registrarse</button>
+                <button type="submit" className="btn-submit" disabled={loading}>{loading ? <Loader /> : "Registrarse"}</button>
             </form>
         </>
     )

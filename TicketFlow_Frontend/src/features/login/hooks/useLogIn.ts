@@ -4,6 +4,7 @@ import { loginUser } from "../services/authService";
 import { ValidateLogIn } from "../../../schemas/login.Schema";
 import { useAlert } from "../../../hooks/useAlert";
 import { GetUserFromToken } from "../../../utils/userData";
+import { useLoading } from "../../../hooks/useLoading";
 const ATTENDEE_URL = import.meta.env.VITE_MENU_ATTENDEE;
 const ORGANIZER_URL = import.meta.env.VITE_MENU_ORGANIZER;
 
@@ -13,9 +14,12 @@ export const useLogIn = () =>{
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errorValidation,setErrorValidation] = useState("");
+    const {start,stop,loading} = useLoading();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setErrorValidation("");
+        start();
         const {error} = ValidateLogIn(username,password);
         if(!error){
             const response = await loginUser(username,password);
@@ -40,6 +44,7 @@ export const useLogIn = () =>{
         }else{
             setErrorValidation(error.details[0].message);
         }
+        stop();
     }
 
     return {
@@ -50,6 +55,7 @@ export const useLogIn = () =>{
         handleSubmit,
         errorValidation,
         alert,
-        setAlert
+        setAlert,
+        loading
     }
 }

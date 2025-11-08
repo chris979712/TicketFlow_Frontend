@@ -2,10 +2,11 @@ import { Input } from "../../../components/Input";
 import { Link } from "react-router-dom";
 import { Alert } from "../../../components/Alert";
 import { useLogIn } from "../hooks/useLogIn";
+import { Loader } from "../../../components/Loader";
 import './LoginForm.css'
 
 export function LoginForm(){
-    const {setUsername, errorValidation,setPassword, handleSubmit,alert,setAlert} = useLogIn();
+    const {setUsername, errorValidation,setPassword, handleSubmit,alert,setAlert,loading} = useLogIn();
     
     return (
         <>
@@ -37,7 +38,7 @@ export function LoginForm(){
                 {
                     errorValidation && <p className="error-format-inputs">{errorValidation}</p>
                 }
-                <button type="submit" className="btn_submit">Ingresar</button>
+                <button type="submit" className="btn_submit" disabled={loading}>{loading ? <Loader /> : "Iniciar sesión"}</button>
                 <Link to="/password-recovery" className="a-recovery-password">Recuperar mi contraseña</Link>
                 <Link to="/sign-in" className="a-register">Registrarse</Link>
             </form>

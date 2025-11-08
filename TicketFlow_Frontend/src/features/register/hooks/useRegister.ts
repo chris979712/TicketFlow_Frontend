@@ -3,6 +3,7 @@ import { useAlert } from "../../../hooks/useAlert";
 import { ValidateRegister } from "../../../schemas/register.Schema";
 import { RegisterUser, type RegisterParams } from "../services/registerService";
 import { useNavigate } from "react-router-dom";
+import { useLoading } from "../../../hooks/useLoading";
 
 export function useRegister(){
     const {alert,setAlert} = useAlert();
@@ -14,11 +15,13 @@ export function useRegister(){
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [errorValidation,setErrorValidation] = useState("");
+    const {start,stop,loading} = useLoading();
     const navigate = useNavigate();
 
     const handleSubmit = async(e: React.FormEvent) => {
         e.preventDefault();
         setErrorValidation("");
+        start();
         const {error} = ValidateRegister(name,firstlastname,secondlastname,email,username,password,passwordConfirmation);
         if(password === passwordConfirmation){
             if(!error){
@@ -42,6 +45,7 @@ export function useRegister(){
         }else{
             setErrorValidation("Verifique que la contraseñas sean iguales.");
         }
+        stop();
     }
 
     return {
@@ -55,6 +59,7 @@ export function useRegister(){
         setPassword,
         setPasswordConfirmation,
         errorValidation,
-        handleSubmit
+        handleSubmit,
+        loading
     }
 }
