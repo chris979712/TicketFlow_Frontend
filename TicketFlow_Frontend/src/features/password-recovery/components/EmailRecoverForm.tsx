@@ -1,38 +1,12 @@
-import { useState } from "react";
-import { Input } from "../../../components/Input"
-import { usePasswordRecovery } from "../hooks/PasswordRecoveryContext"
-import {SendValidationCode} from '../services/PasswordRecover'
-import './Form.css'
-import { ValidateEmail } from "../../../schemas/email.Schema";
-import { useAlert} from "../../../hooks/useAlert";
 import { Alert } from "../../../components/Alert";
+import { Input } from "../../../components/Input";
+import { Loader } from "../../../components/Loader";
+import { useEmailRecover } from "../hooks/EmailRecover";
+import './Form.css'
 
-export function EmailRecoverForm (){
-    const {setIsInsertingEmail, setIsInsertingCodeAndPassword} = usePasswordRecovery();
-    const [email,setEmail] = useState("");
-    const [errorValidation, setErrorValidation] = useState(""); 
-    const {alert,setAlert} = useAlert();
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        const DataValidation = ValidateEmail(email);
-        if(!DataValidation.error)
-        {
-            const ApiResponse = await SendValidationCode(email);
-            if(ApiResponse.status === 200){
-                setIsInsertingEmail(false);
-                setIsInsertingCodeAndPassword(true);
-            }else if(ApiResponse.status >= 400 && ApiResponse.status <= 499){
-                setAlert({type: "warning",message: ApiResponse.message!})
-            }else{
-                setAlert({type: "error",message: ApiResponse.message!})
-            }
-
-        }else{
-            setErrorValidation(DataValidation.error.details[0].message);
-        }
-    }
-
+export function EmailRecoverForm (){     
+    const {alert,handleSubmit,setEmail,errorValidation,setAlert,loading} = useEmailRecover();
     return (
         <section className="recovery-password">
             {
@@ -57,7 +31,7 @@ export function EmailRecoverForm (){
                 >
                 </Input>
                 { errorValidation && <p className="error-format-inputs">{errorValidation}</p>}
-                <button type="submit" className="btn_submit">Continuar</button>
+                <button type="submit" className="btn-submit-recover" disabled={loading}>{loading ? <Loader /> : "continuar"}</button>
             </form>
         </section>
     )

@@ -13,6 +13,26 @@ export async function SendValidationCode(email: string): Promise<ApiResponse>{
         let message = "Error desconocido.";
         switch(status){
             case 400: message = "Solicitud inválida (faltan campos o formato incorrecto)."; break;
+            case 404: message = "Por favor verifique que el correo ingresado pertenezca a su cuenta."; break;
+            case 500: message = "Ha ocurrido un error al intentar realizar la operación."; break;
+            case 0:   message = "No se pudo conectar con el servidor."; break;
+        }
+        return {status,message};
+    }
+}
+
+export async function ResetPasswordWithToken(validationCode: string, password: string): Promise<ApiResponse>{
+    try{
+        const ApiResponse = await axios.post(`${API_URL}/v1/auth/password/reset`,{
+            token: validationCode,
+            newPassword: password
+        });
+        return {status: ApiResponse.status, data: ApiResponse.data}
+    }catch(error: any){
+        const status = error.response?.status || 0;
+        let message = "Error desconocido.";
+        switch(status){
+            case 400: message = "Verifique el código ingresado."; break;
             case 500: message = "Ha ocurrido un error al intentar realizar la operación."; break;
             case 0:   message = "No se pudo conectar con el servidor."; break;
         }

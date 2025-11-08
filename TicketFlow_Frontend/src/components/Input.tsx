@@ -6,11 +6,12 @@ import './Input.css'
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>{
     label?: string;
     error?: string;
+    iconSize?: number;
     icon?: React.ReactNode;
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-    ({label, type = "text", error, icon, ...props}, ref) => {
+    ({label, iconSize, type = "text", error, icon, ...props}, ref) => {
         const [showPassword,setShowPassword] = useState(false);
         const isPassword = type === 'password';
         const toggleVisibility = () => {
@@ -39,7 +40,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
                                 onClick={toggleVisibility}
                                 aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
                             >
-                                {showPassword ? <EyeOff size={27}/> : <Eye size={27}/>}
+                                {showPassword ? <EyeOff size={iconSize ? iconSize : 27}/> : <Eye size={iconSize ? iconSize : 27}/>}
                             </button>
                         )
                     }
