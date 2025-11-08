@@ -4,12 +4,14 @@ import { TextArea } from "../../../components/TextArea"
 import { Select } from "../../../components/Select"
 import { Alert } from "../../../components/Alert"
 import { useCreateEvent } from "../hooks/useCreateEvent"
+import { Loader } from "../../../components/Loader"
 import {ResponsiveTimePickers} from "../../../components/Timer"
 import './EventCreationForm.css'
 
 
 export function EventCreationForm(){
     const {alert,
+        loading,
         errorValidationDeatils,
         setEventName,
         setDescription,
@@ -28,7 +30,7 @@ export function EventCreationForm(){
         setAlert} = useCreateEvent();
 
     return (
-        <div className="event-forms">
+        <section className="event-forms">
             {
                 alert && (
                     <Alert type={alert.type} 
@@ -36,7 +38,7 @@ export function EventCreationForm(){
                         onClose={() => setAlert(null)} />
                 )
             }
-            <form className="event-creation-form">
+            <form className="event-creation-form" onSubmit={handleSubmit}>
                 <h2>Información general del evento</h2>
                 {
                     errorValidationDeatils && <p className="error-format-inputs">{errorValidationDeatils}</p>
@@ -112,54 +114,54 @@ export function EventCreationForm(){
                         }}/>
                     </div>
                 </div>
+                <div className="prices-config"> 
+                    <h2>Configuración de precios de boletos</h2>
+                    {
+                        errorSections && <p className="error-format-inputs">{errorSections}</p>
+                    }
+                    {
+                        sections.length > 0 ? (
+                            sections.map((section,index) => (
+                                <div key={index} className="section-price-config"> 
+                                    <h3 >{section.sectionName}</h3>
+                                    <p>Total de asientos: {section.totalSeats}</p>
+                                    <section className="section-inputs">
+                                        <Input 
+                                            name={`price_${index}`}
+                                            id={`price_${index}`}
+                                            label="Precio del boleto: "
+                                            type="text"
+                                            min={0}
+                                            placeholder="Ej. 250"
+                                            onChange={(e) => handleSectionConfigChange(index,"price",e.target.value)}
+                                            required
+                                        />
+                                        <Input
+                                            name={`maxTickets_${index}`}
+                                            id={`maxTickets_${index}`}
+                                            label="Cantidad máxima de boletos:"
+                                            type="number"
+                                            min={1}
+                                            max={section.totalSeats}
+                                            placeholder={`Máx: ${section.totalSeats}`}
+                                            onChange={(e) => handleSectionConfigChange(index,"maxTickets",e.target.value)}
+                                            required
+                                        />
+                                    </section>
+                                    {
+                                        sectionErrors[index] && <p className="error-format-inputs">{sectionErrors[index]}</p>
+                                    }
+                                </div>
+                            ))
+                        ) : (
+                            <p>No hay secciones disponibles.</p>
+                        )
+                    }
+                </div>
+                <div className="submit-container">
+                    <button type="submit" className="btn_submit" disabled={loading}>{loading ? <Loader /> : 'Crear evento'}</button>
+                </div>
             </form>
-            <div className="prices-config"> 
-                <h2>Configuración de precios de boletos</h2>
-                {
-                    errorSections && <p className="error-format-inputs">{errorSections}</p>
-                }
-                {
-                    sections.length > 0 ? (
-                        sections.map((section,index) => (
-                            <div key={index} className="section-price-config"> 
-                                <h3 >{section.sectionName}</h3>
-                                <p>Total de asientos: {section.totalSeats}</p>
-                                <form className="section-inputs">
-                                    <Input 
-                                        name={`price_${index}`}
-                                        id={`price_${index}`}
-                                        label="Precio del boleto: "
-                                        type="text"
-                                        min={0}
-                                        placeholder="Ej. 250"
-                                        onChange={(e) => handleSectionConfigChange(index,"price",e.target.value)}
-                                        required
-                                    />
-                                    <Input
-                                        name={`maxTickets_${index}`}
-                                        id={`maxTickets_${index}`}
-                                        label="Cantidad máxima de boletos:"
-                                        type="number"
-                                        min={1}
-                                        max={section.totalSeats}
-                                        placeholder={`Máx: ${section.totalSeats}`}
-                                        onChange={(e) => handleSectionConfigChange(index,"maxTickets",e.target.value)}
-                                        required
-                                    />
-                                </form>
-                                {
-                                    sectionErrors[index] && <p className="error-format-inputs">{sectionErrors[index]}</p>
-                                }
-                            </div>
-                        ))
-                    ) : (
-                        <p>No hay secciones disponibles.</p>
-                    )
-                }
-            </div>
-            <div className="submit-container">
-                <button type="submit" className="btn_submit" onClick={handleSubmit}>Crear</button>
-            </div>
-        </div>
+        </section>
     )
 }   

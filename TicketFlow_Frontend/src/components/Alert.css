@@ -5,51 +5,92 @@
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 1rem;
-    min-height: auto;
-    min-width: 500px;
+    gap: 1.2rem;
+    min-width: 560px;       
     max-width: 90%;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    padding: 1.4rem 2rem;    
+    border-radius: 14px;     
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
     color: #333;
     font-family: "Inter", sans-serif;
     animation: fadeInOut 3s ease forwards;
     z-index: 9999;
-}
 
-.alert-container.success {
-    background-color: #e6ffed;
-    border-left: 6px solid #16a34a;
+    font-size: 1.15rem;    
 }
-
-.alert-container.error {
-    background-color: #ffe8e8;
-    border-left: 6px solid #dc2626;
-}
-
-.alert-container.warning {
-    background-color: #fff4e5;
-    border-left: 6px solid #f59e0b;
-}
-
-.alert-icon {
-    width: 28px;
-    height: 28px;
-}
-
-.alert-icon.success { color: #16a34a; }
-.alert-icon.error { color: #dc2626; }
-.alert-icon.warning { color: #f59e0b; }
 
 .alert-text p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 1rem;        
+}
+
+.alert-icon {
+    width: 34px;           
+    height: 34px;
+}
+
+.alert-container.success { background-color: #e6ffed; border-left: 6px solid #16a34a; }
+.alert-container.error   { background-color: #ffe8e8; border-left: 6px solid #dc2626; }
+.alert-container.warning { background-color: #fff4e5; border-left: 6px solid #f59e0b; }
+
+.alert-icon.success { color: #16a34a; }
+.alert-icon.error   { color: #dc2626; }
+.alert-icon.warning { color: #f59e0b; }
+
+@media (max-width: 480px) {
+    .alert-container {
+        padding: 1rem 1.3rem;
+        font-size: 1rem;
+        min-width: 260px;
+    }
+
+    .alert-text p {
+        font-size: 0.85rem;
+    }
+
+    .alert-icon {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+@media (min-width: 768px) {
+    .alert-container {
+        padding: 1.6rem 2.2rem;
+        font-size: 1.25rem;   
+        min-width: 620px;
+    }
+
+    .alert-text p {
+        font-size: 1.1rem;
+    }
+
+    .alert-icon {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .alert-container {
+        padding: 2rem 2.6rem;
+        font-size: 1.35rem;  
+        min-width: 700px;
+    }
+
+    .alert-text p {
+        font-size: 1.2rem;
+    }
+
+    .alert-icon {
+        width: 44px;          
+        height: 44px;
+    }
 }
 
 @keyframes fadeInOut {
-    0% { opacity: 0; transform: translate(-50%, -10px); }
-    10% { opacity: 1; transform: translate(-50%, 0); }
-    90% { opacity: 1; }
+    0%   { opacity: 0; transform: translate(-50%, -10px); }
+    10%  { opacity: 1; transform: translate(-50%, 0); }
+    90%  { opacity: 1; }
     100% { opacity: 0; transform: translate(-50%, -10px); }
 }

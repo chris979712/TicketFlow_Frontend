@@ -8,7 +8,7 @@ export default function EventCreation(){
     const {isOrganizer} = useNavigationOrganizer();
     return (
         isOrganizer && (
-            <div className="event-creation-page">
+            <main className="event-creation-page">
                 <header className="header-menu-organizer">
                     <div className='div_welcome'>
                         <img src={TicketFlowWhiteLogo} alt="Ticket flog logo color blanco" title="logo de ticket flow"/>
@@ -19,7 +19,7 @@ export default function EventCreation(){
                     <h1>Creación de evento</h1>
                     <EventCreationForm />
                 </div>
-            </div>
+            </main>
         )
     )
 }

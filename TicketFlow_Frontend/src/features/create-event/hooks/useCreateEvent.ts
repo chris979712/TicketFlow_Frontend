@@ -6,6 +6,7 @@ import { useHandleSession } from "../../../hooks/useHandleSession"
 import React, { useEffect, useState, useRef } from "react"
 import { ValidateSectionConfiguration } from "../../../schemas/section.Schema"
 import { ValidateEventInformation } from "../../../schemas/eventInformation.schema"
+import { useLoading } from "../../../hooks/useLoading"
 const DEFAULT_STATUS_SEAT = import.meta.env.VITE_DEFAULT_STATUS_SEAT;
 const AVAILABLE_STATUS_SEAT = import.meta.env.VITE_AVAILABLE_STATUS_SEATE;
 
@@ -47,11 +48,11 @@ export function useCreateEvent(){
     const [locations, setLocations] = useState<LocationProps[]>([]);
     const [sections, setSections] = useState<SectionProps[]>([]);
     const [seats, setSeats] = useState<SeatProps[]>([])
-    const [seatsConfigured, setConfiguredSeats] = useState<SeatProps[]>([]);
     const [sectionConfigs, setSectionConfigs] = useState<SectionConfigProps[]>([]);
     const [errorSections, setErrorSection] = useState("");
     const {alert,setAlert} = useAlert();
     const {handleLogout} = useHandleSession();
+    const {start,stop,loading} = useLoading();
     const firstRender = useRef(true);
     const Navigate = useNavigate();
 
@@ -78,8 +79,9 @@ export function useCreateEvent(){
         })
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        start();
         setErrorValidation("");
         setSectionErrors([]);
         setErrorSection("");
@@ -89,14 +91,15 @@ export function useCreateEvent(){
                 if(!eventPromotional){
                     setErrorValidation("Por favor ingrese una imagen promocional para su evento.")
                 }else{
-                    SetConfigurationPricesToSeats();
-                    CreateEventWithSeats();
+                    const configuredSeats = SetConfigurationPricesToSeats();
+                    await CreateEventWithSeats(configuredSeats);
                 }
             }
         }else{
             setAlert({type: "error", message:DataResult.error!.details[0].message})
             setErrorValidation(DataResult.error!.details[0].message)
         }
+        stop();
     }
 
     const ValidateDateStartingEvent = () => {
@@ -129,6 +132,7 @@ export function useCreateEvent(){
         let validationResult = false;
         if(sections.length !== sectionConfigs.length){
             setErrorSection(`Debe ingresar precio y cantidad máxima para las secciones de los boletos.`);
+            setAlert({type: "warning",message: `Debe ingresar precio y cantidad máxima para las secciones de los boletos.`})
             return;
         }
         for(let i=0; i<sectionConfigs.length;i++){
@@ -141,11 +145,13 @@ export function useCreateEvent(){
             );
             if (validation.error) {
                 newErrors[i] = validation.error.details[0].message;
+                setAlert({type: "warning",message: validation.error.details[0].message})
                 setSectionErrors(newErrors);
                 return;
             }
             if(section.maxTickets > originalSection!.totalSeats){
                 newErrors[i] = `Sección ${section.sectionName}: La cantidad de boletos a vender, no debe superar el número máximo de asientos disponibles por sección.`;
+                setAlert({type: "warning",message: newErrors[i]});
                 setSectionErrors(newErrors);
                 return;
             }
@@ -163,16 +169,15 @@ export function useCreateEvent(){
             const seatsFromSection = seats.filter(seat => seat.category_label === section.sectionName);
             for(let j = 0; j< seatsFromSection.length; j++){
                 const isWithinMax = j < section.maxTickets;
-                const seatConfigured: SeatProps = {
+                seatsConfigured.push({
                     seat_id: seatsFromSection[j].seat_id,
                     base_price: isWithinMax ? section.price : 0,
                     status: isWithinMax ? AVAILABLE_STATUS_SEAT : DEFAULT_STATUS_SEAT,
                     category_label: section.sectionName
-                };
-                seatsConfigured.push(seatConfigured);
+                });
             }
         }
-        setConfiguredSeats(seatsConfigured);
+        return seatsConfigured;
     }
 
     const PutNewEventImage = async (event_id: number) => {
@@ -194,7 +199,7 @@ export function useCreateEvent(){
         }
     }
 
-    const CreateEventWithSeats = async () => {
+    const CreateEventWithSeats = async (seatsConfigured: SeatProps[]) => {
         const PutApiResponse = await PostEventWithSeats(eventName,category,description,eventDate,startingHour,endingHour,2,location,seatsConfigured);
         if(PutApiResponse.status == 201){
             const {event_id} = PutApiResponse.data;
@@ -289,6 +294,7 @@ export function useCreateEvent(){
         handleSectionConfigChange,
         sectionErrors,
         handleSubmit,
-        setAlert
+        setAlert,
+        loading
     }
 }
