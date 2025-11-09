@@ -12,7 +12,6 @@ export function NavBar(){
                 <ul className="navbar-links">
                     <li><Link to="/dashboard-organizer/event-creation">Crear evento</Link></li>
                     <li><Link to="/reporte-evento">Reporte de evento</Link></li>
-                    <li><Link to="/consultar-eventos">Consultar eventos</Link></li>
                 </ul>
             </div>
             <button className="btn-logout" onClick={handleLogout}><LogOutIcon size={20}></LogOutIcon></button>

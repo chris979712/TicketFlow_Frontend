@@ -83,6 +83,12 @@
     margin-bottom: 0.5rem;
 }
 
+.no-sections-available {
+    font-size: 1.5rem;
+    justify-content: center;
+    text-align: center;
+}
+
 .section-inputs {
     display: flex;
     flex-wrap: wrap;

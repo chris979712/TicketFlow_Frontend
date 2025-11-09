@@ -154,7 +154,7 @@ export function EventCreationForm(){
                                 </div>
                             ))
                         ) : (
-                            <p>No hay secciones disponibles.</p>
+                            <p className="no-sections-available">No hay secciones disponibles.</p>
                         )
                     }
                 </div>

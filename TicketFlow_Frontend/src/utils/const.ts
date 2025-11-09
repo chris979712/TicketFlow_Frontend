@@ -36,6 +36,24 @@ export const EVENT_STATUS_ID_TO_CODE = Object.freeze({
     [EVENT_STATUS.CANCELED]: "canceled",
 });
 
+export const RESERVATION_STATUS = Object.freeze({
+    ACTIVE: "active",
+    EXPIRED: "expired",
+    CONVERTED: "converted",
+    CANCELED: "canceled",
+});
+
+export const RESERVATION_STATUS_LIST = Object.freeze([
+    RESERVATION_STATUS.ACTIVE,
+    RESERVATION_STATUS.EXPIRED,
+    RESERVATION_STATUS.CONVERTED,
+    RESERVATION_STATUS.CANCELED,
+]);
+
+export function isValidReservationStatus(value: any) {
+    return RESERVATION_STATUS_LIST.includes(value);
+}
+
 /**
  * 
  * export const isOnSale = (eventStatusId) => eventStatusId === EVENT_STATUS.ON_SALE;
