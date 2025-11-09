@@ -27,11 +27,21 @@ export async function GetAllEvents(limit: number, offset: number): Promise<ApiRe
     }
 }
 
-export async function GetEventsBySearch(limit: number, offset: number, category: string, status: number, eventName: string): Promise<ApiResponse>{
+export async function GetEventsBySearch(limit: number, offset: number, category?: string, status?: number, eventName?: string): Promise<ApiResponse>{
     try{
+        const params: any = { limit, offset };
+        if (eventName && eventName.trim() !== "") {
+            params.name = eventName;
+        }
+        if (category && category.trim() !== "") {
+            params.category = category;
+        }
+        if (typeof status === "number" && status > 0) {
+            params.status = status;
+        }
         const token = localStorage.getItem("authToken");
         const ApiResponse = await axios.get(`${API_URL}/v1/company/${2}/events`,{
-            params: {limit,offset,category,status,name: eventName},
+            params,
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -50,8 +60,6 @@ export async function GetEventsBySearch(limit: number, offset: number, category:
         return {status,message};
     }
 }
-
-
 
 export async function GetEventImage(eventId: number): Promise<ApiResponse>{
     try{
