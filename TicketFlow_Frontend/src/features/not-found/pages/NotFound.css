@@ -1,27 +1,140 @@
-.notfound-div {
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@400;600&display=swap');
+
+.notfound-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    text-align: center;
+    min-height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background-color: #f5f7fb;
-    color: #1a1a1a;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 2rem;
+    box-sizing: border-box;
+
+    background: linear-gradient(180deg, rgba(10, 5, 20, 0.8) 0%, rgba(15, 8, 30, 0.9) 100%);
+    overflow: hidden;
 }
 
-.notfound-container h1 {
-    font-size: 8rem;
-    color: #0c1d57;
-    margin-bottom: 1rem;
+.notfound-page h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    margin: 1.5rem 0 0.5rem 0;
 }
 
-.notfound-container p {
-    font-size: 4rem;
-    color: #555;
+.notfound-page p {
+    font-size: 1.25rem;
+    color: #d1d5db;
     margin-bottom: 2rem;
+    max-width: 400px;
 }
 
-.back-link:hover {
-    background-color: #0a4fb3;
+.back-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 50px; 
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.8rem 1.8rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+}
+
+.back-link-btn:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.ticket-container {
+    display: flex;
+    max-width: 400px;
+    width: 100%;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+    animation: float 6s ease-in-out infinite;
+}
+
+.ticket-stub, .ticket-main {
+    background-color: #f1f1f1;
+    color: #111;
+}
+
+.ticket-stub {
+    width: 120px;
+    padding: 1.5rem;
+    border-radius: 12px 0 0 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px dashed #cccccc;
+    position: relative;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.ticket-stub .code {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e3a8a;
+}
+.ticket-stub .number {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #e63946;
+}
+
+.ticket-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    border-radius: 0 12px 12px 0;
+}
+
+.ticket-main-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 7rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    line-height: 1;
+}
+
+.ticket-stub::before, .ticket-main::after {
+    content: '';
+    position: absolute;
+    background-color: #0c1d57; 
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    z-index: 1;
+}
+.ticket-stub::before {
+    top: -10px;
+    right: -10px;
+}
+.ticket-main::after {
+    bottom: -10px;
+    left: -10px;
 }

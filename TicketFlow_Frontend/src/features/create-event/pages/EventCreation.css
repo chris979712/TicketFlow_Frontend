@@ -1,8 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@400;600&display=swap');
+
+.event-creation-page {
+    background: url('/fondoConcierto.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+.event-creation-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(10, 5, 20, 0.7) 0%, rgba(15, 8, 30, 0.8) 100%);
+    z-index: 1;
+}
+
+.event-creation-page > * {
+    position: relative;
+    z-index: 2;
+}
+
+.event-creation {
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+
 .event-creation h1 {
-    color: #1e3a8a;
+    color: #FFFFFF; 
     margin-bottom: 1rem;
     font-size: 3rem;
     text-align: center;
+    font-family: 'Oswald', sans-serif; 
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
 }
 
 .link-return {
@@ -10,27 +46,25 @@
     text-decoration: none;
     font-weight: 500;
     position: relative;
-    transition: color 0.3s ease;
-    font-size: 22px;
-}
-.link-return a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 0%;
-    height: 2px;
-    background-color: #4fa3ff;
-    transition: width 0.3s ease;
-}
-
-.link-return a:hover::after {
-    width: 100%;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    font-size: 18px; 
+    padding: 0.5rem 1rem; 
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .link-return:hover{
-    color: #9fc5ff;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.25);
 }
+
+.link-return a::after {
+    display: none;
+}
+.link-return a:hover::after {
+    display: none;
+}
+
 
 .div_welcome{
     display: flex;
@@ -39,7 +73,7 @@
     justify-content: center;
     gap: 1rem;
     padding:  1rem 2rem;
-    background-color: #0c1d57;
+    background-color: transparent;
 }
 
 .div_welcome img{
@@ -50,13 +84,9 @@
 
 @media (max-width: 768px) {
     .div_welcome{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         gap: 0.5rem;
         padding:  0.5rem 1rem;
-        background-color: #0c1d57;
+        background-color: transparent;
     }
 
     .div_welcome img{
@@ -69,7 +99,6 @@
     }
 
     .event-creation{
-        grid-template-columns: 1fr; 
         padding: 1rem;
     }
 }

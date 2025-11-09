@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { useLoading } from "../../../hooks/useLoading";
 
 type MainMenuContextType = {
     eventName: string,
@@ -7,7 +8,10 @@ type MainMenuContextType = {
     setEventName: (value: string) => void,
     setEventCategory: (value: string) => void,
     setEventStatus: (value: number) => void,
+    loading: boolean,
     searchTrigger: number,
+    start: () => void,
+    stop: () => void,
     ObtainEventsBySearch: (e: React.FormEvent) => void
 }
 
@@ -18,6 +22,7 @@ export function MainMenuOrganizerProvider({children}: {children: React.ReactNode
     const [eventCategory, setEventCategory] = useState("");
     const [eventStatus, setEventStatus] = useState(0);
     const [searchTrigger, setSearchTrigger] = useState(0);
+    const {start,stop,loading} = useLoading();
     
     function ObtainEventsBySearch(e: React.FormEvent){
         e.preventDefault();
@@ -25,7 +30,7 @@ export function MainMenuOrganizerProvider({children}: {children: React.ReactNode
     }
 
     return (
-        <MainMenuOrganizerContext.Provider value={({eventName,eventCategory,eventStatus,setEventName,setEventCategory,setEventStatus,searchTrigger,ObtainEventsBySearch})}>
+        <MainMenuOrganizerContext.Provider value={({eventName,eventCategory,eventStatus,setEventName,setEventCategory,setEventStatus,searchTrigger,ObtainEventsBySearch,loading,start,stop})}>
             {children}
         </MainMenuOrganizerContext.Provider>
     )

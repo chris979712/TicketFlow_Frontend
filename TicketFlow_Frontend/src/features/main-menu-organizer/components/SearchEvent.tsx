@@ -3,6 +3,7 @@ import { Input } from "../../../components/Input";
 import { Alert } from "../../../components/Alert";
 import { Select } from "../../../components/Select";
 import { useSearchEvent } from "../hooks/useSearchEvents";
+import { Loader } from "../../../components/Loader";
 import { EVENT_STATUS_LABEL, EVENT_STATUS_ID_TO_CODE_LABEL} from "../../../utils/const";
 import './SearchEvent.css'
 
@@ -13,7 +14,8 @@ export function SearchEventForm() {
         setAlert,
         ValidateEventName,
         ValidateEventStatus,
-        ValidateEventCategory
+        ValidateEventCategory,
+        loading
     } = useSearchEvent();
     return (
         <form className="search-event-form" onSubmit={ObtainEventsBySearch}>
@@ -25,7 +27,7 @@ export function SearchEventForm() {
                 />
             )}
             <div className="search-group">
-                <Search className="google-search-icon" />
+                <Search className="search-icon" />
                 <div className="search-input">
                     <Input
                         id="txt_name"
@@ -62,7 +64,7 @@ export function SearchEventForm() {
                     />
                 </div>
             </div>
-            <button type="submit" className="btn-submit">Buscar</button>
+            <button type="submit" className="btn-submit" disabled={loading}>{loading ? <Loader /> : "Buscar"}</button>
         </form>
     );
 }
