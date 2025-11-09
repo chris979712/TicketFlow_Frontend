@@ -3,7 +3,7 @@ import { useMainMenuOrganizer } from "../hooks/MainMenuOrganizeContext";
 import { ValidateEventNameSchema, ValidateEventCategorySchema, ValidateEventStatusSchema} from "../../../schemas/eventSearch.schema";
 
 export function useSearchEvent(){
-    const {setEventName,setEventCategory,setEventStatus,ObtainEventsBySearch} = useMainMenuOrganizer();
+    const {setEventName,setEventCategory,setEventStatus,ObtainEventsBySearch,loading} = useMainMenuOrganizer();
     const {alert,setAlert} = useAlert();
 
     const ValidateEventName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,6 +46,7 @@ export function useSearchEvent(){
         setAlert,
         ValidateEventName,
         ValidateEventStatus,
-        ValidateEventCategory
+        ValidateEventCategory,
+        loading
     }
 }

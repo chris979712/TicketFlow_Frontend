@@ -25,7 +25,7 @@ export function useInfiniteScroll(){
     const [items, setItems] = useState<EventProps[]>([]);
     const [page, setPage] = useState(0);
     const [hasMore, setHasMore] = useState(true);
-    const {eventName,eventCategory,eventStatus,searchTrigger} = useMainMenuOrganizer();
+    const {eventName,eventCategory,eventStatus,searchTrigger,start,stop} = useMainMenuOrganizer();
     const Navigate = useNavigate()
     const {alert,setAlert} = useAlert();
     const firstRender = useRef(true);
@@ -50,6 +50,7 @@ export function useInfiniteScroll(){
     }
 
     async function ObtainAllEvents(){
+        start();
         const ApiResponse = await GetAllEvents(PAGE_SIZE,page);
         if(ApiResponse.status === 200){
             let Events: EventProps[] = ApiResponse.data.rows;
@@ -75,9 +76,11 @@ export function useInfiniteScroll(){
         }else{
             setAlert({type: "error", message: ApiResponse.message!});
         }
+        stop();
     }
     
     async function ObtainEventsBySearch(){
+        start();
         const ApiResponse = await GetEventsBySearch(PAGE_SIZE,page,eventCategory,eventStatus,eventName);
         if(ApiResponse.status === 200){
             let Events: EventProps[] = ApiResponse.data.rows;
@@ -103,6 +106,7 @@ export function useInfiniteScroll(){
         }else{
             setAlert({type: "error", message: ApiResponse.message!});
         }
+        stop();
     }
 
     function FormatDate(dateISO: string) {
