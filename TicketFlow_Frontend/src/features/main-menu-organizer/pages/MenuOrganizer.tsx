@@ -1,7 +1,9 @@
 import { useNavigationOrganizer } from "../../../hooks/useNavigationOrganizer"
 import { Header } from "../components/Header"
 import { InfiniteScrollEvents } from "../components/InfiniteScroll";
-
+import { SearchEventForm } from "../components/SearchEvent";
+import { MainMenuOrganizerProvider } from "../hooks/MainMenuOrganizeContext";
+import './MenuOrganizer.css'
 export default function DashboardOrganizer(){
     const {isOrganizer} = useNavigationOrganizer();
 
@@ -9,7 +11,13 @@ export default function DashboardOrganizer(){
         isOrganizer && (
             <main className="dashboard-page">
                 <Header></Header>
-                <InfiniteScrollEvents />
+                <MainMenuOrganizerProvider>
+                    <section className="event-form-search">
+                        <h2 className="event-indication-search">Búsqueda de eventos</h2>
+                        <SearchEventForm />
+                    </section>
+                    <InfiniteScrollEvents />
+                </MainMenuOrganizerProvider>
             </main>
         )
     )

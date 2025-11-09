@@ -2,6 +2,9 @@
 // Make sure your SQL seed inserts in this order with an empty table:
 // 1. draft, 2. scheduled, 3. on_sale, 4. paused,
 // 5. edit_lock, 6. closed, 7. completed, 8. canceled
+type EventStatusId = keyof typeof EVENT_STATUS_ID_TO_CODE;
+type EventLocationId = keyof typeof EVENT_LOCATIONS_ID_TO_CODE_LABEL;
+export type EventStatus = keyof typeof EVENT_STATUS;
 
 export const EVENT_STATUS = Object.freeze({
     DRAFT: 1,
@@ -54,11 +57,54 @@ export function isValidReservationStatus(value: any) {
     return RESERVATION_STATUS_LIST.includes(value);
 }
 
-/**
- * 
- * export const isOnSale = (eventStatusId) => eventStatusId === EVENT_STATUS.ON_SALE;
-export const isEditLocked = (eventStatusId) => eventStatusId === EVENT_STATUS.EDIT_LOCK;
-export const canSell = (eventStatusId) => eventStatusId === EVENT_STATUS.ON_SALE;
-export const canEditStructure = (eventStatusId) =>
-eventStatusId === EVENT_STATUS.DRAFT || eventStatusId === EVENT_STATUS.EDIT_LOCK;
- */
+export const isOnSale = (eventStatusId: number) => eventStatusId === EVENT_STATUS.ON_SALE;
+export const isEditLocked = (eventStatusId: number) => eventStatusId === EVENT_STATUS.EDIT_LOCK;
+export const canSell = (eventStatusId: number) => eventStatusId === EVENT_STATUS.ON_SALE;
+export const canEditStructure = (eventStatusId: number) => eventStatusId === EVENT_STATUS.DRAFT || eventStatusId === EVENT_STATUS.EDIT_LOCK;
+
+export const EVENT_STATUS_LABEL = Object.freeze({
+    draft: "Borrador",
+    scheduled: "Programado",
+    on_sale: "A la venta",
+    paused: "Pausado",
+    edit_lock: "Edición bloqueada",
+    closed: "Cerrado",
+    completed: "Completado",
+    canceled: "Cancelado",
+});
+
+export const EVENT_STATUS_ID_TO_CODE_LABEL = Object.freeze({
+    1: "draft",
+    2: "scheduled",
+    3: "on_sale",
+    4: "paused",
+    5: "edit_lock",
+    6: "closed",
+    7: "completed",
+    8: "canceled",
+});
+
+export const EVENT_LOCATIONS_LABEL = Object.freeze({
+    teatro_aurora: "Teatro Aurora",
+    auditorio_reforma: "Auditorio Reforma"
+})
+
+export const EVENT_LOCATIONS_ID_TO_CODE_LABEL = Object.freeze({
+    1: "teatro_aurora",
+    2: "auditorio_reforma",
+});
+
+export function GetEventStatusLabel(eventStatus: number){
+    const Status_ID = eventStatus as EventStatusId;
+    const code = EVENT_STATUS_ID_TO_CODE[Status_ID];
+    return EVENT_STATUS_LABEL[code] ?? "Desconocido";
+}
+
+export function GetEventLocation(eventLocation: number){
+    const Location_ID = eventLocation as EventLocationId;
+    const code = EVENT_LOCATIONS_ID_TO_CODE_LABEL[Location_ID];
+    return EVENT_LOCATIONS_LABEL[code] ?? "Desconocido"
+}
+
+
+

@@ -1,0 +1,107 @@
+.event-section {
+    display: flex;
+    flex-direction: column;
+    padding: 1.8rem;
+    margin: 2rem auto;
+    max-width: 1000px;
+    background: #ffffff;
+    border: 1px solid #dce3f5;
+    border-radius: 18px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    animation: eventFadeIn 0.45s ease-out forwards;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.event-section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+}
+
+.event-image {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.event-details {
+    padding-top: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.event-main-details {
+    padding: 1.2rem;
+    background: #eef2ff;
+    border-left: 4px solid #0c1d57;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.event-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0c1d57;
+}
+
+.event-description {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.event-category,
+.event-location,
+.event-state,
+.event-schedule {
+    font-size: 1.15rem;
+    color: #222;
+}
+
+strong {
+    color: #0c1d57;
+    font-weight: 600;
+}
+
+.edit-event-btn {
+    margin-top: 1rem;
+    padding: 0.8rem 1.4rem;
+    background: #0c1d57;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    align-self: flex-end;
+    transition: background 0.25s ease;
+}
+
+.edit-event-btn:hover {
+    background: #163c91;
+}
+
+@keyframes eventFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 780px) {
+    .event-section {
+        padding: 1.2rem;
+    }
+
+    .event-image {
+        height: 200px;
+    }
+
+    .event-main-details {
+        text-align: center;
+    }
+}
