@@ -6,7 +6,7 @@ import { useMainMenuOrganizer } from "../hooks/MainMenuOrganizeContext";
 import { GetAllEvents, GetEventImage,GetEventsBySearch} from "../services/MenuService";
 const IMAGE_URL = import.meta.env.VITE_IMAGE_URL;
 
-interface EventProps {
+export interface EventProps {
     event_id: number,
     event_name: string,
     category: string,

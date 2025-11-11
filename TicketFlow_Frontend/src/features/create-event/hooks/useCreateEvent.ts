@@ -10,7 +10,7 @@ import { useLoading } from "../../../hooks/useLoading"
 const DEFAULT_STATUS_SEAT = import.meta.env.VITE_DEFAULT_STATUS_SEAT;
 const AVAILABLE_STATUS_SEAT = import.meta.env.VITE_AVAILABLE_STATUS_SEATE;
 
-type LocationProps = {
+export type LocationProps = {
     location_id: number,
     name: string,
 }

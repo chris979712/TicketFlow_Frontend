@@ -7,6 +7,7 @@ import './InfiniteScroll.css'
 import { GetEventLocation, GetEventStatusLabel, EVENT_STATUS} from "../../../utils/const";
 import { EndMessage } from "../../../components/EndMessage";
 import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
+import { useEventStore } from "../../edit-event/hooks/useEventStore";
 
 
 export function InfiniteScrollEvents(){
@@ -18,6 +19,7 @@ export function InfiniteScrollEvents(){
         items,
         setAlert
     } = useInfiniteScroll();
+    const {setSelectedEvent} = useEventStore();
 
     return (
         <>
@@ -52,7 +54,11 @@ export function InfiniteScrollEvents(){
                             </div>
                             {
                                 (event.event_status_id !== EVENT_STATUS.CLOSED && event.event_status_id !== EVENT_STATUS.COMPLETED) && (
-                                    <Link to="/edit-event" className="edit-event-btn">Editar evento</Link>
+                                    <Link to="/dashboard-organizer/event-edition" className="edit-event-btn" onClick={() => setSelectedEvent({
+                                        ...event,
+                                        start_time: event.start_time.substring(0,8),
+                                        end_time: event.end_time.substring(0,8)
+                                    })}>Editar evento</Link>
                                 )
                             }
                         </section>
