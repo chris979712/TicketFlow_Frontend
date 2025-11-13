@@ -2,8 +2,9 @@ import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import { useAlert } from "../../../hooks/useAlert";
 import { useEffect, useState, useRef} from "react";
-import { useMainMenuOrganizer } from "../hooks/MainMenuOrganizeContext";
 import { GetAllEvents, GetEventImage} from "../services/MenuService";
+import { useMainMenuOrganizer } from "../hooks/MainMenuOrganizeContext";
+import { useOrganizerStore } from "../../main-menu-organizer/hooks/useOrganizerStore"
 const IMAGE_URL = import.meta.env.VITE_IMAGE_URL;
 
 export interface EventProps {
@@ -29,6 +30,7 @@ export function useInfiniteScroll(){
     const {alert,setAlert} = useAlert();
     const firstRender = useRef(true);
     const PAGE_SIZE = 10;
+    const {idCompany} = useOrganizerStore();
 
     async function SetEventImages(events: EventProps[]){
         const EventsWithImages = await Promise.all(
@@ -50,7 +52,7 @@ export function useInfiniteScroll(){
 
     async function ObtainAllEvents(currentPage = page, replace = false){
         start();
-        const ApiResponse = await GetAllEvents(PAGE_SIZE,currentPage,eventCategory,eventStatus,eventName);
+        const ApiResponse = await GetAllEvents(PAGE_SIZE,currentPage,eventCategory,eventStatus,eventName,idCompany!);
         if(ApiResponse.status === 200){
             let Events: EventProps[] = ApiResponse.data.rows;
             Events = await SetEventImages(Events);

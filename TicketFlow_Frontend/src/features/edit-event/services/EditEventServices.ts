@@ -14,7 +14,7 @@ export async function UpdateExistingEvent(event_name: string, category: string, 
             end_time,
             company_id
         };
-        const ApiResponse = await axios.patch(`${API_URL}/v1/events/edit/${eventId}`,body,{
+        const ApiResponse = await axios.patch(`${API_URL}/v1/event/edit/${eventId}`,body,{
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -41,7 +41,7 @@ export async function UpdateEventStatus(eventId: number, status: number){
         const body = {
             status
         };
-        const ApiResponse = await axios.put(`${API_URL}/v1/events/${eventId}/status`,body,{
+        const ApiResponse = await axios.patch(`${API_URL}/v1/event/${eventId}/status`,body,{
             headers: {
                 Authorization: `Bearer ${token}`
             }
