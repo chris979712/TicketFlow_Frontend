@@ -4,6 +4,7 @@ import { useAlert } from "../../../hooks/useAlert"
 import { useLoading } from "../../../hooks/useLoading"
 import { useEventStore } from "../hooks/useEventStore"
 import { useHandleSession } from "../../../hooks/useHandleSession"
+import { useOrganizerStore } from "../../main-menu-organizer/hooks/useOrganizerStore"
 import { UpdateEventStatus, UpdateExistingEvent, UpdateImageEvent } from "../services/EditEventServices"
 import { ValidateEventEditionInformation, ValidateEventEditionStatus } from "../../../schemas/eventEdition.schema"
 
@@ -21,6 +22,7 @@ export function useEventEdition(){
     const {alerts,setAlerts, addAlert,alert,setAlert} = useAlert();
     const {loading,start,stop} = useLoading();
     const {handleLogout} = useHandleSession();
+    const {idCompany} = useOrganizerStore();
 
     useEffect(() => {
         if (Event) {
@@ -88,7 +90,7 @@ export function useEventEdition(){
             return { ok: false, status: 400, message: "La hora de fin del evento no puede ser antes de la hora de inicio." };
         }
         const ApiResult = await UpdateExistingEvent(eventName,eventCategory,eventDescription,eventDate,eventStartHour,eventEndHour,2,Event!.event_id);
-        if(ApiResult.status === 201){
+        if(ApiResult.status === 200){
             return { ok: true, status: 201, message: "Detalles de evento actualizados" };
         }
         if (ApiResult.status === 401) {
@@ -108,7 +110,7 @@ export function useEventEdition(){
             return { ok: false, status: 400, message: Message };
         }
         const ApiResult = await UpdateEventStatus(Event!.event_id, eventStatus);
-        if (ApiResult.status === 201) {
+        if (ApiResult.status === 200) {
             return { ok: true, status: 201, message: "Estado del evento actualizado" };
         }
         if (ApiResult.status === 401) {
@@ -125,7 +127,7 @@ export function useEventEdition(){
         if (!eventPromotional) {
             return { ok: false, status: 400, message: "No se seleccionó ninguna imagen para actualizar." };
         }
-        const ApiResult = await UpdateImageEvent(eventPromotional, "cover", eventName, 1, Event!.event_id);
+        const ApiResult = await UpdateImageEvent(eventPromotional, "cover", eventName, Event!.event_id, Event!.event_id);
         if (ApiResult.status === 201) {
             return { ok: true, status: 201, message: "Imagen promocional del evento actualizada" };
         }

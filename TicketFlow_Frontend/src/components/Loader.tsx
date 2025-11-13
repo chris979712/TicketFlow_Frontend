@@ -1,5 +1,9 @@
 import './Loader.css'
 
 export function Loader(){
-    return <span className='loader-spinner'></span>
+    return (
+        <div className='loader-container'>
+            <span className='loader-spinner'></span>
+        </div>
+    )
 }

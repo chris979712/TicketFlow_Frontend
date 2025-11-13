@@ -1,12 +1,13 @@
 import dayjs from "dayjs"
 import { useNavigate } from "react-router-dom"
-import { GetEventAllLocations, GetAllLocationSeats, PostEventWithSeats, PutImageForAnEvent} from "../services/EventCreation"
 import { useAlert } from "../../../hooks/useAlert"
-import { useHandleSession } from "../../../hooks/useHandleSession"
+import { useLoading } from "../../../hooks/useLoading"
 import React, { useEffect, useState, useRef } from "react"
+import { useHandleSession } from "../../../hooks/useHandleSession"
 import { ValidateSectionConfiguration } from "../../../schemas/section.Schema"
 import { ValidateEventInformation } from "../../../schemas/eventInformation.schema"
-import { useLoading } from "../../../hooks/useLoading"
+import { useOrganizerStore } from "../../main-menu-organizer/hooks/useOrganizerStore"
+import { GetEventAllLocations, GetAllLocationSeats, PostEventWithSeats, PutImageForAnEvent} from "../services/EventCreation"
 const DEFAULT_STATUS_SEAT = import.meta.env.VITE_DEFAULT_STATUS_SEAT;
 const AVAILABLE_STATUS_SEAT = import.meta.env.VITE_AVAILABLE_STATUS_SEATE;
 
@@ -55,6 +56,7 @@ export function useCreateEvent(){
     const {start,stop,loading} = useLoading();
     const firstRender = useRef(true);
     const Navigate = useNavigate();
+    const {idCompany} = useOrganizerStore();
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
@@ -200,7 +202,7 @@ export function useCreateEvent(){
     }
 
     const CreateEventWithSeats = async (seatsConfigured: SeatProps[]) => {
-        const PutApiResponse = await PostEventWithSeats(eventName,category,description,eventDate,startingHour,endingHour,2,location,seatsConfigured);
+        const PutApiResponse = await PostEventWithSeats(eventName,category,description,eventDate,startingHour,endingHour,idCompany!,location,seatsConfigured);
         if(PutApiResponse.status == 201){
             const {event_id} = PutApiResponse.data;
             PutNewEventImage(event_id);
