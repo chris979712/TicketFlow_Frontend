@@ -4,10 +4,24 @@ import './NotFound.css'
 
 export default function NotFound(){
     return (
-        <div className="notfound-div">
-            <h1>Recurso no encontrado</h1>
-            <p>El recurso que deseas buscar no existe, fue movido de lugar o no cuenta con los permisos necesarios para acceder a el.</p>
-            <Link to="/" className="back-link"><ReturnIcon size={50}></ReturnIcon></Link>
-        </div>
+        <main className="notfound-page">
+            <div className="ticket-container">
+                <div className="ticket-stub">
+                    <span className="code">TKTFLW</span>
+                    <span className="number">Nº 404</span>
+                </div>
+                <div className="ticket-main">
+                    <span className="ticket-main-text">404</span>
+                </div>
+            </div>
+
+            <h1>Página No Encontrada</h1>
+            <p>Parece que este boleto se perdió entre la multitud.</p>
+            
+            <Link to="/" className="back-link-btn">
+                <ReturnIcon size={22} />
+                Regresar al inicio
+            </Link>
+        </main>
     );
 }

@@ -28,7 +28,7 @@ export function SearchEventForm() {
                 />
             )}
             <div className="search-group">
-                <Search className="google-search-icon" />
+                <Search className="search-icon" />
                 <div className="search-input">
                     <Input
                         id="txt_name"

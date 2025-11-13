@@ -1,10 +1,48 @@
-.event-indication-search{
-    font-size: 2.5rem;
-    text-align: center;
-    color: #0c1d57;
-    background: white;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@400;600&display=swap');
+
+.dashboard-page {
+  background: url('/fondoConcierto.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
 }
 
-.event-form-search{
-    padding: 1rem;
+.dashboard-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(10, 5, 20, 0.7) 0%, rgba(15, 8, 30, 0.8) 100%);
+  z-index: 1;
+}
+
+.dashboard-page > * {
+  position: relative;
+  z-index: 2;
+}
+
+.event-indication-search {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3.5rem;
+  text-align: center;
+  color: #FFFFFF;
+  background: none;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.event-form-search {
+  padding: 7.5rem;
+  margin: 1rem auto;
+  max-width: 950px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
