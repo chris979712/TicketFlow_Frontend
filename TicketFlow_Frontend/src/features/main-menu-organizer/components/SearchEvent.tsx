@@ -9,7 +9,7 @@ import './SearchEvent.css'
 
 export function SearchEventForm() {
     const {
-        ObtainEventsBySearch,
+        ObtainEvents,
         alert,
         setAlert,
         ValidateEventName,
@@ -17,8 +17,9 @@ export function SearchEventForm() {
         ValidateEventCategory,
         loading
     } = useSearchEvent();
+    
     return (
-        <form className="search-event-form" onSubmit={ObtainEventsBySearch}>
+        <form className="search-event-form" onSubmit={ObtainEvents}>
             {alert && (
                 <Alert
                     type={alert.type}
