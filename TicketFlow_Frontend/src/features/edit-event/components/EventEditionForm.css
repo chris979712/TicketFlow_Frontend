@@ -3,9 +3,12 @@
     grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     gap: 1.4rem;
     padding: 3rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
     border: 0.15rem solid #1e3a8a;
     border-radius: 0.8rem;
     background-color: #f8fafc;
+    align-items: start;
 }
 
 .event-edition-form h2 {
@@ -16,8 +19,14 @@
     color: #1e3a8a;
 }
 
-.time-picker-group {
+.error-format-inputs {
     grid-column: 1 / -1;
+    text-align: center;
+    color: red;
+    font-size: 1.2rem;
+}
+
+.time-picker-group {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +41,11 @@
 
 .time-picker-inputs {
     display: flex;
-    gap: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1rem
 }
 
 .submit-container {
@@ -69,6 +82,9 @@
     }
 
     .time-picker-inputs {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
     }
 }

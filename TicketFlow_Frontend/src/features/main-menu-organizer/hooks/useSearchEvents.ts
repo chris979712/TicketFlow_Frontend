@@ -3,8 +3,8 @@ import { useMainMenuOrganizer } from "../hooks/MainMenuOrganizeContext";
 import { ValidateEventNameSchema, ValidateEventCategorySchema, ValidateEventStatusSchema} from "../../../schemas/eventSearch.schema";
 
 export function useSearchEvent(){
-    const {setEventName,setEventCategory,setEventStatus,ObtainEventsBySearch,loading} = useMainMenuOrganizer();
-    const {alert,setAlert} = useAlert();
+    const {setEventName,setEventCategory,setEventStatus,setPage,loading,setSearchTrigger,searchTrigger} = useMainMenuOrganizer();
+    const {alert,setAlert} = useAlert();    
 
     const ValidateEventName = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
@@ -40,8 +40,14 @@ export function useSearchEvent(){
         }
     }
 
+    const ObtainEvents = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setPage(0);
+        setSearchTrigger(searchTrigger + 1);
+    }
+
     return {
-        ObtainEventsBySearch,
+        ObtainEvents,
         alert,
         setAlert,
         ValidateEventName,

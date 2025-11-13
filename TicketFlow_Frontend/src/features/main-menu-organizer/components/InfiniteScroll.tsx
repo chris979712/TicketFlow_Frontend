@@ -56,8 +56,8 @@ export function InfiniteScrollEvents(){
                                 (event.event_status_id !== EVENT_STATUS.CLOSED && event.event_status_id !== EVENT_STATUS.COMPLETED) && (
                                     <Link to="/dashboard-organizer/event-edition" className="edit-event-btn" onClick={() => setSelectedEvent({
                                         ...event,
-                                        start_time: event.start_time.substring(0,8),
-                                        end_time: event.end_time.substring(0,8)
+                                        start_time: event.start_time.slice(0,8),
+                                        end_time: event.end_time.slice(0,8)
                                     })}>Editar evento</Link>
                                 )
                             }
