@@ -18,7 +18,7 @@ export function useEventEdition(){
     const [eventStatus, setEventStatus] = useState(0);
     const [error, setErrorValidation] = useState("");
     const Event = useEventStore(state => state.selectedEvent);
-    const {alert, setAlert} = useAlert();
+    const {alerts,setAlerts, addAlert,alert,setAlert} = useAlert();
     const {loading,start,stop} = useLoading();
     const {handleLogout} = useHandleSession();
 
@@ -167,7 +167,7 @@ export function useEventEdition(){
             if (result.status === "fulfilled") {
             const res = result.value;
             if (res.ok) {
-                Successes.push(NameFunction);
+                Successes.push(`${NameFunction}: ${res.message}`);
             } else {
                 if (res.status === 401){
                     unauthorized = true;
@@ -180,7 +180,7 @@ export function useEventEdition(){
                 }
             }
             } else {
-            Errors.push(`${NameFunction}: Error al intentar realizar la acción.`);
+                Errors.push(`${NameFunction}: Error al intentar realizar la acción.`);
             }
         });
         return { Successes, Warnings, Errors, unauthorized };
@@ -200,29 +200,37 @@ export function useEventEdition(){
                 setAlert({ type: "error", message: "Tu sesión expiró. Serás redirigido al inicio de sesión." });
                 setTimeout(() => { handleLogout() }, 5000);
                 stop();
-            }else if (Errors.length === 0 && Warnings.length === 0) {
-                setAlert({ type: "success", message: `${Successes.join(", ")}` });
-            }else {
-                const parts: string[] = [];
-                if (Successes.length) {
-                    parts.push(`OK: ${Successes.join(", ")}`);
-                } 
-                if (Warnings.length) {
-                    parts.push(`Advertencias: ${Warnings.join("; ")}`);
-                    setAlert({ type: "warning", message: Warnings.join(" \n ") });
-                }
-                if (Errors.length) {
-                    parts.push(`Errores: ${Errors.join("; ")}`);
-                    setAlert({ type: "error", message: Errors.join(" \n ") });
-                }
-                
+            }else{
+                await showAlertsSequentially(
+                    Successes.length ? Successes.join(", ") : undefined,
+                    Warnings.length ? Warnings.join("; ") : undefined,
+                    Errors.length ? Errors.join("; ") : undefined
+                );
             }
             stop();
         }
     };
 
+    const showAlertsSequentially = async (successMsg?: string, warningMsg?: string, errorMsg?: string) => {
+        const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+        if (successMsg) {
+            addAlert("success", successMsg, 3000);
+            await delay(3000); 
+        }
+        if (warningMsg) {
+            addAlert("warning", warningMsg, 3000);
+            await delay(3000);
+        }
+        if (errorMsg) {
+            addAlert("error", errorMsg, 3000);
+            await delay(3000);
+        }
+    };
+
     return {
         SubmitChanges,
+        alerts,
+        setAlerts,
         alert,
         setAlert,
         error,

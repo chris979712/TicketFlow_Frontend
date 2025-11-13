@@ -11,6 +11,8 @@ import "./EventEditionForm.css"
 
 export function EventEditionForm(){
     const {SubmitChanges,
+            alerts,
+            setAlerts,
             alert,
             setAlert,
             error,
@@ -36,10 +38,24 @@ export function EventEditionForm(){
         <form onSubmit={SubmitChanges} className="event-edition-form">
             {
                 alert && (
-                    <Alert type={alert.type} 
+                    <Alert 
+                        type={alert.type}
+                        message={alert.message}
+                        onClose={() => {setAlert(null)}}
+                        duration={5000}
+                    />
+                )
+            }
+            {
+                alerts && (
+                    alerts.map(alert => (
+                        <Alert 
+                        key={alert.id}
+                        type={alert.type} 
                         message={alert.message} 
-                        onClose={() => setAlert(null)} 
+                        onClose={() => setAlerts(prev => prev.filter(a => a.id !== alert.id))} 
                         duration={5000}/>
+                    ))
                 )
             }
             <h2>Información general del evento</h2>
