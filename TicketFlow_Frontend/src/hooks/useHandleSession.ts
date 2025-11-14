@@ -6,7 +6,7 @@ export function useHandleSession(){
     const {idCompany,setOrganizerCompany} = useOrganizerStore();
     
     const handleLogout = () => {
-        localStorage.removeItem("token");
+        localStorage.removeItem("authToken");
         if(idCompany){
             setOrganizerCompany(null);
         }

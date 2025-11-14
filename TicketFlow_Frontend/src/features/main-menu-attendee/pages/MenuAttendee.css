@@ -1,0 +1,17 @@
+.even-search {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.event-indication-search {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    letter-spacing: 0.5px;
+}

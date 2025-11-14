@@ -1,7 +1,24 @@
-
+import { useNavigationAttendee } from "../hooks/useNavigationAttendee"
+import { MainMenuAttendeeProvider } from "../hooks/MainMenuAttendee";
+import { SearcherEvent } from "../components/Searcher";
+import { Header } from "../components/Header";
+import { InfiniteScrollEventsAttendee } from "../components/InfiniteScroll";
+import './MenuAttendee.css'
 
 export default function DashboardAttendee(){
+    const {isAttendee} = useNavigationAttendee();
     return (
-        <h1>Menu organizador</h1>
+        isAttendee && (
+            <main>
+                <Header></Header>
+                <MainMenuAttendeeProvider>
+                    <section className="even-search">
+                        <h2 className="event-indication-search">Búsqueda de eventos</h2>
+                        <SearcherEvent />
+                    </section>
+                    <InfiniteScrollEventsAttendee />
+                </MainMenuAttendeeProvider>
+            </main>
+        )
     )
 }

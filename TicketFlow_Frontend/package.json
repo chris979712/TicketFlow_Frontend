@@ -17,6 +17,7 @@
     "dayjs": "^1.11.19",
     "framer-motion": "^12.23.24",
     "joi": "18.0.1",
+    "just-debounce-it": "^3.2.0",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.552.0",
     "react": "^19.1.1",

@@ -2,7 +2,7 @@
 // Make sure your SQL seed inserts in this order with an empty table:
 // 1. draft, 2. scheduled, 3. on_sale, 4. paused,
 // 5. edit_lock, 6. closed, 7. completed, 8. canceled
-type EventStatusId = keyof typeof EVENT_STATUS_ID_TO_CODE;
+export type EventStatusId = keyof typeof EVENT_STATUS_ID_TO_CODE;
 type EventLocationId = keyof typeof EVENT_LOCATIONS_ID_TO_CODE_LABEL;
 export type EventStatus = keyof typeof EVENT_STATUS;
 

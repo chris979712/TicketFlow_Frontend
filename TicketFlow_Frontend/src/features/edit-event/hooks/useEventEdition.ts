@@ -22,7 +22,6 @@ export function useEventEdition(){
     const {alerts,setAlerts, addAlert,alert,setAlert} = useAlert();
     const {loading,start,stop} = useLoading();
     const {handleLogout} = useHandleSession();
-    const {idCompany} = useOrganizerStore();
 
     useEffect(() => {
         if (Event) {

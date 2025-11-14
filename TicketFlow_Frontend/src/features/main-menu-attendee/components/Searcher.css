@@ -1,0 +1,42 @@
+.search-event-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.search-group {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 40px 1fr 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.search-icon {
+    width: 24px;
+    height: 24px;
+    color: #1e3a8a;
+}
+
+.search-input,
+.search-select,
+.date-select {
+    width: 100%;
+}
+
+@media(max-width: 900px) {
+    .search-group {
+        grid-template-columns: 40px 1fr 1fr;
+    }
+
+    .date-select {
+        grid-column: span 2;
+    }
+}
+

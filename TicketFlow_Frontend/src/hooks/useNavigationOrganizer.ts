@@ -17,7 +17,8 @@ export function useNavigationOrganizer(){
     },[Navigate])
 
     return {
-        isOrganizer
+        isOrganizer,
+        setIsOrganizer
     }
 
 }
