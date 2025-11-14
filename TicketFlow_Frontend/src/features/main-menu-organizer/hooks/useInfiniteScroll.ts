@@ -2,7 +2,8 @@ import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import { useAlert } from "../../../hooks/useAlert";
 import { useEffect, useState, useRef} from "react";
-import { GetAllEvents, GetEventImage} from "../services/MenuService";
+import { useHandleSession } from "../../../hooks/useHandleSession";
+import { GetAllEvents, GetEventImage,GetCompanyId} from "../services/MenuService";
 import { useMainMenuOrganizer } from "../hooks/MainMenuOrganizeContext";
 import { useOrganizerStore } from "../../main-menu-organizer/hooks/useOrganizerStore"
 const IMAGE_URL = import.meta.env.VITE_IMAGE_URL;
@@ -31,6 +32,8 @@ export function useInfiniteScroll(){
     const firstRender = useRef(true);
     const PAGE_SIZE = 10;
     const {idCompany} = useOrganizerStore();
+    const {setOrganizerCompany} = useOrganizerStore();
+    const {handleLogout} = useHandleSession();
 
     async function SetEventImages(events: EventProps[]){
         const EventsWithImages = await Promise.all(
@@ -85,6 +88,23 @@ export function useInfiniteScroll(){
         return dayjs(dateISO).format("DD/MM/YYYY");
     }
 
+    async function ObtainCompanyID(){
+        const ApiResponse = await GetCompanyId();
+        if(ApiResponse.status === 200){
+            const CompanyID = ApiResponse.data.company_id;
+            setOrganizerCompany(CompanyID);
+        }else if(ApiResponse.status === 401){
+            setAlert({type: "warning",message: ApiResponse.message!});
+            setTimeout(() => {
+                handleLogout();
+            },4000);
+        }else if(ApiResponse.status >= 400 && ApiResponse.status <= 499){
+            setAlert({type: "warning",message: ApiResponse.message!});
+        }else{
+            setAlert({type: "error",message: ApiResponse.message!});
+        }
+    }
+
     useEffect(() => {
         if (!firstRender.current && searchTrigger > 0) {
             setItems([]); 
@@ -95,10 +115,17 @@ export function useInfiniteScroll(){
     }, [searchTrigger]);
 
     useEffect(() => {
+        if(idCompany){
+            ObtainAllEvents();
+        }
+    },[idCompany])
+
+    useEffect(() => {
         if(firstRender.current){
             firstRender.current = false;
-            ObtainAllEvents(0);
+            ObtainCompanyID();
         }
+
     },[]);
 
     return {

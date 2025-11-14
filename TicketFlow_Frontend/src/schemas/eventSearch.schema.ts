@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { RegexSimpleText, RegexTextNumbersCharacters } from "../utils/regex";
+import { RegexSimpleText, RegexTextNumbersCharacters, RegexDateFormat } from "../utils/regex";
 
 const EventNameSchema = Joi.object({
     name: Joi.string().min(1).regex(RegexTextNumbersCharacters).allow(null,'').messages({
@@ -22,6 +22,15 @@ const EventStatusSchema = Joi.object({
     }),
 });
 
+const EventDateSchema = Joi.object({
+    eventDate: Joi.string().min(10).max(10).regex(RegexDateFormat).required().messages({
+        'any.required': "Por favor ingrese una fecha para su evento.",
+        'string.empty': "Por favor ingrese una fecha para su evento.",
+        "string.min": "Verifique el formato de la fecha ingresada.",
+        "string.pattern.base": "Verifique el formato de la fecha ingresada."
+    })
+});
+
 export function ValidateEventNameSchema(name: string){
     return EventNameSchema.validate({name: name})
 }
@@ -32,4 +41,8 @@ export function ValidateEventCategorySchema(category: string){
 
 export function ValidateEventStatusSchema(status: number){
     return EventStatusSchema.validate({status_id: status})
+}
+
+export function ValidateEventDateSchema(date: string){
+    return EventDateSchema.validate({eventDate: date})
 }
