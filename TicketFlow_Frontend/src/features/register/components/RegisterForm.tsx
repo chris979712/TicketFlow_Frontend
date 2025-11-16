@@ -17,7 +17,7 @@ export function RegisterForm(){
             }
             <form onSubmit={handleSubmit} className="register-form">
                 {
-                    errorValidation && <p className="error-format-inputs">{errorValidation}</p>
+                    errorValidation && <p className="error-format-inputs" role="alert" aria-live="assertive">{errorValidation}</p>
                 }
                 <Input
                     label="Nombres(s):"
@@ -28,6 +28,7 @@ export function RegisterForm(){
                     maxLength={100}
                     onChange={(e) => setName(e.target.value)}
                     required
+                    aria-required="true"
                 />
                 <Input
                     label="Primer apellido:"
@@ -38,6 +39,7 @@ export function RegisterForm(){
                     maxLength={100}
                     onChange={(e) => setFirstlastname(e.target.value)}
                     required
+                    aria-required="true"
                 />
                 <Input
                     label="Segundo apellido:"
@@ -57,6 +59,7 @@ export function RegisterForm(){
                     required
                     maxLength={100}
                     onChange={(e) => setEmail(e.target.value)}
+                    aria-required="true"                                        
                 />
                 <Input 
                     label="Nombre de usuario:"
@@ -67,6 +70,7 @@ export function RegisterForm(){
                     required
                     maxLength={100}
                     onChange={(e) => setUsername(e.target.value)}
+                    aria-required="true"
                 />
                 <Input 
                     label="Contraseña: "
@@ -75,6 +79,8 @@ export function RegisterForm(){
                     type="password" 
                     required
                     onChange={(e) => setPassword(e.target.value)}
+                    aria-required="true"
+                    aria-describedby="passwordRules"
                 />
                 <Input 
                     label="Confirmación de contraseña: "
@@ -83,8 +89,10 @@ export function RegisterForm(){
                     type="password" 
                     required
                     onChange={(e) => setPasswordConfirmation(e.target.value)}
+                    aria-required="true"
+                    aria-describedby="passwordRules"
                 />
-                <p><strong>Recuerde que su contraseña debe incluir al menos ocho caracteres, incluyendo por lo menos una letra mayúscula, una letra minúscula, un número y un caracter especial. </strong></p>
+                <p id="passwordRules"><strong>Recuerde que su contraseña debe incluir al menos ocho caracteres, incluyendo por lo menos una letra mayúscula, una letra minúscula, un número y un caracter especial. </strong></p>
                 <button type="submit" className="btn-submit" disabled={loading}>{loading ? <Loader /> : "Registrarse"}</button>
             </form>
         </>

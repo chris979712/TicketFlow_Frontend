@@ -6,7 +6,7 @@ export default function Login(){
     return(
         <div className="login">
             <section className="welcome-messages-section">
-                <img src ={ticketFlow_horizontal} alt="TicketFlowH" title="TicketFlowH" className="img_logo_horizontal"/>
+                <img src ={ticketFlow_horizontal} alt="Logo de TicketFlow en posición horizontal" title="TicketFlowH" className="img_logo_horizontal"/>
                 <h2>Bienvenido</h2>
                 <p className="p_welcomeMessage">Descubre eventos, recibe alertas sobre tus artistas favoritos, obras de teatro y más. Además de la impresión de tus boletos de forma rápida y segura.</p>
             </section>

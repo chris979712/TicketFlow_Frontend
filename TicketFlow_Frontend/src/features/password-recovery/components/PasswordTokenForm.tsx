@@ -17,12 +17,12 @@ export function PasswordRecoverForm (){
                         onClose={() => setAlert(null)} />
                 )
             }
-            <form onSubmit={handleSubmit} className="form-recovery">
-                <div className="div_instructions">
+            <form onSubmit={handleSubmit} className="form-recovery" aria-describedby="instructions password-guidelines">
+                <div id="instructions" className="div_instructions">
                     <h2>Código de verificación</h2>
                     <p>Se ha mandado un código de verificación al correo electrónico proporcionado, favor ingresarlo en el siguiente cuadro de texto.</p>
                 </div>
-                { errorValidation && <p className="error-format-inputs">{errorValidation}</p>}
+                { errorValidation && <p className="error-format-inputs" role="alert">{errorValidation}</p>}
                 <Input
                     id="txt_verificationCode"
                     name="verificationCode"
@@ -31,7 +31,11 @@ export function PasswordRecoverForm (){
                     maxLength={100}
                     required
                     onChange={(e) => setVerificationCode(e.target.value)}
+                    aria-describedby="verification-help"
                 />
+                <p id="verification-help" className="visually-hidden">
+                    El código es temporal y debe ingresarse exactamente como aparece en el correo.
+                </p>
                 <Input
                     id="txt_newPassword"
                     name="newPassword"
@@ -42,7 +46,7 @@ export function PasswordRecoverForm (){
                     minLength={8}
                     onChange={(e) => setNewPassword(e.target.value)}
                 />
-                <p className="p-indications">Recuerde que su contraseña debe contener al menos 8 caracteres, con al menos 1 letra mayuscula, 1 letra minúscula, 1 número y 1 caracter especial.</p>
+                <p id="password-guidelines" className="p-indications">Recuerde que su contraseña debe contener al menos 8 caracteres, con al menos 1 letra mayuscula, 1 letra minúscula, 1 número y 1 caracter especial.</p>
                 <button type="submit" className="btn-submit-recover" disabled={loading}>{loading ? <Loader /> : "Actualizar"}</button>
             </form>
         </section>
