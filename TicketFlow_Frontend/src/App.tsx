@@ -10,6 +10,7 @@ const NotFound = lazy(() => import("./features/not-found/pages/NotFound"));
 const EventCreation = lazy(() => import("./features/create-event/pages/EventCreation"));
 const PasswordRecovery = lazy(() => import("./features/password-recovery/pages/PasswordRecovery"))
 const EventEdition = lazy(() => import("./features/edit-event/pages/EditEvent"))
+const EventSaleDetails = lazy(() => import("./features/event-detail/pages/EventDetail"));
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/dashboard-organizer/event-creation" element={<EventCreation/>}/>
           <Route path="/dashboard-organizer/event-edition" element={<EventEdition />}/>
           <Route path="/dashboard-attendee" element={<DashboardAttendee/>}/>
+          <Route path="/dashboard-attendee/event-details" element={<EventSaleDetails />} />
           <Route path="/password-recovery" element={<PasswordRecoveryProvider><PasswordRecovery/></PasswordRecoveryProvider>} />
           <Route path="*" element={<NotFound />}></Route>
         </Routes>

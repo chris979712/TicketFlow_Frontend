@@ -1,0 +1,62 @@
+.ticket-selection {
+    width: 320px;
+    background: #f8fafc;
+    border: 2px solid #1e3a8a;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 120px;
+}
+
+.ticket-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem;
+    border-bottom: 1px solid #dbeafe;
+    align-items: center;
+}
+
+.str-total{
+    display: block;
+    font-size: 20px;
+    text-align: right;
+    margin-right: 1rem;
+}
+
+.btn-reservate {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-reservate:hover {
+    background: #3b4cd0;
+}
+
+.btn-quit-ticket{
+    background: transparent;
+    border: 0px transparent;
+}
+
+@media (max-width: 768px) {
+    .seats-reservation {
+        flex-direction: column;
+        max-width: 700px;
+        padding: 1rem;
+    }
+
+    .ticket-selection {
+        width: 100%;
+        max-width: 350px;
+        position: static;
+        margin-left: 4rem;
+    }
+}
