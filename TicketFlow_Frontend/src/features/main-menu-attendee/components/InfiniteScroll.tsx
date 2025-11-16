@@ -4,6 +4,7 @@ import { Loader } from "../../../components/Loader";
 import { EndMessage } from "../../../components/EndMessage";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ImageLogo from "../../../../public/TicketFLow_logo.png";
+import { useEventSaleStore } from "../hooks/useEventSaleStore";
 import { useInfiniteScrollEvent } from "../hooks/useInfiniteScroll";
 import {GetEventLocation,EVENT_STATUS_CODE } from "../../../utils/const";
 import './InfiniteScroll.css'
@@ -18,6 +19,7 @@ export function InfiniteScrollEventsAttendee(){
         GetEventStatusLabel,
         ObtainEvents
     } = useInfiniteScrollEvent();
+    const {setSelectedEvent} = useEventSaleStore();
 
     return (
         <>
@@ -53,7 +55,11 @@ export function InfiniteScrollEventsAttendee(){
                                     <strong className="event-status">Estado del evento: {GetEventStatusLabel(event.event_status_id)}</strong>
                                     {
                                         event.event_status_id === EVENT_STATUS_CODE.on_sale && (
-                                            <Link to="/dashboard-attendee/event/disponibility">Ver disponibilidad</Link>
+                                            <Link to="/dashboard-attendee/event-details" onClick={() => setSelectedEvent({
+                                                ...event,
+                                                start_time: event.start_time.slice(0,8),
+                                                end_time: event.end_time.slice(0,8)
+                                            })}>Ver disponibilidad</Link>
                                         )
                                     }
                                 </div>

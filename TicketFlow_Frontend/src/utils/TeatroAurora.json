@@ -1,0 +1,451 @@
+{
+    "event_location_id": 1,
+    "venue_name": "Teatro Aurora",
+    "address": {
+        "address_line1": "Av. Central 123",
+        "address_line2": "Piso 2, Local 5",
+        "city": "Ciudad de México",
+        "state": "CDMX",
+        "country": "MX",
+        "postal_code": "06000"
+    },
+    "capacity": 1200,
+    "sections": [
+        {
+            "section_id": 2,
+            "section_name": "Balcón",
+            "seats": [
+                {
+                    "seat_id": 37,
+                    "row_no": "A",
+                    "seat_no": "1",
+                    "display_label": "A-1",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 39,
+                    "row_no": "A",
+                    "seat_no": "2",
+                    "display_label": "A-2",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 41,
+                    "row_no": "A",
+                    "seat_no": "3",
+                    "display_label": "A-3",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 43,
+                    "row_no": "A",
+                    "seat_no": "4",
+                    "display_label": "A-4",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 45,
+                    "row_no": "A",
+                    "seat_no": "5",
+                    "display_label": "A-5",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 47,
+                    "row_no": "A",
+                    "seat_no": "6",
+                    "display_label": "A-6",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 49,
+                    "row_no": "A",
+                    "seat_no": "7",
+                    "display_label": "A-7",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 51,
+                    "row_no": "A",
+                    "seat_no": "8",
+                    "display_label": "A-8",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 38,
+                    "row_no": "B",
+                    "seat_no": "1",
+                    "display_label": "B-1",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 40,
+                    "row_no": "B",
+                    "seat_no": "2",
+                    "display_label": "B-2",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 42,
+                    "row_no": "B",
+                    "seat_no": "3",
+                    "display_label": "B-3",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 44,
+                    "row_no": "B",
+                    "seat_no": "4",
+                    "display_label": "B-4",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 46,
+                    "row_no": "B",
+                    "seat_no": "5",
+                    "display_label": "B-5",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 48,
+                    "row_no": "B",
+                    "seat_no": "6",
+                    "display_label": "B-6",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 50,
+                    "row_no": "B",
+                    "seat_no": "7",
+                    "display_label": "B-7",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 52,
+                    "row_no": "B",
+                    "seat_no": "8",
+                    "display_label": "B-8",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                }
+            ],
+            "created_at": "2025-11-16T00:13:34.902Z",
+            "updated_at": "2025-11-16T00:13:34.902Z"
+        },
+        {
+            "section_id": 1,
+            "section_name": "Platea A",
+            "seats": [
+                {
+                    "seat_id": 1,
+                    "row_no": "A",
+                    "seat_no": "1",
+                    "display_label": "A-1",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 28,
+                    "row_no": "A",
+                    "seat_no": "10",
+                    "display_label": "A-10",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 31,
+                    "row_no": "A",
+                    "seat_no": "11",
+                    "display_label": "A-11",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 34,
+                    "row_no": "A",
+                    "seat_no": "12",
+                    "display_label": "A-12",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 4,
+                    "row_no": "A",
+                    "seat_no": "2",
+                    "display_label": "A-2",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 7,
+                    "row_no": "A",
+                    "seat_no": "3",
+                    "display_label": "A-3",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 10,
+                    "row_no": "A",
+                    "seat_no": "4",
+                    "display_label": "A-4",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 13,
+                    "row_no": "A",
+                    "seat_no": "5",
+                    "display_label": "A-5",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 16,
+                    "row_no": "A",
+                    "seat_no": "6",
+                    "display_label": "A-6",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 19,
+                    "row_no": "A",
+                    "seat_no": "7",
+                    "display_label": "A-7",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 22,
+                    "row_no": "A",
+                    "seat_no": "8",
+                    "display_label": "A-8",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 25,
+                    "row_no": "A",
+                    "seat_no": "9",
+                    "display_label": "A-9",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 2,
+                    "row_no": "B",
+                    "seat_no": "1",
+                    "display_label": "B-1",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 29,
+                    "row_no": "B",
+                    "seat_no": "10",
+                    "display_label": "B-10",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 32,
+                    "row_no": "B",
+                    "seat_no": "11",
+                    "display_label": "B-11",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 35,
+                    "row_no": "B",
+                    "seat_no": "12",
+                    "display_label": "B-12",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 5,
+                    "row_no": "B",
+                    "seat_no": "2",
+                    "display_label": "B-2",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 8,
+                    "row_no": "B",
+                    "seat_no": "3",
+                    "display_label": "B-3",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 11,
+                    "row_no": "B",
+                    "seat_no": "4",
+                    "display_label": "B-4",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 14,
+                    "row_no": "B",
+                    "seat_no": "5",
+                    "display_label": "B-5",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 17,
+                    "row_no": "B",
+                    "seat_no": "6",
+                    "display_label": "B-6",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 20,
+                    "row_no": "B",
+                    "seat_no": "7",
+                    "display_label": "B-7",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 23,
+                    "row_no": "B",
+                    "seat_no": "8",
+                    "display_label": "B-8",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 26,
+                    "row_no": "B",
+                    "seat_no": "9",
+                    "display_label": "B-9",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 3,
+                    "row_no": "C",
+                    "seat_no": "1",
+                    "display_label": "C-1",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 30,
+                    "row_no": "C",
+                    "seat_no": "10",
+                    "display_label": "C-10",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 33,
+                    "row_no": "C",
+                    "seat_no": "11",
+                    "display_label": "C-11",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 36,
+                    "row_no": "C",
+                    "seat_no": "12",
+                    "display_label": "C-12",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 6,
+                    "row_no": "C",
+                    "seat_no": "2",
+                    "display_label": "C-2",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 9,
+                    "row_no": "C",
+                    "seat_no": "3",
+                    "display_label": "C-3",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 12,
+                    "row_no": "C",
+                    "seat_no": "4",
+                    "display_label": "C-4",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 15,
+                    "row_no": "C",
+                    "seat_no": "5",
+                    "display_label": "C-5",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 18,
+                    "row_no": "C",
+                    "seat_no": "6",
+                    "display_label": "C-6",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 21,
+                    "row_no": "C",
+                    "seat_no": "7",
+                    "display_label": "C-7",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 24,
+                    "row_no": "C",
+                    "seat_no": "8",
+                    "display_label": "C-8",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                },
+                {
+                    "seat_id": 27,
+                    "row_no": "C",
+                    "seat_no": "9",
+                    "display_label": "C-9",
+                    "created_at": "2025-11-16T00:13:34.902Z",
+                    "updated_at": "2025-11-16T00:13:34.902Z"
+                }
+            ],
+            "created_at": "2025-11-16T00:13:34.902Z",
+            "updated_at": "2025-11-16T00:13:34.902Z"
+        }
+    ],
+    "metadata": {
+        "created_at": "2025-11-16T00:13:34.902Z",
+        "updated_at": "2025-11-16T00:13:34.902Z"
+    }
+}

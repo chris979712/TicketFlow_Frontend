@@ -1,0 +1,367 @@
+.location {
+    padding: 2.5rem;
+    border: 4px solid #1e3a8a;
+    border-radius: 1.6rem;
+    background: linear-gradient(180deg, #f8fafc, #e2e8f0);
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.stage {
+    width: 85%;
+    height: 90px;
+    background: linear-gradient(135deg, #1e3a8a, #312e81);
+    margin: 2rem auto 3rem auto;
+    border-radius: 12px 12px 24px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 -6px 12px rgba(0,0,0,0.45), 0 6px 14px rgba(0,0,0,0.35);
+    border: 3px solid #0c1d57;
+    position: relative;
+}
+
+.stage::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 10px;
+    background: radial-gradient(ellipse, rgba(0,0,0,0.4), transparent);
+    border-radius: 50%;
+}
+
+.stage-text {
+    color: #f1f5f9;
+    font-size: 1.9rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 3px 5px rgba(0,0,0,0.7);
+}
+
+.location-title {
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: #1e3a8a;
+    margin-bottom: 2rem;
+    text-shadow: 1px 2px 4px rgba(0,0,0,0.15);
+}
+
+.seat-tooltip {
+    position: fixed;
+    background: white;
+    border: 2px solid #1e3a8a;
+    border-radius: 8px;
+    padding: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    min-width: 160px;
+    pointer-events: none;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.seat-tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #1e3a8a;
+}
+
+.tooltip-header {
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #1e3a8a;
+    font-size: 0.9rem;
+}
+
+.tooltip-details {
+    font-size: 0.8rem;
+    color: #475569;
+    line-height: 1.4;
+}
+
+.availability {
+    font-weight: 600;
+    margin-top: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+.availability.available {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.availability.sold-out {
+    background: #fecaca;
+    color: #991b1b;
+}
+
+[class^="section-"] {
+    margin-bottom: 2.2rem;
+    padding: 1.8rem 1rem;
+    background: linear-gradient(180deg, #ffffff, #f0f0f5);
+    border: 2px solid #1e3a8a;
+    border-radius: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.section-balcon-a {
+    order: 1;
+}
+
+.section-platea-a {
+    order: 2;
+    margin: 3rem 0;
+}
+
+.section-balcon-a ~ .section-balcon-a {
+    order: 3;
+}
+
+.seats-from-auditorio-reforma [class^="section-"] {
+    margin-bottom: 1.5rem;
+    padding: 1.2rem 0.8rem;
+}
+
+.seats-from-auditorio-reforma .section-balcony {
+    order: 2;
+    margin: 1.5rem 0;
+}
+
+.seats-from-auditorio-reforma .section-general {
+    order: 3;
+    margin-top: 1rem;
+}
+
+.seats-from-auditorio-reforma .section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.seats-from-auditorio-reforma .row-container {
+    gap: 1rem;
+}
+
+.seats-from-auditorio-reforma .row-block {
+    gap: 0.8rem;
+}
+
+.seats-from-auditorio-reforma .row-label {
+    min-width: 30px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.seats-from-auditorio-reforma .seat {
+    width: 32px;
+    height: 32px;
+}
+
+.seats-from-auditorio-reforma .seat svg {
+    width: 24px;
+    height: 24px;
+}
+
+.seats-from-auditorio-reforma .seats-row {
+    gap: 0.4rem;
+}
+
+.seats-from-auditorio-reforma .section-vip {
+    order: 1;
+    margin-bottom: 1rem;
+}
+
+
+
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0c1d57;
+    margin-bottom: .5rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    align-items: center;
+    width: 100%;
+}
+
+.row-block {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.row-label {
+    min-width: 35px;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #0c1d57;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+}
+
+.seats-row {
+    display: flex;
+    gap: 0.55rem;
+    flex-wrap: nowrap;
+}
+
+.seat {
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0.25rem;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.seat svg {
+    width: 26px;
+    height: 26px;
+}
+
+.seat-available {
+    color: #16a34a;
+    border-color: #22c55e;
+}
+
+.seat-disabled {
+    color: #dc2626;
+    border-color: #dc2626;
+    background: #fee2e2;
+}
+
+.seat:not(:disabled):hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    border-color: #0c1d57;
+}
+
+.seat:not(:disabled):hover svg {
+    transform: scale(1.15);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .location {
+        padding: 1rem;
+        border-width: 2px;
+        border-radius: 1rem;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .stage {
+        width: 100%;
+        height: 60px;
+        margin: 1.5rem auto 2rem auto;
+    }
+
+    .stage-text {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+    }
+
+    [class^="section-"] {
+        padding: 1rem 0.5rem;
+        margin-bottom: 1rem;
+        border-width: 1px;
+        border-radius: 0.6rem;
+        width: 100%;
+        overflow-x: auto; 
+    }
+
+
+    .row-block {
+        justify-content: flex-start;
+    }
+
+    .seat-tooltip {
+        max-width: 140px;
+        font-size: 0.7rem;
+    }
+
+    .row-label {
+        font-size: 1.1rem;
+    }
+
+    .seat {
+        width: 26px;
+        height: 26px;
+        padding: 0.15rem;
+    }
+
+    .seat svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .seats-row {
+        flex-wrap: wrap; 
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .seats-from-auditorio-reforma .section-title {
+        font-size: 1.1rem;
+    }
+    
+    .seats-from-auditorio-reforma .row-label {
+        font-size: 1rem;
+        min-width: 25px;
+    }
+    
+    .seats-from-auditorio-reforma .seat {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .seats-from-auditorio-reforma .seat svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .seats-from-auditorio-reforma .seats-row {
+        gap: 0.25rem;
+    }
+    
+    .seats-from-auditorio-reforma .row-block {
+        gap: 0.5rem;
+    }
+}

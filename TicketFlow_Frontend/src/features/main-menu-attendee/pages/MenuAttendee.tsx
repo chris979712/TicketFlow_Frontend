@@ -1,7 +1,7 @@
-import { useNavigationAttendee } from "../hooks/useNavigationAttendee"
-import { MainMenuAttendeeProvider } from "../hooks/MainMenuAttendee";
-import { SearcherEvent } from "../components/Searcher";
 import { Header } from "../components/Header";
+import { SearcherEvent } from "../components/Searcher";
+import { MainMenuAttendeeProvider } from "../hooks/MainMenuAttendee";
+import { useNavigationAttendee } from "../hooks/useNavigationAttendee";
 import { InfiniteScrollEventsAttendee } from "../components/InfiniteScroll";
 import './MenuAttendee.css'
 
