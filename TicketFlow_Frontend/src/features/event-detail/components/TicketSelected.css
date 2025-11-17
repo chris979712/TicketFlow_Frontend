@@ -46,6 +46,12 @@
     border: 0px transparent;
 }
 
+.section-ticket-title{
+    text-align: center;
+    color: #02164f;
+    margin-bottom: 0;
+}
+
 @media (max-width: 768px) {
     .seats-reservation {
         flex-direction: column;

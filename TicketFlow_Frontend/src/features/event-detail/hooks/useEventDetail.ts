@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import { useAlert } from "../../../hooks/useAlert";
+import type { Seat } from "../../../hooks/useSeatsMap";
+import { useTicketSelection } from "./useTicketSelection";
 import { ObtainEventInventory } from "../services/EventSale";
 import { useHandleSession } from "../../../hooks/useHandleSession";
 import { useEventSaleStore } from "../../main-menu-attendee/hooks/useEventSaleStore";
@@ -11,6 +13,7 @@ export function useEventDetail(){
     const [seatsInventory, setSeatsInventory] = useState<any[]>([]);
     const {alert,setAlert} = useAlert();
     const {handleLogout} = useHandleSession();
+    const {setSelectedSeats,selectedSeats} = useTicketSelection();
 
     async function GetEventInventory(){
         const ApiResponse = await ObtainEventInventory(selectedEvent!.event_id);
@@ -29,15 +32,41 @@ export function useEventDetail(){
         }
     }
 
+    async function GetSeatsFromLocalStorage(): Promise<Seat[]>{
+        try{
+            const SeatsData = localStorage.getItem("selectedSeats");
+            const ParsedSeats = await JSON.parse(SeatsData!);
+            if(Array.isArray(ParsedSeats)){
+                return ParsedSeats;
+            }
+            return [];
+        }catch(error){
+            return [];
+        }
+    }
+
     useEffect(() => {
+        const ObtainSeats = async () => {
+            const SeatsSaved = await GetSeatsFromLocalStorage();
+            setSelectedSeats(SeatsSaved);
+        }
+        const handleBeforeUnload = () => {
+            localStorage.setItem("selectedSeats",JSON.stringify(selectedSeats));
+        }
+        window.addEventListener('beforeunload',handleBeforeUnload);
         GetEventInventory();
-    },[])
+        ObtainSeats();
+        return () => {
+            window.removeEventListener("beforeunload",handleBeforeUnload);
+            setSelectedSeats([]);
+        }
+    },[selectedEvent])
 
     return {
         isAttendee,
         alert,
         setAlert,
         selectedEvent,
-        seatsInventory
+        seatsInventory,
     }
 }

@@ -9,3 +9,5 @@ export const RegexDateFormat = /^\d{4}-\d{2}-\d{2}$/;
 export const RegexHour = /^([01]\d|2[0-3]):[0-5]\d:[0-5]\d$/;
 export const RegexPrice = /^(\$)?\d+(\.\d{1,2})?$/;
 export const RegexPositiveNumbers = /^\d+$/;
+export const RegexISOTimeDate = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{3})?Z$/;
+
