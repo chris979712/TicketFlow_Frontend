@@ -6,6 +6,7 @@ import { useEventDetail } from "../hooks/useEventDetail";
 import { EventSaleSection } from "../components/EventSection";
 import { TicketSelection } from "../components/TicketsSelected";
 import TicketFlowWhiteLogo from '../../../../public/Logo_Blanco_horizontal.png';
+
 import "./EventDetail.css"
 
 export default function EventDetails(){
@@ -13,7 +14,7 @@ export default function EventDetails(){
             alert,
             setAlert,
             selectedEvent,
-            seatsInventory} = useEventDetail();
+            seatsInventory,} = useEventDetail();
 
     return (
         isAttendee && (
