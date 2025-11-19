@@ -10,6 +10,7 @@ export interface Seat {
     display_label:string,
     available?: boolean,
     base_price?: number,
+    event_seat_id?: number; 
 }
 
 interface Section {

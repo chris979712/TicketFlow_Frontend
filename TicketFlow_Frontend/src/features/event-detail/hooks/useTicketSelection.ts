@@ -3,10 +3,11 @@ import { useAlert } from "../../../hooks/useAlert";
 import type { Seat } from "../../../hooks/useSeatsMap";
 import { useTicketStore } from "./useTicketReservationStore";
 import { useHandleSession } from "../../../hooks/useHandleSession";
+import { ValidateSeatsToReservate } from "../../../schemas/seatReservationSchema";
 import { CreateReservation, type SeatReservationType } from "../services/EventSale";
 import { useEventSaleStore } from "../../main-menu-attendee/hooks/useEventSaleStore";
-import { ValidateSeatsToReservate } from "../../../schemas/seatReservationSchema";
-
+import { useReservationStore, type Reservation } from "../../ticket-payment/hooks/useReservationStore";
+import { useNavigate } from "react-router-dom";
 
 export function useTicketSelection(){
     const {selectedSeats,setSelectedSeats} = useTicketStore();
@@ -14,6 +15,8 @@ export function useTicketSelection(){
     const {setAlert, alert} = useAlert();
     const {handleLogout} = useHandleSession();
     const [isHuman, setIsHuman] = useState(false);
+    const {setReservation} = useReservationStore();
+    const Navigate = useNavigate();
 
     function HandleVerifyHuman(event: React.ChangeEvent<HTMLInputElement>){
         event.preventDefault();
@@ -41,6 +44,21 @@ export function useTicketSelection(){
         return SeatsToReservate;
     }
 
+    function MapReservationResponse(ApiResponse: any): Reservation[] {
+        const ReservationList = ApiResponse.data.reservations || [];
+        const SeatsList = ApiResponse.data.eventSeats || [];
+        return ReservationList.map((r: any) => {
+            const seats = SeatsList.filter((s: any) => s.event_seat_id === r.event_seat_id);
+            return {
+                reservation_id: r.reservation_id,
+                attendee_id: r.attendee_id,
+                status: r.status,
+                expiration_at: r.expiration_at,
+                seats
+            };
+        });
+    }
+
     async function handleReservation(event: React.MouseEvent<HTMLButtonElement>){
         event.preventDefault();
         setAlert(null);
@@ -49,8 +67,13 @@ export function useTicketSelection(){
         if(!DataValidationResult.error){
             const ApiResponse = await CreateReservation(SeatsParsed);
             if(ApiResponse.status === 201){
+                const ReservationResponse = MapReservationResponse(ApiResponse);
+                setReservation(ReservationResponse);
                 setAlert({type: "success", message: "Su reservación ha sido creada, cuenta con 10 minutos para realizar el pago."});
                 setSelectedSeats([])
+                setTimeout(() => {
+                    Navigate("/dashboard-attendee/payment-reservation")
+                },3000);
             }else if(ApiResponse.status === 401){
                 setAlert({type: "warning", message: ApiResponse.message!});
                 setTimeout(() => {

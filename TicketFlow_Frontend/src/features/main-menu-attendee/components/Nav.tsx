@@ -11,7 +11,6 @@ export function NavBar(){
             <div className="navbar-center">
                 <ul className="navbar-links">
                     <li><Link to="/dashboard-attendee/my-tickets">Mis boletos</Link></li>
-                    <li><Link to="/dashboard-attendee/my-reservations">Mis reservas</Link></li>
                 </ul>
             </div>
             <button className="btn-logout" onClick={handleLogout}><LogOutIcon size={20}></LogOutIcon></button>
