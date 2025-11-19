@@ -11,10 +11,12 @@ export const useTicketStore = create(
     persist<TicketStore>(
         (set) => ({
             selectedSeats: [],
-            setSelectedSeats: (seats) => set({selectedSeats: seats}) 
+            setSelectedSeats: (seats) => {
+                set({selectedSeats: seats}) 
+            }
         }),
         {
-            name: "tickets-selected-storage"
+            name: "tickets-selected-storage",
         }
     )
 )

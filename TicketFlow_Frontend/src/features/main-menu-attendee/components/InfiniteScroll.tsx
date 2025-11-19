@@ -55,7 +55,7 @@ export function InfiniteScrollEventsAttendee(){
                                     <strong className="event-status">Estado del evento: {GetEventStatusLabel(event.event_status_id)}</strong>
                                     {
                                         event.event_status_id === EVENT_STATUS_CODE.on_sale && (
-                                            <Link to="/dashboard-attendee/event-details" onClick={() => setSelectedEvent({
+                                            <Link to={`/dashboard-attendee/event-details/${event.event_name}`} onClick={() => setSelectedEvent({
                                                 ...event,
                                                 start_time: event.start_time.slice(0,8),
                                                 end_time: event.end_time.slice(0,8)

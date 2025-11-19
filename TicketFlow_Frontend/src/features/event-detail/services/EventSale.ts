@@ -39,6 +39,7 @@ export async function CreateReservation(seats: SeatReservationType[]): Promise<A
             event_seat_id: seats.map(seat => seat.event_seat_id),
             expiration_at: seats[0]!.expiration_at
         }
+        console.log(body)
         const token = localStorage.getItem("authToken");
         const ApiResponse = await axios.post(`${API_URL}/v1/reservations/reserve`,body,{
             headers:{
@@ -48,12 +49,13 @@ export async function CreateReservation(seats: SeatReservationType[]): Promise<A
         return {status: ApiResponse.status, data: ApiResponse.data};
     }catch(error: any){
         const status = error.response?.status || 0;
+        console.log(error);
         let message = "Error desconocido.";
         switch(status){
             case 400: message = "Solicitud inválida (faltan campos o formato incorrecto)."; break;
             case 401: message = "Sesión expirada, por favor vuelva a iniciar sesión."; break;
             case 404: message = "No se ha encontrado el asiento del evento a reservar."; break;
-            case 409: message = "Este asiento ya ha sido reservado por alguien más: "; break;
+            case 409: message = "Uno de los asientos escogidos, ya ha sido reservado por alguien más."; break;
             case 500: message = "Error al intentar realizar la solicitud."; break;
             case 503: message = "No se ha podido conectar a la base de datos."; break;
             case 0:   message = "No se pudo conectar con el servidor."; break;
