@@ -30,7 +30,7 @@ export function EventCreationForm(){
         setAlert} = useCreateEvent();
 
     return (
-        <section className="event-forms">
+        <section className="event-forms" aria-labelledby="event-info-title">
             {
                 alert && (
                     <Alert type={alert.type} 
@@ -102,22 +102,26 @@ export function EventCreationForm(){
                     accept="image/*"
                     onChange={handleFileChange}
                     required
+                    aria-describedby="promo-img-help"
                 />
+                <p id="promo-img-help" className="visually-hidden">
+                    Seleccione una imagen promocional en formato JPG o PNG. El tamaño máximo recomendado es 5 MB.
+                </p>
                 <div className="time-picker-group">
                     <label className="time-picker-label">Horario del evento:</label>
                     <div className="time-picker-inputs">
-                        <ResponsiveTimePickers label="Hora de inicio:" onChange={(newValue: Dayjs | null) => {
+                        <ResponsiveTimePickers label="Hora de inicio:" aria-label="Hora de inicio del evento" onChange={(newValue: Dayjs | null) => {
                             if (newValue) setStartingHour(newValue.format("HH:mm:ss"));
                         }}/>
-                        <ResponsiveTimePickers label="Hora de finalización:" onChange={(newValue: Dayjs | null) => {
+                        <ResponsiveTimePickers label="Hora de finalización:" aria-label="Hora de finalización del evento" onChange={(newValue: Dayjs | null) => {
                             if (newValue) setEndingHour(newValue.format("HH:mm:ss")); 
                         }}/>
                     </div>
                 </div>
-                <div className="prices-config"> 
+                <div className="prices-config" aria-labelledby="price-config-title"> 
                     <h2>Configuración de precios de boletos</h2>
                     {
-                        errorSections && <p className="error-format-inputs">{errorSections}</p>
+                        errorSections && <p className="error-format-inputs" role="alert">{errorSections}</p>
                     }
                     {
                         sections.length > 0 ? (
@@ -149,7 +153,7 @@ export function EventCreationForm(){
                                         />
                                     </section>
                                     {
-                                        sectionErrors[index] && <p className="error-format-inputs">{sectionErrors[index]}</p>
+                                        sectionErrors[index] && <p className="error-format-inputs" role="alert">{sectionErrors[index]}</p>
                                     }
                                 </div>
                             ))

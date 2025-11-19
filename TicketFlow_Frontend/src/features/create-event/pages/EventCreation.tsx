@@ -11,8 +11,8 @@ export default function EventCreation(){
             <main className="event-creation-page">
                 <header className="header-menu-organizer">
                     <div className='div_welcome'>
-                        <img src={TicketFlowWhiteLogo} alt="Ticket flog logo color blanco" title="logo de ticket flow"/>
-                        <Link className="link-return" to="/dashboard-organizer">Regresar</Link>
+                        <img src={TicketFlowWhiteLogo} alt="TicketFlow logo color blanco" title="logo de ticket flow"/>
+                        <Link className="link-return" to="/dashboard-organizer" aria-label="Regresar al menú principal del organizador">Regresar</Link>
                     </div>
                 </header>
                 <div className="event-creation">

@@ -7,14 +7,14 @@ export function NavBar(){
     const {handleLogout} = useHandleSession();
 
     return (
-        <nav className="navbar">
+        <nav className="navbar" aria-label="Navegación principal">
             <div className="navbar-center">
                 <ul className="navbar-links">
                     <li><Link to="/dashboard-organizer/event-creation">Crear evento</Link></li>
                     <li><Link to="/reporte-evento">Reporte de evento</Link></li>
                 </ul>
             </div>
-            <button className="btn-logout" onClick={handleLogout}><LogOutIcon size={20}></LogOutIcon></button>
+            <button className="btn-logout" onClick={handleLogout}><LogOutIcon size={20} aria-hidden="true"></LogOutIcon><span className="visually-hidden">Cerrar sesión</span></button>
         </nav>
     )
 }

@@ -12,8 +12,8 @@ export default function PasswordRecovery(){
         <main>
             <header className="header-menu-organizer">
                 <div className='div_welcome'>
-                    <img src={TickerFlowWhiteLogo} alt="Ticket flog logo color blanco" title="logo de ticket flow"/>
-                    <Link to="/" className="link-to-menu">Regresar</Link>
+                    <img src={TickerFlowWhiteLogo} alt="Logo de TicketFlow color blanco" title="logo de ticket flow"/>
+                    <Link to="/" className="link-to-menu" aria-label="Regresar a la página principal">Regresar</Link>
                 </div>
             </header>
             <h1 className="title-page">Recuperación de contraseña</h1>
