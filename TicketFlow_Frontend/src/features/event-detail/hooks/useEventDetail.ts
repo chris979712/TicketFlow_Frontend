@@ -1,8 +1,8 @@
 import { useEffect, useState} from "react";
+import { useParams } from "react-router-dom";
 import { useAlert } from "../../../hooks/useAlert";
-import type { Seat } from "../../../hooks/useSeatsMap";
-import { useTicketSelection } from "./useTicketSelection";
 import { ObtainEventInventory } from "../services/EventSale";
+import { useTicketStore } from "./useTicketReservationStore";
 import { useHandleSession } from "../../../hooks/useHandleSession";
 import { useEventSaleStore } from "../../main-menu-attendee/hooks/useEventSaleStore";
 import { useNavigationAttendee } from "../../main-menu-attendee/hooks/useNavigationAttendee";
@@ -13,7 +13,8 @@ export function useEventDetail(){
     const [seatsInventory, setSeatsInventory] = useState<any[]>([]);
     const {alert,setAlert} = useAlert();
     const {handleLogout} = useHandleSession();
-    const {setSelectedSeats,selectedSeats} = useTicketSelection();
+    const {setSelectedSeats,selectedSeats} = useTicketStore();
+    const {eventName} = useParams();
 
     async function GetEventInventory(){
         const ApiResponse = await ObtainEventInventory(selectedEvent!.event_id);
@@ -32,35 +33,26 @@ export function useEventDetail(){
         }
     }
 
-    async function GetSeatsFromLocalStorage(): Promise<Seat[]>{
-        try{
-            const SeatsData = localStorage.getItem("selectedSeats");
-            const ParsedSeats = await JSON.parse(SeatsData!);
-            if(Array.isArray(ParsedSeats)){
-                return ParsedSeats;
-            }
-            return [];
-        }catch(error){
-            return [];
+    useEffect(() => {
+        if(selectedEvent) {
+            localStorage.setItem(`selectedSeats_${eventName}`, JSON.stringify(selectedSeats));
         }
-    }
+    }, [selectedSeats, selectedEvent]);
 
     useEffect(() => {
-        const ObtainSeats = async () => {
-            const SeatsSaved = await GetSeatsFromLocalStorage();
-            setSelectedSeats(SeatsSaved);
+        if(selectedEvent) {
+            const saved = localStorage.getItem(`selectedSeats_${eventName}`);
+            if(saved){
+                setSelectedSeats(JSON.parse(saved));
+                localStorage.removeItem(`selectedSeats_${eventName}`)
+            } 
         }
-        const handleBeforeUnload = () => {
-            localStorage.setItem("selectedSeats",JSON.stringify(selectedSeats));
-        }
-        window.addEventListener('beforeunload',handleBeforeUnload);
+    }, [selectedEvent]);
+
+    useEffect(() => {
         GetEventInventory();
-        ObtainSeats();
-        return () => {
-            window.removeEventListener("beforeunload",handleBeforeUnload);
-            setSelectedSeats([]);
-        }
-    },[selectedEvent])
+        return () => setSelectedSeats([]);
+    },[selectedEvent]);
 
     return {
         isAttendee,

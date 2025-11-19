@@ -107,6 +107,27 @@
     border-color: #274bb1;
 }
 
+.input-field[type="checkbox"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0;
+    background: transparent;
+    height: 15px;
+    width: 15px;
+    margin-left: 9.5rem;
+}
+
+.input-field[type="checkbox"]:focus {
+    border-color: #3b82f6; 
+    box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
+}
+
+.input-field[type="checkbox"]:hover {
+    border-color: #274bb1;
+}
+
 .input-field[type="file"] {
     border: 2px dashed #1e3a8a;
     border-radius: 10px;

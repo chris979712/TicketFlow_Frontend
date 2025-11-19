@@ -1,11 +1,12 @@
 import { TrashIcon } from "lucide-react";
 import { TicketIcon } from "lucide-react";
 import { Alert } from "../../../components/Alert";
+import { Input } from "../../../components/Input";
 import { useTicketSelection } from "../hooks/useTicketSelection";
 import "./TicketSelected.css"
 
 export function TicketSelection(){
-    const {selectedSeats,HandleQuitTicketFromList,total,handleReservation,alert,setAlert} = useTicketSelection();
+    const {selectedSeats,HandleQuitTicketFromList,total,handleReservation,alert,setAlert,isHuman,HandleVerifyHuman} = useTicketSelection();
 
     return (
         <>
@@ -31,6 +32,7 @@ export function TicketSelection(){
                                         <p>Asiento: {ticket.display_label}</p>
                                         <strong>Precio: {ticket.base_price} pesos</strong>
                                     </div>
+                                    
                                     <button className="btn-quit-ticket" onClick={() => HandleQuitTicketFromList(ticket.seat_id)}>
                                         <TrashIcon size={25} />
                                     </button>
@@ -38,7 +40,16 @@ export function TicketSelection(){
                             ))
                         }
                         <strong className="str-total">Total: {total} pesos</strong>
-                        <button className="btn-reservate" onClick={handleReservation}>Reservar</button>
+                        {
+                            !isHuman && (
+                                <Input type="checkbox" label="Presione para verificar que es humano" onChange={HandleVerifyHuman} />
+                            )
+                        }
+                        {
+                            isHuman && (
+                                <button className="btn-reservate" onClick={handleReservation}>Reservar</button>
+                            )
+                        }
                     </section>
                 )
             }

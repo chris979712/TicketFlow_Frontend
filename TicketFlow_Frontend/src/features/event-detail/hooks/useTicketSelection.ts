@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useAlert } from "../../../hooks/useAlert";
 import type { Seat } from "../../../hooks/useSeatsMap";
 import { useTicketStore } from "./useTicketReservationStore";
@@ -12,6 +13,12 @@ export function useTicketSelection(){
     const {selectedEvent} = useEventSaleStore();
     const {setAlert, alert} = useAlert();
     const {handleLogout} = useHandleSession();
+    const [isHuman, setIsHuman] = useState(false);
+
+    function HandleVerifyHuman(event: React.ChangeEvent<HTMLInputElement>){
+        event.preventDefault();
+        setIsHuman(event.target.checked);
+    }
 
     function HandleQuitTicketFromList(seatId: number){
         const SeatsUpdated = selectedSeats.filter((seat: Seat) => seat.seat_id !== seatId);
@@ -63,6 +70,8 @@ export function useTicketSelection(){
         total, 
         alert,
         setAlert,
+        isHuman,
+        HandleVerifyHuman,
         HandleQuitTicketFromList,
         selectedSeats,
         setSelectedSeats,

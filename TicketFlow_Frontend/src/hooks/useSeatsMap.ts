@@ -45,9 +45,10 @@ export function useSeatMap(locationName: string, apiSeats: any[]){
     }
 
     function NormalizeEventSeats(eventSeats: any[]) {
-        const map: Record<number, { available: boolean; base_price: number }> = {};
+        const map: Record<number, { seat_id: number;available: boolean; base_price: number }> = {};
         eventSeats.forEach(s => {
             map[s.seat_id] = {
+                seat_id: s.event_seat_id,
                 available: s.event_seat_status_id === 1, 
                 base_price: Number(s.base_price)
             };
@@ -94,6 +95,7 @@ export function useSeatMap(locationName: string, apiSeats: any[]){
             rows: GroupSeatsByRow(section.seats.map(
                 seat => ({
                     ...seat,
+                    seat_id: apiSeatsById[seat.seat_id]?.seat_id ?? seat.seat_id,
                     available: apiSeatsById[seat.seat_id]?.available ?? false,
                     base_price: apiSeatsById[seat.seat_id]?.base_price ?? 0
                 })

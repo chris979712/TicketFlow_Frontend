@@ -23,7 +23,7 @@ function App() {
           <Route path="/dashboard-organizer/event-creation" element={<EventCreation/>}/>
           <Route path="/dashboard-organizer/event-edition" element={<EventEdition />}/>
           <Route path="/dashboard-attendee" element={<DashboardAttendee/>}/>
-          <Route path="/dashboard-attendee/event-details" element={<EventSaleDetails />} />
+          <Route path="/dashboard-attendee/event-details/:eventId" element={<EventSaleDetails />} />
           <Route path="/password-recovery" element={<PasswordRecoveryProvider><PasswordRecovery/></PasswordRecoveryProvider>} />
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
