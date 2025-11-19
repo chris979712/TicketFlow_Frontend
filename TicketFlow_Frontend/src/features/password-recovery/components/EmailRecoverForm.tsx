@@ -16,8 +16,8 @@ export function EmailRecoverForm (){
                         onClose={() => setAlert(null)} />
                 )
             }
-            <form onSubmit={handleSubmit} className="form-recovery">
-                <div className="div_instructions">
+            <form onSubmit={handleSubmit} className="form-recovery" aria-describedby="recovery-instructions">
+                <div id="recovery-instructions" className="div_instructions">
                     <h2>Restablecer contraseña</h2>
                     <p>Si olvidaste tu contraseña de acceso de TicketFlow, escriba su cuenta de correo con la cual se registro y recibirá el código de verificación para el restablecimiento de su contraseña.</p>
                 </div>
@@ -30,7 +30,7 @@ export function EmailRecoverForm (){
                     onChange={(e) => setEmail(e.target.value)}
                 >
                 </Input>
-                { errorValidation && <p className="error-format-inputs">{errorValidation}</p>}
+                { errorValidation && <p className="error-format-inputs" role="alert">{errorValidation}</p>}
                 <button type="submit" className="btn-submit-recover" disabled={loading}>{loading ? <Loader /> : "continuar"}</button>
             </form>
         </section>
