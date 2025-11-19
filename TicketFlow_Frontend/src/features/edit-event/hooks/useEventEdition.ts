@@ -4,7 +4,6 @@ import { useAlert } from "../../../hooks/useAlert"
 import { useLoading } from "../../../hooks/useLoading"
 import { useEventStore } from "../hooks/useEventStore"
 import { useHandleSession } from "../../../hooks/useHandleSession"
-import { useOrganizerStore } from "../../main-menu-organizer/hooks/useOrganizerStore"
 import { UpdateEventStatus, UpdateExistingEvent, UpdateImageEvent } from "../services/EditEventServices"
 import { ValidateEventEditionInformation, ValidateEventEditionStatus } from "../../../schemas/eventEdition.schema"
 
