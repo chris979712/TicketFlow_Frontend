@@ -16,10 +16,11 @@ export function CheckOutForm() {
             return;
         }
         setIsLoading(true);
+        setAlert(null);
         const { error } = await stripe.confirmPayment({
             elements,
             confirmParams: {
-                return_url: `${window.location.origin}/completion`,
+                return_url: `${window.location.origin}/dashboard-attendee/payment-reservation/completion`,
             },
         });
         if (error.type === "card_error" || error.type === "validation_error") {
@@ -27,11 +28,13 @@ export function CheckOutForm() {
                 type: "warning",
                 message: error.message!
             })
+            setMessage(error.message!);
         } else {
             setAlert({
                 type: "warning",
                 message: error.message || "Ha ocurrido un error inesperado."
             })
+            setMessage(error.message!);
         }
         setIsLoading(false);
     };
