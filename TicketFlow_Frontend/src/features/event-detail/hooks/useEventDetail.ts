@@ -1,6 +1,6 @@
 import { useEffect, useState} from "react";
-import { useParams } from "react-router-dom";
 import { useAlert } from "../../../hooks/useAlert";
+import { useParams,useNavigate } from "react-router-dom";
 import { ObtainEventInventory } from "../services/EventSale";
 import { useTicketStore } from "./useTicketReservationStore";
 import { useHandleSession } from "../../../hooks/useHandleSession";
@@ -9,12 +9,13 @@ import { useNavigationAttendee } from "../../main-menu-attendee/hooks/useNavigat
 
 export function useEventDetail(){
     const {isAttendee} = useNavigationAttendee();
-    const {selectedEvent} = useEventSaleStore();
+    const {selectedEvent,setSelectedEvent} = useEventSaleStore();
     const [seatsInventory, setSeatsInventory] = useState<any[]>([]);
     const {alert,setAlert} = useAlert();
     const {handleLogout} = useHandleSession();
     const {setSelectedSeats,selectedSeats} = useTicketStore();
     const {eventName} = useParams();
+    const Navigate = useNavigate();
 
     async function GetEventInventory(){
         const ApiResponse = await ObtainEventInventory(selectedEvent!.event_id);
@@ -50,6 +51,14 @@ export function useEventDetail(){
     }, [selectedEvent]);
 
     useEffect(() => {
+        if(!selectedEvent || selectedEvent.event_name !== eventName){
+            setSelectedEvent(null);
+            Navigate("/*");
+        }else{
+            GetEventInventory();
+        }
+        console.log(eventName);
+        console.log(selectedEvent?.event_name)
         GetEventInventory();
         return () => setSelectedSeats([]);
     },[selectedEvent]);
@@ -60,5 +69,6 @@ export function useEventDetail(){
         setAlert,
         selectedEvent,
         seatsInventory,
+        eventName
     }
 }

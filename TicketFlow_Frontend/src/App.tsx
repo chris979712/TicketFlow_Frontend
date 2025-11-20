@@ -25,7 +25,7 @@ function App() {
           <Route path="/dashboard-organizer/event-creation" element={<EventCreation/>}/>
           <Route path="/dashboard-organizer/event-edition" element={<EventEdition />}/>
           <Route path="/dashboard-attendee" element={<DashboardAttendee/>}/>
-          <Route path="/dashboard-attendee/event-details/:eventId" element={<EventSaleDetails />} />
+          <Route path="/dashboard-attendee/event-details/:eventName" element={<EventSaleDetails />} />
           <Route path="/dashboard-attendee/payment-reservation" element={<ReservationPayment />}/>
           <Route path="/dashboard-attendee/payment-reservation/completion" element={<Completion />}/>
           <Route path="/password-recovery" element={<PasswordRecoveryProvider><PasswordRecovery/></PasswordRecoveryProvider>} />
