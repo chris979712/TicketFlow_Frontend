@@ -14,7 +14,7 @@ export default function EventDetails(){
             alert,
             setAlert,
             selectedEvent,
-            seatsInventory,} = useEventDetail();
+            seatsInventory} = useEventDetail();
 
     return (
         isAttendee && (

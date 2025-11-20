@@ -1,3 +1,4 @@
+import { Alert } from "./Alert";
 import { ArmchairIcon } from "lucide-react";
 import { useSeatMap } from "../hooks/useSeatsMap";
 import "./SeatsMap.css"
@@ -17,11 +18,18 @@ export function SeatsMap(props: SeatMapProp){
         handleSeatLeave,
         setTooltipPosition,
         HandleSeatHover,
-        HandlerSeatSelection
+        HandlerSeatSelection,
+        setAlert,
+        alert
     } = useSeatMap(locationName,apiSeats);
 
     return (
         <section className={`location seats-from-${CssName(locationName)}`}>
+            {
+                alert && (
+                    <Alert type={alert.type} message={alert.message} onClose={() => setAlert(null)}/>
+                )
+            }
             <h1 className="location-title">{locationName}</h1>
             <div className="stage">
                 <p className="stage-text">ESCENARIO</p>

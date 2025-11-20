@@ -39,7 +39,6 @@ export async function CreateReservation(seats: SeatReservationType[]): Promise<A
             event_seat_id: seats.map(seat => seat.event_seat_id),
             expiration_at: seats[0]!.expiration_at
         }
-        console.log(body)
         const token = localStorage.getItem("authToken");
         const ApiResponse = await axios.post(`${API_URL}/v1/reservations/reserve`,body,{
             headers:{

@@ -23,6 +23,14 @@
     animation: slideInRight 1s ease;
 }
 
+.page-warning{
+    font-size: 1.5rem;
+    text-align: center;
+    color: black;
+    display: block;
+    margin-top: 1.5rem;
+}
+
 .link-return {
     color: white;
     text-decoration: none;
@@ -60,7 +68,7 @@
 }
 
 .payment-section {
-    max-width: 600px;
+    max-width: 1200px;
     margin: 3rem auto;
     padding: 2rem;
     animation: fadeInUp 0.6s ease;
@@ -144,6 +152,122 @@
     vertical-align: middle;
 }
 
+.countdown-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: auto;
+    max-height: 100px;
+    margin: 20px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #3f4cc5 10%, #02147a 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-timer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Courier New', monospace;
+}
+
+.countdown-time {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 8px;
+    min-width: 80px;
+    text-align: center;
+}
+
+.countdown-separator {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: bold;
+}
+
+.countdown-label {
+    margin-top: 1px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.payment-layout{
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-start;   
+}
+
+.payment-form {
+    flex: 2;                   
+    background: #ffffff;
+}
+
+.summary-content {
+    flex: 1;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid #cdd9ff;
+    box-shadow: 0 4px 20px rgba(0, 0, 100, 0.08);
+    position: sticky;
+    top: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.summary-content:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 120, 0.12);
+}
+
+.summary-title {
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-align: center;
+    color: #0c1d57;
+}
+
+.resume-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: 1.1rem;
+    column-gap: 2rem;
+    align-items: center;
+    font-size: 1rem;
+    color: #1a1a1a;
+}
+
+.resume-grid span {
+    opacity: 0.85;
+}
+
+.resume-separator {
+    grid-column: 1 / -1;
+    height: 1px;
+    background: #e0e7ff;
+    margin: 0.5rem 0;
+}
+
+.summary-total {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #02147a;
+    opacity: 1 !important;
+}
+
+.summary-total-value {
+    text-align: right;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #02147a;
+}
+
+
 
 @keyframes slideInRight {
     from {
@@ -181,8 +305,8 @@
     to { transform: rotate(360deg); }
 }
 
-
 @media (max-width: 768px) {
+
     .div_welcome {
         gap: 0.6rem;
         padding: 0.8rem 1rem;
@@ -192,35 +316,51 @@
         height: 80px;
     }
 
-    .event-form-edition {
-        padding: 1rem 1.5rem;
-        margin: 1rem;
-    }
-
-    .title {
-        font-size: 1.8rem;
-    }
-
-    .indications {
-        font-size: 1rem;
-        padding: 0.6rem;
-    }
-
     .link-return {
         font-size: 18px;
+    }
+
+    .page-title {
+        font-size: 2rem;
+        margin-top: 1rem;
+    }
+
+    .payment-layout {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .summary-content {
+        position: static;
+        width: 67%;
     }
 
     .payment-section {
         margin: 2rem auto;
         padding: 1rem;
+        margin-left: 17%;
     }
 
     .payment-form {
-        padding: 1.5rem;
+        padding: 1.2rem;
     }
 
     .pay-button {
         padding: 14px 20px;
         font-size: 16px;
+    }
+
+    .countdown-time {
+        font-size: 1.5rem;
+        padding: 8px 14px;
+        min-width: 60px;
+    }
+
+    .countdown-separator {
+        font-size: 2rem;
+    }
+
+    .countdown-label {
+        font-size: 1.2rem;
     }
 }

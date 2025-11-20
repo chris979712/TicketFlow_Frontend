@@ -15,7 +15,7 @@ export function useTicketSelection(){
     const {setAlert, alert} = useAlert();
     const {handleLogout} = useHandleSession();
     const [isHuman, setIsHuman] = useState(false);
-    const {setReservation} = useReservationStore();
+    const {setTempReservations} = useReservationStore();
     const Navigate = useNavigate();
 
     function HandleVerifyHuman(event: React.ChangeEvent<HTMLInputElement>){
@@ -68,7 +68,7 @@ export function useTicketSelection(){
             const ApiResponse = await CreateReservation(SeatsParsed);
             if(ApiResponse.status === 201){
                 const ReservationResponse = MapReservationResponse(ApiResponse);
-                setReservation(ReservationResponse);
+                setTempReservations(ReservationResponse);
                 setAlert({type: "success", message: "Su reservación ha sido creada, cuenta con 10 minutos para realizar el pago."});
                 setSelectedSeats([])
                 setTimeout(() => {

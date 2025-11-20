@@ -1,3 +1,4 @@
+import { useAlert } from "./useAlert";
 import { useEffect, useState } from "react";
 import seatsTeatroAurora from "../utils/TeatroAurora.json";
 import seatsAuditorioReforma from "../utils/AuditorioReforma.json";
@@ -28,6 +29,7 @@ export function useSeatMap(locationName: string, apiSeats: any[]){
     const [hoveredSeat, setHoveredSeat] = useState<Seat | null>(null);
     const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
     const {selectedSeats,setSelectedSeats} = useTicketStore();
+    const {alert,setAlert} = useAlert();
 
     function CssName(name: string){
         return name
@@ -72,10 +74,12 @@ export function useSeatMap(locationName: string, apiSeats: any[]){
     }
 
     function HandlerSeatSelection(selectedSeat: Seat){
-        if(!selectedSeats.find(seat => seat.seat_id === selectedSeat.seat_id)){
-            selectedSeats.push(selectedSeat);
-            const SeatsUpdated = selectedSeats;
-            setSelectedSeats(SeatsUpdated);
+        setAlert(null);
+        const alreadySelected = selectedSeats.find(seat => seat.seat_id === selectedSeat.seat_id);
+        if(!alreadySelected){
+            setSelectedSeats([...selectedSeats, selectedSeat]);
+        }else{
+            setAlert({type: "warning",message: "El asiento que desea agregar ya se encuentra en sus tickets de compra."});
         }
     }
 
@@ -117,6 +121,8 @@ export function useSeatMap(locationName: string, apiSeats: any[]){
         handleSeatLeave,
         setTooltipPosition,
         HandleSeatHover,
-        HandlerSeatSelection
+        HandlerSeatSelection,
+        alert,
+        setAlert
     }
 }
