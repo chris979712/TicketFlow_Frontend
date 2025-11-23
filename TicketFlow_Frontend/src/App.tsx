@@ -13,6 +13,8 @@ const EventEdition = lazy(() => import("./features/edit-event/pages/EditEvent"))
 const EventSaleDetails = lazy(() => import("./features/event-detail/pages/EventDetail"));
 const ReservationPayment = lazy(() => import("./features/ticket-payment/pages/ReservationPayment"));
 const Completion = lazy(() => import("./features/ticket-payment/pages/PaymentCompletion"));
+const MyTickets = lazy(() => import("./features/show-tickets/pages/MyTickets"));
+const TicketDetails = lazy(() => import("./features/show-tickets/pages/TicketDetails"));
 
 function App() {
 
@@ -29,6 +31,8 @@ function App() {
           <Route path="/dashboard-attendee/payment-reservation" element={<ReservationPayment />}/>
           <Route path="/dashboard-attendee/payment-reservation/completion" element={<Completion />}/>
           <Route path="/password-recovery" element={<PasswordRecoveryProvider><PasswordRecovery/></PasswordRecoveryProvider>} />
+          <Route path="/dashboard-attendee/my-tickets" element={<MyTickets/>}/>
+          <Route path="/dashboard-attendee/my-tickets/:ticketId" element={<TicketDetails/>}/>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
     </Suspense>
