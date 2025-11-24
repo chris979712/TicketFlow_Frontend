@@ -30,7 +30,7 @@ export default function EventDetails(){
                 }
                 <header className="header-attendee">
                     <div className='div_welcome'>
-                        <img src={TicketFlowWhiteLogo} alt="Ticket flog logo color blanco" title="logo de ticket flow"/>
+                        <img src={TicketFlowWhiteLogo} alt="Ticket flow logo color blanco" title="logo de ticket flow"/>
                         <Link className="link-return" to="/dashboard-attendee">Regresar</Link>
                     </div>
                     <h1 className="page-title">Disponibilidad de evento</h1>
