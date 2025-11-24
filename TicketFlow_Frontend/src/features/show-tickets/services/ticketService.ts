@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { type ApiResponse } from "../../../schemas/api";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export interface Ticket {
@@ -9,6 +9,7 @@ export interface Ticket {
   date: string;
   location: string;
 }
+
 export async function fetchMyTickets(): Promise<Ticket[]> {
   try {
     const token = localStorage.getItem("authToken");
