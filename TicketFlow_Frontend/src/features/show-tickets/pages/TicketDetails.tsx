@@ -1,57 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link, useLocation } from "react-router-dom";
-import { getTicketQr } from "../services/ticketService";
 import QRCode from "react-qr-code";
-import "./TicketDetails.css";
-import html2canvas from "html2canvas";
+import { Link } from "react-router-dom";
+import { useTicketDetail } from "../hooks/useTicketDetail";
 import TicketFlowWhiteLogo from "../../../../public/Logo_Blanco_horizontal.png";
+import "./TicketDetails.css";
 
 export const TicketDetails: React.FC = () => {
-  const { state } = useLocation();
-  const { ticketId } = useParams();
-
-  const [qr, setQr] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  const ticket = state?.ticket;
-  
-  const handleDownloadImage = async () => {
-    const element = document.getElementById("ticket-capture");
-    if (!element) return;
-
-    const canvas = await html2canvas(element, {
-      scale: 2,          
-      useCORS: true      
-    });
-    const dataUrl = canvas.toDataURL("image/png");
-    const link = document.createElement("a");
-    link.href = dataUrl;
-    link.download = `ticket-${ticketId}.png`;
-    link.click();
-  };
-
-  useEffect(() => {
-    async function loadQr() {
-      const result = await getTicketQr(Number(ticketId));
-
-      if (result.status !== 200) {
-        setError("Error al obtener el QR.");
-        setLoading(false);
-        return;
-      }
-
-      setQr(result.data.qr_payload);
-      setLoading(false);
-    }
-
-    loadQr();
-  }, [ticketId]);
+  const {ticket,
+        loading,
+        error,
+        qr,
+        handleDownloadImage} = useTicketDetail();
 
   if (!ticket) {
     return <p>No se encontró información del boleto.</p>;
   }
-
   if (loading) return <p>Cargando QR…</p>;
   if (error) return <p>Error: {error}</p>;
 
