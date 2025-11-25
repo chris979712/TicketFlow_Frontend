@@ -1,0 +1,44 @@
+.main-my-tickets {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5f8fc;
+  padding-bottom: 40px;
+}
+
+.header-attendee {
+  padding: 20px;
+  text-align: center;
+}
+
+.div_welcome img {
+  height: 40px;
+}
+
+.link-return {
+  margin-left: 20px;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #318ce7;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  margin-top: 10px;
+}
+
+.tickets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.tickets-list__loading,
+.tickets-list__error,
+.tickets-list__empty {
+  font-size: 1.2rem;
+  color: #333;
+}
