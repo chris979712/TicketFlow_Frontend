@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@400;600&display=swap');
 
-.event-creation-page {
+.ec-unique-2b7d {
     background: url('/fondoConcierto.jpg') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
@@ -8,97 +8,150 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.event-creation-page::before {
+.ec-unique-2b7d::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, rgba(10, 5, 20, 0.7) 0%, rgba(15, 8, 30, 0.8) 100%);
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(10,5,20,0.7) 0%, rgba(15,8,30,0.8) 100%);
     z-index: 1;
 }
 
-.event-creation-page > * {
-    position: relative;
-    z-index: 2;
-}
+.ec-unique-2b7d > * { position: relative; z-index: 2; }
 
-.event-creation {
+.ec-unique-2b7d .event-creation {
     width: 100%;
     padding: 0 1rem;
     box-sizing: border-box;
 }
 
-
-.event-creation h1 {
-    color: #FFFFFF; 
+.ec-unique-2b7d .event-creation h1 {
+    color: #FFFFFF;
     margin-bottom: 1rem;
     font-size: 3rem;
     text-align: center;
-    font-family: 'Oswald', sans-serif; 
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    font-family: 'Oswald', sans-serif;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
     text-transform: uppercase;
 }
 
-.link-return {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    position: relative;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    font-size: 18px; 
-    padding: 0.5rem 1rem; 
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.link-return:hover{
-    color: white;
-    background-color: rgba(255, 255, 255, 0.25);
-}
-
-.link-return a::after {
-    display: none;
-}
-.link-return a:hover::after {
-    display: none;
-}
-
-
-.div_welcome{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding:  1rem 2rem;
+.ec-unique-2b7d .div_welcome{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:1rem;
+    padding:1rem 2rem;
     background-color: transparent;
 }
-
-.div_welcome img{
-    height: 100px;
-    width: auto;
+.ec-unique-2b7d .div_welcome img {
+    height:100px;
+    width:auto;
     animation: slideInRight 1s ease;
 }
 
-@media (max-width: 768px) {
-    .div_welcome{
-        gap: 0.5rem;
-        padding:  0.5rem 1rem;
-        background-color: transparent;
-    }
-
-    .div_welcome img{
-        height: 100px;
-        width: auto;
-    }
-
-    .event-creation h1 {
-        font-size: 2rem;
-    }
-
-    .event-creation{
-        padding: 1rem;
-    }
+.ec-unique-2b7d .link-return,
+.ec-unique-2b7d #ec-link-return {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .3s ease, background-color .3s ease;
+    font-size: 18px;
+    padding: .5rem 1rem;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.1);
 }
+.ec-unique-2b7d .link-return:hover,
+.ec-unique-2b7d #ec-link-return:hover {
+    background-color: rgba(255,255,255,0.25);
+}
+
+.ec-unique-2b7d .btn_submit,
+.ec-unique-2b7d #ec-btn-create {
+    width: 170px;
+    background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 6px 16px rgba(59,130,246,0.18);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.ec-unique-2b7d .btn_submit:hover:not(:disabled),
+.ec-unique-2b7d #ec-btn-create:hover:not(:disabled) {
+    background: linear-gradient(45deg, #163785, #2563eb);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(37,99,235,0.18);
+}
+.ec-unique-2b7d .btn_submit:disabled,
+.ec-unique-2b7d #ec-btn-create:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+.ec-unique-2b7d .custom-timepicker-field {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 0.6rem;
+    padding-left: 0;
+}
+
+.ec-unique-2b7d .custom-timepicker-field .MuiInputBase-root,
+.ec-unique-2b7d .ec-start-wrap .MuiInputBase-root,
+.ec-unique-2b7d .ec-end-wrap .MuiInputBase-root {
+    border-radius: 10px;
+    background-color: #ffffff !important;
+    border: 1px solid rgba(15,23,42,0.06) !important;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.06);
+}
+
+.ec-unique-2b7d .custom-timepicker-field .MuiInputBase-input {
+    padding: 10px 12px;
+    font-size: 1rem;
+    color: #0b1220;
+}
+
+.ec-unique-2b7d .custom-timepicker-field .MuiInputLabel-root,
+.ec-unique-2b7d .custom-timepicker-field label {
+    color: #0b1220;
+    font-weight: 600;
+}
+
+.ec-unique-2b7d .ec-start-wrap,
+.ec-unique-2b7d .ec-end-wrap {
+    width: 48%;
+    min-width: 140px;
+}
+
+.ec-unique-2b7d .custom-timepicker-field .MuiInputAdornment-root,
+.ec-unique-2b7d .custom-timepicker-field .MuiSvgIcon-root,
+.ec-unique-2b7d .ec-start-wrap .MuiSvgIcon-root,
+.ec-unique-2b7d .ec-end-wrap .MuiSvgIcon-root {
+    color: rgba(15,23,42,0.7);
+}
+
+@media (max-width: 780px) {
+    .ec-unique-2b7d .custom-timepicker-field { width: 100%; max-width: 100%; }
+    .ec-unique-2b7d .ec-start-wrap,
+    .ec-unique-2b7d .ec-end-wrap { width: 100%; min-width: 0; }
+    .ec-unique-2b7d .div_welcome img { height: 90px; }
+    .ec-unique-2b7d .event-creation h1 { font-size: 2rem; }
+}
+@media (max-width: 480px) {
+    .ec-unique-2b7d .custom-timepicker-field .MuiInputBase-input { padding: 8px 10px; font-size: .95rem; }
+    .ec-unique-2b7d .btn_submit { width: 100%; max-width: 320px; }
+}
+
+@keyframes ec-slideInRight {
+    0% { opacity: 0; transform: translateX(50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+.ec-unique-2b7d .div_welcome img { animation: ec-slideInRight 1s ease; }

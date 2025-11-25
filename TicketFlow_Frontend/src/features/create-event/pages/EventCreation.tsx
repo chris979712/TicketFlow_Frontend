@@ -5,21 +5,19 @@ import { Link } from "react-router-dom";
 import './EventCreation.css'
 
 export default function EventCreation(){
-    const {isOrganizer} = useNavigationOrganizer();
-    return (
-        isOrganizer && (
-            <main className="event-creation-page">
-                <header className="header-menu-organizer">
-                    <div className='div_welcome'>
-                        <img src={TicketFlowWhiteLogo} alt="TicketFlow logo color blanco" title="logo de ticket flow"/>
-                        <Link className="link-return" to="/dashboard-organizer" aria-label="Regresar al menú principal del organizador">Regresar</Link>
-                    </div>
-                </header>
-                <div className="event-creation">
-                    <h1>Creación de evento</h1>
-                    <EventCreationForm />
-                </div>
-            </main>
-        )
-    )
+  return (
+    <main id="ec-root" className="event-creation-page ec-unique-2b7d">
+      <header className="header-menu-organizer">
+        <div className="div_welcome">
+          <img src={TicketFlowWhiteLogo} alt="TicketFlow logo blanco" />
+          <Link id="ec-link-return" className="link-return" to="/dashboard-organizer">Regresar</Link>
+        </div>
+      </header>
+
+      <div className="event-creation">
+        <h1>Creación de evento</h1>
+        <EventCreationForm />
+      </div>
+    </main>
+  );
 }

@@ -18,7 +18,7 @@ export default function EventDetails(){
 
     return (
         isAttendee && (
-            <main className="main-event-details">
+            <main className="main-event-details ed-unique">
                 {
                     alert && (
                         <Alert
