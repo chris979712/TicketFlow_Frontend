@@ -28,17 +28,19 @@ export default function EventDetails(){
                         ></Alert>
                     )
                 }
-                <header className="header-attendee">
-                    <div className='div_welcome'>
+                <header className="ed-header-attendee">
+                    <div className='ed-div_welcome'>
                         <img src={TicketFlowWhiteLogo} alt="Ticket flow logo color blanco" title="logo de ticket flow"/>
-                        <Link className="link-return" to="/dashboard-attendee">Regresar</Link>
+                        <Link className="ed-link-return" to="/dashboard-attendee">Regresar</Link>
                     </div>
-                    <h1 className="page-title">Disponibilidad de evento</h1>
+                    <h1 className="ed-page-title">Disponibilidad de evento</h1>
                 </header>
-                <EventSaleSection />
-                <div className="seats-reservation">
-                    <SeatsMap locationName={GetEventLocation(selectedEvent!.event_location_id)} apiSeats={seatsInventory}/>
-                    <TicketSelection />
+                <div className="ed-section-wrap">
+                    <EventSaleSection />
+                    <div className="ed-seats-reservation">
+                        <SeatsMap locationName={GetEventLocation(selectedEvent!.event_location_id)} apiSeats={seatsInventory}/>
+                        <TicketSelection />
+                    </div>
                 </div>
             </main>
         )

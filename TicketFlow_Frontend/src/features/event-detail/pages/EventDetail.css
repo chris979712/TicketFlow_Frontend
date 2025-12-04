@@ -9,13 +9,14 @@
     font-family: 'Poppins', sans-serif;
     padding-bottom: 3rem;
     color: #0b1220;
+    overflow-x: hidden; 
 }
 
 .ed-unique.main-event-details::before {
     content: '';
     position: fixed;
     inset: 0;
-    background: linear-gradient(180deg, rgba(10,5,20,0.55) 0%, rgba(15,8,30,0.6) 100%);
+    background: linear-gradient(180deg, rgba(10,5,20,0.20) 0%, rgba(15,8,30,0.30) 100%);
     z-index: 0;
     pointer-events: none;
 }
@@ -23,8 +24,9 @@
 .ed-unique .ed-header-attendee {
     position: relative;
     z-index: 2;
-    padding-top: 1rem;
+    padding-top: 0;
     padding-bottom: 1rem;
+    width: 100%;
 }
 
 .ed-unique .ed-div_welcome {
@@ -34,13 +36,14 @@
     justify-content: center;
     gap: 0.8rem;
     padding: 1rem 2rem;
-    background-color: rgba(12,29,87,0.92); /* similar to other pages */
+    background-color: rgba(12,29,87,0.92);
     border-bottom: 4px solid rgba(30,58,138,0.9);
     animation: ed-fadeIn 0.6s ease-in-out;
     box-shadow: 0 2px 10px rgba(0,0,0,0.25);
     border-radius: 0 0 12px 12px;
-    max-width: 1200px;
-    margin: 0.75rem auto;
+    max-width: 100%;
+    margin: 0;
+    width: 100%;
 }
 
 .ed-unique .ed-div_welcome img {
@@ -101,15 +104,16 @@
     display: flex;
     gap: 1.25rem;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: center;
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
+    flex-wrap: wrap;
 }
 
 .ed-unique .ed-seat-map {
-    flex: 1.15 1 0;
-    min-width: 420px;
+    flex: 1 1 0;
+    min-width: 0;
     background: rgba(255,255,255,0.02);
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.06);
@@ -119,7 +123,7 @@
 
 .ed-unique .ed-ticket-selection {
     width: 360px;
-    max-width: 40%;
+    max-width: 100%;
     min-width: 300px;
     background: #ffffff;
     border-radius: 12px;
@@ -224,21 +228,50 @@
 
 @media (max-width: 880px) {
     .ed-unique .ed-seats-reservation {
-        flex-direction: column-reverse;
+        flex-direction: column; 
         align-items: stretch;
+        flex-wrap: nowrap;
     }
+
     .ed-unique .ed-ticket-selection {
+        flex: 1 1 auto;
         width: 100%;
         max-width: 100%;
     }
-    .ed-unique .ed-seat-map { width: 100%; min-width: 0; }
-    .ed-unique .ed-div_welcome { margin: 0.6rem 1rem; border-radius: 10px; }
-    .ed-unique .ed-page-title { font-size: 1.9rem; padding: 0 0.6rem; }
+    .ed-unique .ed-seat-map { 
+        width: 100%; 
+        min-width: 0; 
+    }
+    .ed-unique .ed-div_welcome { 
+        margin: 0; 
+        border-radius: 0; 
+        width: 100%; 
+    }
+    .ed-unique .ed-page-title { 
+        font-size: 1.9rem; 
+        padding: 0 0.6rem; 
+    }
 }
 
 @media (max-width: 480px) {
-    .ed-unique .ed-div_welcome img { height: 72px; }
-    .ed-unique .ed-page-title { font-size: 1.5rem; }
-    .ed-unique .ed-ticket-selection { padding: 0.8rem; }
-    .ed-unique .ed-btn_buy { padding: 0.7rem; font-size: 1rem; border-radius: 10px; }
+    .ed-unique .ed-div_welcome { 
+        margin: 0; 
+        border-radius: 0; 
+        width: 100%;
+        padding: 0.8rem 1rem; 
+    }
+    .ed-unique .ed-div_welcome img { 
+        height: 72px; 
+    }
+    .ed-unique .ed-page-title { 
+        font-size: 1.5rem; 
+    }
+    .ed-unique .ed-ticket-selection { 
+        padding: 0.8rem;
+    }
+    .ed-unique .ed-btn_buy { 
+        padding: 0.7rem; 
+        font-size: 1rem; 
+        border-radius: 10px; 
+    }
 }

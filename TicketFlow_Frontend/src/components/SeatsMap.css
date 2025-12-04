@@ -7,6 +7,29 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
+.indication-seats h3 {
+    text-align: center;
+    margin-bottom: 0.8rem;
+    font-size: 1.5rem;
+}
+
+.simbology-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.seat-simbology-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.seat-simbology-item b {
+    font-size: 1.25rem; 
+}
+
 .stage {
     width: 85%;
     height: 90px;
@@ -260,7 +283,6 @@
 .seat-disabled {
     color: #dc2626;
     border-color: #dc2626;
-    background: #fee2e2;
 }
 
 .seat:not(:disabled):hover {

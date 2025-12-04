@@ -31,6 +31,20 @@ export function SeatsMap(props: SeatMapProp){
                 )
             }
             <h1 className="location-title">{locationName}</h1>
+            <h2 className="indications-subtitle">Si desea comprar un boleto, seleccione el asiento que desea y que se encuentre de color verde. Para proceder con el pago, en la parte inferior de la pantalla se encontrará su lista de asientos seleccionados.</h2>
+            <div className="indication-seats">
+                <h3>Simbología</h3>
+                <div className="simbology-container">
+                    <div className="seat-simbology-item">
+                        <ArmchairIcon size={40} className='seat-available'></ArmchairIcon>
+                        <b>Asiento disponible</b>
+                    </div>
+                    <div className="seat-simbology-item">
+                        <ArmchairIcon size={40} className='seat-disabled'></ArmchairIcon>
+                        <b>Asiento no disponible</b>
+                    </div>
+                </div>
+            </div>
             <div className="stage">
                 <p className="stage-text">ESCENARIO</p>
             </div>
