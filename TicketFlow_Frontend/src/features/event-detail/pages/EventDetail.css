@@ -107,7 +107,6 @@
     justify-content: center;
     margin: 0 auto;
     width: 100%;
-    box-sizing: border-box;
     flex-wrap: wrap;
 }
 

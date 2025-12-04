@@ -1,5 +1,5 @@
 .ticket-selection {
-    width: 320px;
+    width: 500px;
     background: #f8fafc;
     border: 2px solid #1e3a8a;
     padding: 1rem;
@@ -7,6 +7,7 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     position: sticky;
     top: 120px;
+    flex-shrink: 0;
 }
 
 .ticket-details {
@@ -62,8 +63,153 @@
 
     .ticket-selection {
         width: 100%;
-        max-width: 350px;
+        max-width: 100%; 
         position: static;
-        margin-left: 4rem;
+        margin: 0 auto; 
+        padding: 0.8rem; 
+    }
+    
+    .ticket-details {
+        padding: 0.5rem; 
+    }
+    
+    .str-total {
+        font-size: 18px; 
+    }
+}
+
+.ticket-selection {
+    width: 320px;
+    background: #f8fafc;
+    border: 2px solid #1e3a8a;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 120px;
+}
+
+.ticket-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem;
+    border-bottom: 1px solid #dbeafe;
+    align-items: center;
+}
+
+.ticket-prices {
+    flex: 1;
+    margin: 0 0.5rem;
+}
+
+.ticket-prices p {
+    margin: 0 0 0.25rem 0;
+}
+
+.ticket-prices strong {
+    font-size: 0.95rem;
+}
+
+.str-total {
+    display: block;
+    font-size: 20px;
+    text-align: right;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-reservate {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-reservate:hover {
+    background: #3b4cd0;
+}
+
+.btn-quit-ticket {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    color: #dc2626;
+    transition: color 0.2s;
+}
+
+.btn-quit-ticket:hover {
+    color: #991b1b;
+}
+
+.section-ticket-title {
+    text-align: center;
+    color: #02164f;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+
+@media (max-width: 768px) {
+    .ticket-selection {
+        width: 90%;
+        max-width: 90%;
+        position: static;
+        margin: 0 auto;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .ticket-selection {
+        width: 90%;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+    }
+
+    .section-ticket-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .ticket-details {
+        padding: 0.5rem 0.25rem;
+        gap: 0.5rem;
+    }
+
+    .ticket-prices {
+        margin: 0 0.25rem;
+    }
+
+    .ticket-prices p {
+        font-size: 0.9rem;
+    }
+
+    .ticket-prices strong {
+        font-size: 0.85rem;
+    }
+
+    .str-total {
+        font-size: 1.1rem;
+        margin-right: 0.5rem;
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .btn-reservate {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+    }
+
+    .btn-quit-ticket {
+        padding: 0.15rem;
     }
 }
