@@ -130,3 +130,73 @@
         width: 800px;
     }
 }
+
+@media (max-width: 480px) {
+    .login {
+        flex-direction: column;
+        height: auto;
+        max-height: none;
+        overflow-y: auto;
+    }
+
+    .welcome-messages-section {
+        flex: none;
+        width: 100%;
+        height: auto;
+        padding: 1.5rem 1rem;
+        min-height: auto;
+    }
+
+    .welcome-messages-section h2 {
+        font-size: 1.8rem;
+        border-bottom-width: 3px;
+        padding-bottom: 0.4rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .p_welcomeMessage {
+        font-size: 1rem;
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    .register-section {
+        flex: none;
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        overflow-y: visible;
+    }
+
+    .register-section h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .p_indications {
+        font-size: 1rem;
+        padding-bottom: 0.75rem;
+        padding-top: 0.25rem;
+    }
+
+    .register-section form {
+        padding: 1.25rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .img_logo {
+        width: 70%;
+        max-width: 200px;
+        margin-bottom: 0.75rem;
+    }
+
+    .img_logo_horizontal {
+        width: 90%;
+        max-width: 250px;
+    }
+
+    .register-section button.btn_submit {
+        padding: 0.7rem 1rem;
+        font-size: 0.95rem;
+    }
+}

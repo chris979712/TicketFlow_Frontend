@@ -51,6 +51,12 @@
     align-items: center;
 }
 
+.logo{
+    width: 350px;
+    margin-bottom: 1rem;
+    margin-top: -1.5rem;
+}
+
 @media (min-width: 768px) {
     .sign-in-div {
         padding: 4rem;
@@ -66,8 +72,28 @@
     }
 }
 
-.logo{
-    width: 350px;
-    margin-bottom: 1rem;
-    margin-top: -1.5rem;
+@media (min-width: 480px) {
+    .sign-in-div {
+        padding: 1.5rem;
+    }
+
+    .sign-in-div a {
+        margin-left: 1.5rem;
+    }
+
+    .sign-in-div h1 {
+        font-size: 1.75rem;
+    }
+
+    .message-register {
+        font-size: 0.95rem;
+    }
+
+    .register-form {
+        padding: 2rem;
+    }
+
+    .logo {
+        max-width: 320px;
+    }
 }
