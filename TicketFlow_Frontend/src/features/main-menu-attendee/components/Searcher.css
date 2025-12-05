@@ -40,3 +40,25 @@
     }
 }
 
+@media(max-width: 480px) {
+    .search-group {
+        grid-template-columns: 1fr;
+    
+        gap: 0.5rem; 
+        
+        justify-items: start; 
+    }
+    
+    .search-icon {
+        justify-self: center; 
+        margin-bottom: 0.5rem;
+    }
+
+    .date-select {
+        grid-column: span 1; 
+    }
+
+    .search-group {
+        padding: 1rem;
+    }
+}

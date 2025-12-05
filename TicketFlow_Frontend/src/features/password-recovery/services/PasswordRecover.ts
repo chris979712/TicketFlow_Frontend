@@ -32,7 +32,7 @@ export async function ResetPasswordWithToken(validationCode: string, password: s
         const status = error.response?.status || 0;
         let message = "Error desconocido.";
         switch(status){
-            case 400: message = "Verifique el código ingresado."; break;
+            case 400: message = "El código ingresado no es correcto, por favor verifiquelo."; break;
             case 500: message = "Ha ocurrido un error al intentar realizar la operación."; break;
             case 0:   message = "No se pudo conectar con el servidor."; break;
         }

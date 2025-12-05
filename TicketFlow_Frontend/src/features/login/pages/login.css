@@ -164,8 +164,16 @@
         flex: none;
         width: 100%;
         height: auto;
-        padding: 1rem;
-        overflow-y: visible;
+        padding: 2rem; 
+        box-sizing: border-box;
+    }
+
+    .register-section form {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.5rem;
+        margin: 0; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     .register-section h2 {
@@ -180,6 +188,8 @@
     }
 
     .register-section form {
+        justify-content: center;
+        max-width: 400px;
         padding: 1.25rem;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }

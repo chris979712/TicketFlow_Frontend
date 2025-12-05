@@ -8,12 +8,14 @@ export function NavBar(){
 
     return (
         <nav className="navbar">
-            <div className="navbar-center">
-                <ul className="navbar-links">
-                    <li><Link to="/dashboard-attendee/my-tickets">Mis boletos</Link></li>
-                </ul>
+            <div className="container-navigation">
+                <div className="navbar-center">
+                    <ul className="navbar-links">
+                        <li><Link to="/dashboard-attendee/my-tickets">Mis boletos</Link></li>
+                    </ul>
+                </div>
+                <button className="btn-logout" onClick={handleLogout}><LogOutIcon size={20}></LogOutIcon></button>
             </div>
-            <button className="btn-logout" onClick={handleLogout}><LogOutIcon size={20}></LogOutIcon></button>
         </nav>
     )
 }

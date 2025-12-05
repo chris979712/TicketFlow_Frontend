@@ -9,7 +9,7 @@ export default function DashboardAttendee(){
     const {isAttendee} = useNavigationAttendee();
     return (
         isAttendee && (
-            <main>
+            <main className="menu-attendee-root">
                 <Header></Header>
                 <MainMenuAttendeeProvider>
                     <section className="even-search">

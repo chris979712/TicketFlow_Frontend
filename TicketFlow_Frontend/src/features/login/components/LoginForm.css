@@ -4,8 +4,8 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    width: 100%;
-    max-width: 320px;
+    width: 90%;
+    max-width: 450px;
     margin: 0 auto;
     padding: 1rem;
     border-radius: 12px;
@@ -44,12 +44,43 @@
 }
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+@media (max-width: 480px) {
+    .Form{
+        gap: 0.65rem;
+        padding: 0.65rem;
+        max-width: 90%;
+        margin: 0 auto;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    #txt_username,
+    #txt_password {
+        max-width: 90%;
+    }
+
+    .btn_submit {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+        border-radius: 6px;
+    }
+
+    .error-format-inputs {
+        font-size: 0.8rem;
+    }
+
+    .a-recovery-password,
+    .a-register {
+        font-size: 0.85rem;
+    }
 }

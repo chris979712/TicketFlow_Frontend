@@ -18,7 +18,7 @@
     margin: 0 auto;
     padding: 1.8rem;
     border-radius: 12px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    background: linear-gradient(180deg, rgba(85, 70, 70, 0.03), rgba(255,255,255,0.01));
     border: 1px solid rgba(255,255,255,0.06);
     box-shadow: 0 8px 26px rgba(3,10,37,0.32);
     box-sizing: border-box;
@@ -70,7 +70,7 @@
     display: block;
     font-weight: 600;
     margin-bottom: 0.35rem;
-    color: #0b1220;
+    color: white;
 }
 
 #pw-recover-root .pr-error-format-inputs {
@@ -81,6 +81,20 @@
     background: rgba(255,230,230,0.9);
     padding: 0.5rem 0.75rem;
     border-radius: 6px;
+}
+
+.pr-error-format-input {
+    color: #ff6b6b;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    background: rgba(255,230,230,0.9);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+}
+
+#pr-password-guidelines{
+    color: white;
 }
 
 #pw-recover-root .pr-btn-submit-recover {
@@ -117,6 +131,28 @@
     clip: rect(0, 0, 0, 0) !important;
     white-space: nowrap !important;
     border: 0 !important;
+}
+
+.dv-btn-submit{
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; 
+}
+
+.btn-submit-recover{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #1e3a8a;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: large;
+    cursor: pointer;
+    transition: 0.2s ease;
+    height: auto;
 }
 
 @media (max-width: 780px) {
