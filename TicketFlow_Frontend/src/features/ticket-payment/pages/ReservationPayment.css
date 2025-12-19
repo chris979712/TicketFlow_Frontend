@@ -1,8 +1,7 @@
-.main-event-details{
-    min-height: 100vh;
-    background: white;
-    display: flex;
-    flex-direction: column;
+
+.payment-page-container{
+    background:  url('/fondoConcierto.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 .div_welcome {
@@ -26,7 +25,8 @@
 .page-warning{
     font-size: 1.5rem;
     text-align: center;
-    color: black;
+    color: white;
+    text-shadow: 2px 2px black;
     display: block;
     margin-top: 1.5rem;
 }
@@ -62,8 +62,8 @@
 .page-title{
     font-size: 3rem;
     text-align: center;
-    color: #0c1d57;
-    text-shadow: 1px 1px #4fa3ff;
+    color: white;
+    text-shadow: 2px 2px black;
     margin-bottom: 0;
 }
 
@@ -326,13 +326,16 @@
     }
 
     .payment-layout {
+        display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 2.5rem;
+        margin: 0 auto;
     }
 
     .summary-content {
         position: static;
-        width: 67%;
+        width: 65%;
+        order: -1;
     }
 
     .payment-section {
@@ -362,5 +365,36 @@
 
     .countdown-label {
         font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px){
+    .payment-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        margin: 0 auto;
+    }
+
+    .div_welcome img {
+        height: 60px;
+    }
+
+    .payment-section {
+        margin: 2rem auto;
+        padding: 1rem;
+        margin-left: 0;
+    }
+    
+    .payment-form{
+        order: 2;
+    }
+
+    .summary-content {
+        position: static;
+        width: 75%; 
+        order: -1;
     }
 }

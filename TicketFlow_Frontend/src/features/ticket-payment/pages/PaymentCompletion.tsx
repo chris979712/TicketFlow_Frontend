@@ -17,11 +17,15 @@ function CompletionContent() {
                 </div>
             ) : (
                 alert && (
-                    <Alert
-                        type={alert.type}
-                        message={alert.message}
-                        onClose={() => setAlert(null)}
-                    />
+                    <div className="loading-container">
+                        <Alert
+                            type={alert.type}
+                            message={alert.message}
+                            onClose={() => setAlert(null)}
+                        />
+                        <div className="spinner"></div>
+                        <p>Verificación de estado de pago terminada...</p>
+                    </div>  
                 )
             )}
         </section>

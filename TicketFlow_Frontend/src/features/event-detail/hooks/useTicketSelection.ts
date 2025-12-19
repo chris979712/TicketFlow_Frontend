@@ -24,8 +24,10 @@ export function useTicketSelection(){
     }
 
     function HandleQuitTicketFromList(seatId: number){
+        setAlert(null);
         const SeatsUpdated = selectedSeats.filter((seat: Seat) => seat.seat_id !== seatId);
         setSelectedSeats(SeatsUpdated);
+        setAlert({type: "success",message: "Asiento eliminado de la lista de compras."})
     }
 
     const total = selectedSeats.reduce(

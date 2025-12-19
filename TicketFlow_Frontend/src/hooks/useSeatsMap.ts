@@ -78,6 +78,7 @@ export function useSeatMap(locationName: string, apiSeats: any[]){
         const alreadySelected = selectedSeats.find(seat => seat.seat_id === selectedSeat.seat_id);
         if(!alreadySelected){
             setSelectedSeats([...selectedSeats, selectedSeat]);
+            setAlert({type: "success", message: "Asiento agregado a la lista de compras."})
         }else{
             setAlert({type: "warning",message: "El asiento que desea agregar ya se encuentra en sus tickets de compra."});
         }
@@ -108,6 +109,13 @@ export function useSeatMap(locationName: string, apiSeats: any[]){
         }));
         setGroupedSeats(result);
     }, [dataSeats,apiSeats]);
+
+    useEffect(() => {
+        if(alert){
+            const timer = setTimeout(() => setAlert(null), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [alert])
 
     useEffect(() => {
         ObtainDataSeatsFromLocation();

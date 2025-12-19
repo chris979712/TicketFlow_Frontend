@@ -30,7 +30,7 @@ export default function ReservationPayment(){
 
     return (
         isAttendee && (
-            <>
+            <div className='payment-page-container'>
                 {
                     alert && (
                         <div aria-live="assertive">
@@ -42,7 +42,6 @@ export default function ReservationPayment(){
                         </div>
                     )
                 }
-
                 <header className="header-attendee" role="banner">
                     <div className='div_welcome'>
                         <img
@@ -98,33 +97,26 @@ export default function ReservationPayment(){
                                             onComplete={HandleCountdownFinished}
                                             renderer={RendererCountdown}
                                         />
-
                                         <CheckOutForm />
                                     </div>
-
                                     <aside
                                         className='summary-content'
                                         aria-label="Resumen de la compra"
                                     >
                                         <h2 className='summary-title'>
-                                            Resúmen de compras
+                                            Resúmen de compra
                                         </h2>
-
                                         <div className="resume-grid">
                                             <span>Cantidad de boletos a comprar:</span>
-                                            <span>{reservation?.payment_snapshot.ticketQuantity} $</span>
-
+                                            <span>{reservation?.payment_snapshot.ticketQuantity} boleto(s)</span>
                                             <span>Subtotal:</span>
-                                            <span>{reservation?.payment_snapshot.subtotal} $</span>
-
-                                            <span>Impuestos {reservation?.payment_snapshot.tax_percentage}:</span>
-                                            <span>{reservation?.payment_snapshot.tax_amount} $</span>
-
+                                            <span>$ {reservation?.payment_snapshot.subtotal} pesos</span>
+                                            <span>Impuestos IVA({reservation?.payment_snapshot.tax_percentage}%):</span>
+                                            <span>$ {reservation?.payment_snapshot.tax_amount} pesos</span>
                                             <div className="resume-separator"></div>
-
                                             <span className="summary-total">Total a pagar:</span>
                                             <span className="summary-total-value">
-                                                {reservation?.payment_snapshot.total_amount} $
+                                                $ {reservation?.payment_snapshot.total_amount} pesos
                                             </span>
                                         </div>
                                     </aside>
@@ -133,7 +125,7 @@ export default function ReservationPayment(){
                         )
                     }
                 </section>
-            </>
+            </div>
         )
     )
 }
