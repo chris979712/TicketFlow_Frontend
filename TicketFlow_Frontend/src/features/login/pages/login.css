@@ -145,6 +145,10 @@
         height: auto;
         padding: 1.5rem 1rem;
         min-height: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 
     .welcome-messages-section h2 {
@@ -156,7 +160,7 @@
 
     .p_welcomeMessage {
         font-size: 1rem;
-        max-width: 100%;
+        max-width: 90%;
         padding: 0 0.5rem;
     }
 

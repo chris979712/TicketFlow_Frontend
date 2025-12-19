@@ -12,7 +12,7 @@ export default function Login(){
             </section>
             <section className="register-section">
                 <h2>Iniciar sesión</h2>
-                <p className="p_indications"><strong>Si no tiene una cuenta, de click en registrase.</strong></p>
+                <p className="p_indications"><strong>Si no tiene una cuenta, de click en registrarse.</strong></p>
                 <LoginForm />
             </section>
         </div>

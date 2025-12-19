@@ -31,21 +31,21 @@ export const TicketCard: React.FC<TicketCardProps> = ({ ticket, onRefund }) => {
   };
 
   return (
-    <div className="ticket-card">
-      <h2 className="ticket-title">{ticket.title}</h2>
-      <p className="ticket-date">{ticket.date}</p>
-      <p className="ticket-location">{ticket.location}</p>
+    <div className="tc-ticket-card">
+      <h2 className="tc-ticket-title">{ticket.title}</h2>
+      <p className="tc-ticket-date">{ticket.date}</p>
+      <p className="tc-ticket-location">{ticket.location}</p>
 
       <Link
         to={`/dashboard-attendee/my-tickets/${ticket.ticketId}`}
         state={{ ticket }}
-        className="btn-see-ticket"
+        className="tc-btn-see-ticket"
       >
         Ver boleto 
       </Link>
 
       <button
-        className="btn-cancel-ticket"
+        className="tc-btn-cancel-ticket"
         onClick={() => setShowModal(true)}
         disabled={loading}
       >
@@ -53,14 +53,14 @@ export const TicketCard: React.FC<TicketCardProps> = ({ ticket, onRefund }) => {
       </button>
 
       {showModal && (
-        <div className="modal-overlay">
-          <div className="modal-container">
+        <div className="tc-modal-overlay">
+          <div className="tc-modal-container">
             <h3>Confirmar cancelación</h3>
             <p>¿Seguro que deseas cancelar este boleto?</p>
 
-            <div className="modal-actions">
+            <div className="tc-modal-actions">
               <button
-                className="btn-confirm"
+                className="tc-btn-confirm"
                 onClick={handleConfirmCancel}
                 disabled={loading}
               >
@@ -68,7 +68,7 @@ export const TicketCard: React.FC<TicketCardProps> = ({ ticket, onRefund }) => {
               </button>
 
               <button
-                className="btn-close"
+                className="tc-btn-close"
                 onClick={() => setShowModal(false)}
                 disabled={loading}
               >

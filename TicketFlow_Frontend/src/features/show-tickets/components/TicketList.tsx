@@ -15,7 +15,7 @@ export const TicketsList: React.FC = () => {
   if (tickets.length === 0) return <p>No tienes boletos.</p>;
 
   return (
-    <section className="tickets-list">
+    <section className="mt-tickets-list">
       {tickets.map(ticket => (
         <TicketCard key={ticket.ticketId} ticket={ticket} onRefund={refreshTickets} />
       ))}

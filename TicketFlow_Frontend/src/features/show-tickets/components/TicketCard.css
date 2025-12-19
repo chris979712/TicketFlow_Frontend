@@ -1,113 +1,318 @@
-.ticket-card {
-  background-color: #d9eeff;
-  width: 70%;
+.tc-ticket-card {
+  background: linear-gradient(135deg, rgba(255, 250, 245, 0.98) 0%, rgba(255, 245, 235, 0.96) 100%);
+  backdrop-filter: blur(15px);
+  width: 90%;
   max-width: 700px;
-  padding: 25px;
-  border-radius: 18px;
+  padding: 2rem;
+  border-radius: 20px;
   text-align: center;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 
+              0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+              0 2px 10px rgba(255, 120, 50, 0.15);
+  border: 1px solid rgba(255, 200, 150, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease;
 }
 
-.ticket-title {
-  font-size: 1.3rem;
-  font-weight: bold;
+.tc-ticket-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4),
+              0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+              0 5px 20px rgba(255, 120, 50, 0.25);
 }
 
-.ticket-date,
-.ticket-location {
-  margin-top: 5px;
+.tc-ticket-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2d1810;
+  margin-bottom: 0.75rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.tc-ticket-date {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: #4a3520;
+  font-weight: 500;
+}
+
+.tc-ticket-location {
+  margin-top: 0.5rem;
   font-size: 1rem;
+  color: #5a4530;
+  margin-bottom: 1.5rem;
 }
 
-.btn-see-ticket {
-  margin-top: 15px;
-  display: inline-block;
-  padding: 8px 18px;
-  background-color: #318ce7;
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  width: 14%;
-  margin-right: 10px;
+.tc-ticket-card > a,
+.tc-ticket-card > button {
+  margin-top: 1rem;
 }
 
-.btn-cancel-ticket {
-  margin-top: 10px;
+.tc-btn-see-ticket {
   display: inline-block;
-  padding: 8px 18px;
-  background-color: #ff4d4d; 
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #318ce7 0%, #2563eb 100%);
   color: white;
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(49, 140, 231, 0.3);
+}
+
+.tc-btn-see-ticket:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(49, 140, 231, 0.4);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.tc-btn-see-ticket:active {
+  transform: translateY(0);
+}
+
+.tc-btn-cancel-ticket {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
-.btn-cancel-ticket:hover {
-  background-color: #e04343; 
-  transform: scale(1.03);
+.tc-btn-cancel-ticket:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
 }
 
-.btn-see-ticket:hover {  
-  transform: scale(1.03);
-  background-color: #2c7ed0;
+.tc-btn-cancel-ticket:active {
+  transform: translateY(0);
 }
 
-.btn-cancel-ticket:active {
-  transform: scale(0.98);
+.tc-btn-cancel-ticket:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
-/* --- Modal Buttons --- */
-
-.modal-actions {
-  margin-top: 20px;
+.tc-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
-  gap: 15px;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
 }
 
-/* Botón confirmar (rojo) */
-.btn-confirm {
-  padding: 8px 18px;
-  background-color: #ff4d4d;
+.tc-modal-container {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  max-width: 450px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: scaleIn 0.3s ease;
+}
+
+.tc-modal-container h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.tc-modal-container p {
+  font-size: 1.1rem;
+  color: #555;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.tc-modal-actions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.tc-btn-confirm {
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
-.btn-confirm:hover {
-  background-color: #e04343;
-  transform: scale(1.03);
+.tc-btn-confirm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
 }
 
-.btn-confirm:active {
-  transform: scale(0.98);
+.tc-btn-confirm:active {
+  transform: translateY(0);
 }
 
-/* Botón cerrar (gris suave) */
-.btn-close {
-  padding: 8px 18px;
-  background-color: #a9a9a9;
+.tc-btn-confirm:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.tc-btn-close {
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
 }
 
-.btn-close:hover {
-  background-color: #8f8f8f;
-  transform: scale(1.03);
+.tc-btn-close:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(107, 114, 128, 0.4);
+  background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
 }
 
-.btn-close:active {
-  transform: scale(0.98);
+.tc-btn-close:active {
+  transform: translateY(0);
 }
 
+.tc-btn-close:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .tc-ticket-card {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .tc-ticket-title {
+    font-size: 1.5rem;
+  }
+
+  .tc-ticket-date {
+    font-size: 1rem;
+  }
+
+  .tc-ticket-location {
+    font-size: 0.95rem;
+  }
+
+  .tc-modal-container {
+    padding: 2rem;
+  }
+
+  .tc-modal-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .tc-modal-container p {
+    font-size: 1rem;
+  }
+
+  .tc-modal-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .tc-btn-confirm,
+  .tc-btn-close {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .tc-ticket-card {
+    width: 95%;
+    padding: 1.25rem;
+  }
+
+  .tc-ticket-title {
+    font-size: 1.3rem;
+  }
+
+  .tc-ticket-date {
+    font-size: 0.95rem;
+  }
+
+  .tc-ticket-location {
+    font-size: 0.9rem;
+  }
+
+  .tc-modal-container {
+    padding: 1.5rem;
+  }
+
+  .tc-modal-container h3 {
+    font-size: 1.3rem;
+  }
+
+  .tc-modal-container p {
+    font-size: 0.95rem;
+  }
+
+  .tc-btn-confirm,
+  .tc-btn-close {
+    font-size: 0.9rem;
+    padding: 0.65rem 1.5rem;
+  }
+}

@@ -6,14 +6,14 @@ import "./MyTickets.css";
 
 const MyTickets: React.FC = () => {
   return (
-    <main className="main-my-tickets">
-      <header className="header-attendee">
-        <div className="div_welcome">
+    <main className="mt-main-my-tickets">
+      <header className="mt-header-attendee">
+        <div className="mt-div_welcome">
           <img src={TicketFlowWhiteLogo} alt="TicketFlow logo" title="TicketFlow"/>
-          <Link className="link-return" to="/dashboard-attendee">Regresar</Link>
+          <Link className="mt-link-return" to="/dashboard-attendee">Regresar</Link>
         </div>
-        <h1 className="page-title">Mis Boletos</h1>
       </header>
+      <h1 className="mt-page-title">Mis Boletos</h1>
       <TicketsList />
     </main>
   );

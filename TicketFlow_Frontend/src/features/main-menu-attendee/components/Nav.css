@@ -1,7 +1,7 @@
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background-color: rgb(53, 95, 173);
     padding: 0.75rem 2rem;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,9 +16,10 @@
 
 .container-navigation{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 1.5rem;
     max-width: 100%;
 }
 
@@ -94,22 +95,39 @@
 
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
+        padding: 1rem;
+        font-size: 16px;
     }
 
-    .navbar {
+    .container-navigation {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .navbar-center {
+        width: 100%;
+        display: flex;
         justify-content: center;
     }
 
     .navbar-links {
-        flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navbar-links a {
+        padding: 0.6rem 1.2rem;
+        font-size: 18px;
     }
 
     .btn-logout {
-        width: 80%;
+        width: 20%;
+        padding: 0.6rem 1.2rem;
+        font-size: 16px;
+        margin-top: 0.5rem;
     }
 }
 
@@ -121,25 +139,46 @@
         font-size: 14px;
     }
 
+    .container-navigation{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+    }
+
     .navbar-center {
         width: 100%;
+        justify-content: center;
+        margin-bottom: 0;
+        display: flex;
     }
 
     .navbar-links {
-        flex-direction: column;
-        gap: 0.5rem;
         width: 100%;
+        justify-content: center;
+        padding: 0; 
+        margin: 0;
+        display: flex; 
+    }
+
+    .navbar-links li {
+        width: 100%;
+        list-style: none; 
+        display: flex; 
+        justify-content: center; 
     }
 
     .navbar-links a {
-        padding: 0.5rem 0.75rem;
-        font-size: 14;
-        text-align: center;
+        display: block;
         width: 100%;
+        text-align: center;
+        padding: 0.8rem 1rem;
     }
 
     .btn-logout {
-        width: 50%;
+        width: 100%;
+        margin: 0;
         padding: 0.6rem 1rem;
         font-size: 14px;
         transition: transform 0.2s ease, background-color 0.3s ease;

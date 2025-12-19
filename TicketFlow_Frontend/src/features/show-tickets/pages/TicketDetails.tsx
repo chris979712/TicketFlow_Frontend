@@ -18,33 +18,32 @@ export const TicketDetails: React.FC = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-  <>
-    <header className="header-attendee">
-      <div className="div_welcome">
+  <div className="td-page-container">
+    <header className="td-header-attendee">
+      <div className="td-div_welcome">
         <img src={TicketFlowWhiteLogo} alt="TicketFlow logo" title="TicketFlow"/>
-        <Link className="link-return" to="/dashboard-attendee/my-tickets">Regresar</Link>
+        <Link className="td-link-return" to="/dashboard-attendee/my-tickets">Regresar</Link>
       </div>
-      <h1 className="page-title">Detalle de boletos</h1>
     </header>
-
-    <main className="ticket-details">
-      <div id="ticket-capture">
-        <h1 className="event-title">{ticket.title}</h1>
-        <div className="ticket-info">
+    <h1 className="td-page-title">Detalle del boleto</h1>
+    <main className="td-ticket-details">
+      <div id="td-ticket-capture">
+        <h1 className="td-event-title">{ticket.title}</h1>
+        <div className="td-ticket-info">
           <p><strong>Fecha:</strong> {ticket.date}</p>
           <p><strong>Lugar:</strong> {ticket.location}</p>
         </div>
 
-        <section className="ticket-content">
+        <section className="td-ticket-content">
           <QRCode size={200} value={qr!} />
         </section>
       </div>
 
-      <button className="btn-download" onClick={handleDownloadImage}>
+      <button className="td-btn-download" onClick={handleDownloadImage}>
         Descargar código
       </button>
     </main>
-  </>
+  </div>
 );
 
 };
