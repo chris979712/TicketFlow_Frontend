@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;   
+  margin-top: -3%;
 }
 
 
@@ -66,7 +67,6 @@
 .btn-download:hover {
   background: #000000;
 }
-
 
 @media (max-width: 480px) {
   .ticket-details {
