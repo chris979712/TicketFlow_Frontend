@@ -14,6 +14,11 @@
   animation: fadeInDown 0.6s ease both;
 }
 
+.mt-ticket-detail-list{
+  color: white;
+  font-size: 1.5rem;
+}
+
 .mt-div_welcome {
   display: flex;
   flex-direction: column;

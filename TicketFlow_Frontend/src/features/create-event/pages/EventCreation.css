@@ -148,6 +148,7 @@
 @media (max-width: 480px) {
     .ec-unique-2b7d .custom-timepicker-field .MuiInputBase-input { padding: 8px 10px; font-size: .95rem; }
     .ec-unique-2b7d .btn_submit { width: 100%; max-width: 320px; }
+    .ec-unique-2b7d .div_welcome img { height: 60px;}
 }
 
 @keyframes ec-slideInRight {

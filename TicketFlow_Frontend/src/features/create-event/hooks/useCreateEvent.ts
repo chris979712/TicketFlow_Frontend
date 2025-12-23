@@ -41,8 +41,8 @@ export function useCreateEvent(){
     const [category, setCategory] = useState("");
     const [location, setLocation] = useState(0);
     const [eventDate, setEventDate] = useState("");
-    const [startingHour, setStartingHour] = useState("");
-    const [endingHour, setEndingHour] = useState("");
+    const [startingHour, setStartingHour] = useState("00:00:00");
+    const [endingHour, setEndingHour] = useState("00:00:00");
     const [eventPromotional, setEventPromotional] = useState<File | null>()
     const [errorValidationDeatils, setErrorValidation] = useState("");
     const [sectionErrors, setSectionErrors] = useState<string[]>([]);
@@ -57,6 +57,8 @@ export function useCreateEvent(){
     const firstRender = useRef(true);
     const Navigate = useNavigate();
     const {idCompany} = useOrganizerStore();
+    const formRef = useRef<HTMLFormElement | null>(null);
+    const [showModal, setShowModal] = useState(false);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
@@ -84,9 +86,11 @@ export function useCreateEvent(){
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         start();
+        setShowModal(false);
         setErrorValidation("");
         setSectionErrors([]);
         setErrorSection("");
+        setAlert(null);
         const DataResult = ValidateEventInformation(eventName,description,category,location,eventDate,startingHour,endingHour);
         if(!DataResult.error && ValidatePricesSectionConfigurations()){
             if(ValidateDateStartingEvent() && ValidateStartingEndHours()){
@@ -96,6 +100,8 @@ export function useCreateEvent(){
                     const configuredSeats = SetConfigurationPricesToSeats();
                     await CreateEventWithSeats(configuredSeats);
                 }
+            }else{
+                setAlert({type: "error", message: errorValidationDeatils})
             }
         }else{
             setAlert({type: "error", message:DataResult.error!.details[0].message})
@@ -247,6 +253,10 @@ export function useCreateEvent(){
         }
     }
 
+    function HandleCancel(){
+        setShowModal(false);
+    }
+
     useEffect(() => {
         const ObtainEventLocations = async () => {
             const EventLocations = await GetEventAllLocations();
@@ -271,6 +281,24 @@ export function useCreateEvent(){
     },[])
 
     useEffect(() => {
+        if(errorValidationDeatils != "" && formRef.current){
+            formRef.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        } 
+    },[errorValidationDeatils])
+
+    useEffect(() => {
+        if(showModal){
+            formRef.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+    }, [showModal])
+
+    useEffect(() => {
         if(firstRender.current){
             firstRender.current = false;
 
@@ -282,6 +310,8 @@ export function useCreateEvent(){
     return {
         alert,
         errorValidationDeatils,
+        startingHour,
+        endingHour,
         setEventName,
         setDescription,
         setCategory,
@@ -297,6 +327,10 @@ export function useCreateEvent(){
         sectionErrors,
         handleSubmit,
         setAlert,
-        loading
+        loading,
+        formRef,
+        showModal,
+        setShowModal,
+        HandleCancel
     }
 }

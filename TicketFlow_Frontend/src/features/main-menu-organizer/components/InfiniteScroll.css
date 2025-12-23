@@ -105,3 +105,10 @@ strong {
         text-align: center;
     }
 }
+
+@media (max-width: 480px){
+    .event-section {
+        padding:  1.5rem;
+        margin: 1.5rem;
+    }
+}

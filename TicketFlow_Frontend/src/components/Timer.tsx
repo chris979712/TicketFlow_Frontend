@@ -18,7 +18,7 @@ export function ResponsiveTimePickers({
   value,
   onChange,
   id,
-  className
+  className,
 }: ResponsiveTimePickerProps) {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -26,12 +26,33 @@ export function ResponsiveTimePickers({
         slotProps={{
           textField: {
             id,
-            className 
+            className,
+          },
+          popper: {
+            disablePortal: false,
+            container: document.body,
+            sx: {
+              zIndex: 9999 
+            },
+            modifiers: [
+              {
+                name: 'preventOverflow',
+                options: {
+                  boundary: 'viewport',
+                },
+              },
+            ]
+          },
+          desktopPaper: {
+            sx: {
+              zIndex: 9999
+            }
           }
         }}
         label={label}
         value={value ?? null}
         onChange={onChange}
+        
       />
     </LocalizationProvider>
   );

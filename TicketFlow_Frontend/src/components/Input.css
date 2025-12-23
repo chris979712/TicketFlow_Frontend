@@ -179,3 +179,47 @@
     font-size: 0.85rem;
     margin-top: 4px;
 }
+
+@media (max-width: 480px) {
+    .input-wrapper {
+        min-width: 100%;
+        padding-bottom: 1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .input-label {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .input-field {
+        font-size: 0.9rem;
+        padding: 8px 35px 8px 10px;
+        border-radius: 6px;
+    }
+
+    .btn-toggle-password {
+        right: 8px;
+        padding: 4px;
+    }
+
+    .input-field[type="checkbox"] {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .input-field[type="file"] {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    .input-field[type="file"]::-webkit-file-upload-button {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .error-input-message {
+        font-size: 0.75rem;
+        margin-top: 3px;
+    }
+}

@@ -3,3 +3,9 @@ html, body, #root {
     padding: 0;
     height: 100%;
 }
+
+.MuiPopper-root,
+.MuiPickersPopper-root,
+.MuiModal-root {
+    z-index: 9999 !important;
+}

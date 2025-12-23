@@ -1,10 +1,12 @@
 import type { Dayjs } from "dayjs"
+import dayjs from "dayjs"
 import { Input } from "../../../components/Input"
 import { TextArea } from "../../../components/TextArea"
 import { Select } from "../../../components/Select"
 import { Alert } from "../../../components/Alert"
 import { useCreateEvent } from "../hooks/useCreateEvent"
 import { Loader } from "../../../components/Loader"
+import { ConfirmModal } from "../../../components/Modal"
 import {ResponsiveTimePickers} from "../../../components/Timer"
 import './EventCreationForm.css'
 
@@ -20,6 +22,8 @@ export function EventCreationForm(){
         setLocation,
         setEventDate,
         handleFileChange,
+        startingHour,
+        endingHour,
         setStartingHour,
         setEndingHour,
         errorSections,
@@ -27,7 +31,12 @@ export function EventCreationForm(){
         handleSectionConfigChange,
         sectionErrors,
         handleSubmit,
-        setAlert} = useCreateEvent();
+        setShowModal,
+        setAlert,
+        formRef,
+        showModal,
+        HandleCancel
+    } = useCreateEvent();
 
     return (
         <section className="event-forms" aria-labelledby="event-info-title">
@@ -38,11 +47,18 @@ export function EventCreationForm(){
                         onClose={() => setAlert(null)} />
                 )
             }
-            <form className="event-creation-form" onSubmit={handleSubmit}>
+            <form ref={formRef} className="event-creation-form" onSubmit={(e) => {e.preventDefault(); setShowModal(true)}}>
                 <h2>Información general del evento</h2>
                 {
-                    errorValidationDeatils && <p className="error-format-inputs">{errorValidationDeatils}</p>
+                    errorValidationDeatils && <p className="error-format-inputs">{'Verifique los datos: '+errorValidationDeatils}</p>
                 }
+                <ConfirmModal 
+                    isOpen={showModal}
+                    title='Aviso al crear evento'
+                    message='Una vez creado el evento. La modificación en los precios de los boletos y sede del evento no podrá ser modificado. ¿Desea continuar?'
+                    onConfirmForm={handleSubmit}
+                    onCancel={HandleCancel}
+                />
                 <Input
                     name="eventname"
                     id="txt_eventName"
@@ -104,22 +120,23 @@ export function EventCreationForm(){
                     required
                     aria-describedby="promo-img-help"
                 />
-                <p id="promo-img-help" className="visually-hidden">
+                <p className="images-restrictions">
                     Seleccione una imagen promocional en formato JPG o PNG. El tamaño máximo recomendado es 5 MB.
                 </p>
                 <div className="time-picker-group">
                     <label className="time-picker-label">Horario del evento:</label>
                     <div className="time-picker-inputs">
-                        <ResponsiveTimePickers label="Hora de inicio:" aria-label="Hora de inicio del evento" onChange={(newValue: Dayjs | null) => {
+                        <ResponsiveTimePickers label="Hora de inicio:" aria-label="Hora de inicio del evento" value={dayjs(`2020-01-01T${startingHour}`)}  onChange={(newValue: Dayjs | null) => {
                             if (newValue) setStartingHour(newValue.format("HH:mm:ss"));
                         }}/>
-                        <ResponsiveTimePickers label="Hora de finalización:" aria-label="Hora de finalización del evento" onChange={(newValue: Dayjs | null) => {
+                        <ResponsiveTimePickers label="Hora de finalización:" aria-label="Hora de finalización del evento" value={dayjs(`2020-01-01T${endingHour}`)}  onChange={(newValue: Dayjs | null) => {
                             if (newValue) setEndingHour(newValue.format("HH:mm:ss")); 
                         }}/>
                     </div>
                 </div>
                 <div className="prices-config" aria-labelledby="price-config-title"> 
                     <h2>Configuración de precios de boletos</h2>
+                    <p className="prices-warning">Recuerde que la configuración en el precio de boletos, no podrá ser modificado una vez creado el evento.</p>
                     {
                         errorSections && <p className="error-format-inputs" role="alert">{errorSections}</p>
                     }

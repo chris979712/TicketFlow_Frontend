@@ -11,6 +11,10 @@
     z-index: 999;
 }
 
+.modal-overlay .modal-box .modal-title {
+    color: #0c1d57;
+}
+
 .modal-box {
     background: #fff;
     padding: 2rem;
