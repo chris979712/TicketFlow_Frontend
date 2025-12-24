@@ -58,8 +58,6 @@ export function useEventDetail(){
         }else{
             GetEventInventory();
         }
-        console.log(eventName);
-        console.log(selectedEvent?.event_name)
         GetEventInventory();
         return () => setSelectedSeats([]);
     },[selectedEvent]);

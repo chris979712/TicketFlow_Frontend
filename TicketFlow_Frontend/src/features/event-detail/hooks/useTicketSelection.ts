@@ -18,9 +18,12 @@ export function useTicketSelection(){
     const {setTempReservations} = useReservationStore();
     const Navigate = useNavigate();
 
-    function HandleVerifyHuman(event: React.ChangeEvent<HTMLInputElement>){
-        event.preventDefault();
-        setIsHuman(event.target.checked);
+    function HandleVerifyHuman(token: string|null){
+        if (token) {
+            setIsHuman(true);
+        } else {
+            setIsHuman(false);
+        }
     }
 
     function HandleQuitTicketFromList(seatId: number){

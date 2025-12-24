@@ -27,6 +27,7 @@
     "react": "^19.1.1",
     "react-countdown": "^2.3.6",
     "react-dom": "^19.1.1",
+    "react-google-recaptcha": "^3.1.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-qr-code": "^2.0.18",
     "react-router-dom": "7.9.5",

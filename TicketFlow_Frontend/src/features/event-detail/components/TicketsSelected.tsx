@@ -1,9 +1,10 @@
 import { TrashIcon } from "lucide-react";
 import { TicketIcon } from "lucide-react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { Alert } from "../../../components/Alert";
-import { Input } from "../../../components/Input";
 import { useTicketSelection } from "../hooks/useTicketSelection";
 import "./TicketSelected.css"
+const CAPTCHA_SITE_KEY = import.meta.env.VITE_CAPTCHA_SITE_KEY;
 
 export function TicketSelection(){
     const {selectedSeats,HandleQuitTicketFromList,total,handleReservation,alert,setAlert,isHuman,HandleVerifyHuman} = useTicketSelection();
@@ -40,16 +41,21 @@ export function TicketSelection(){
                             ))
                         }
                         <strong className="str-total">Total: {total} pesos</strong>
-                        {
-                            !isHuman && (
-                                <Input type="checkbox" label="Presione para verificar que es humano" onChange={HandleVerifyHuman} />
-                            )
-                        }
-                        {
-                            isHuman && (
-                                <button className="btn-reservate" onClick={handleReservation}>Reservar</button>
-                            )
-                        }
+                        <div className="captcha-container">
+                            <ReCAPTCHA
+                                sitekey={CAPTCHA_SITE_KEY}
+                                onChange={HandleVerifyHuman}
+                                theme="light"
+                                size="normal"
+                            />
+                        </div>
+                        <button 
+                            className="btn-reservate" 
+                            onClick={handleReservation}
+                            disabled={!isHuman}
+                        >
+                            Reservar
+                        </button>
                     </section>
                 )
             }
