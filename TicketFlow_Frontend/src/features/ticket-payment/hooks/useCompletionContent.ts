@@ -8,6 +8,7 @@ export function useCompletionContent(){
     const navigate = useNavigate();
     const {alert,setAlert} = useAlert();
     const [isChecking, setIsChecking] = useState(true);
+    const COUNTDOWN_KEY = 'reservation_countdown_end';
 
     useEffect(() => {
         if (!stripe) return;
@@ -91,6 +92,10 @@ export function useCompletionContent(){
             });
         });;
     }, [stripe, navigate, setAlert]);
+
+    useEffect(() => {
+        sessionStorage.removeItem(COUNTDOWN_KEY);
+    }, []);
 
     return {
         isChecking,

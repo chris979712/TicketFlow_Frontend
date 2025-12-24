@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAlert } from "../../../hooks/useAlert";
+import { useState, useEffect, useRef } from "react";
+import { useLoading } from "../../../hooks/useLoading";
 import { ValidateRegister } from "../../../schemas/register.Schema";
 import { RegisterUser, type RegisterParams } from "../services/registerService";
-import { useNavigate } from "react-router-dom";
-import { useLoading } from "../../../hooks/useLoading";
+
 
 export function useRegister(){
     const {alert,setAlert} = useAlert();
@@ -17,6 +18,7 @@ export function useRegister(){
     const [errorValidation,setErrorValidation] = useState("");
     const {start,stop,loading} = useLoading();
     const navigate = useNavigate();
+    const formRef = useRef<HTMLFormElement | null>(null);
 
     const handleSubmit = async(e: React.FormEvent) => {
         e.preventDefault();
@@ -48,6 +50,15 @@ export function useRegister(){
         stop();
     }
 
+    useEffect(() => {
+        if(errorValidation != ""){
+            formRef.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        } 
+    },[errorValidation])
+
     return {
         alert,
         setAlert,
@@ -60,6 +71,7 @@ export function useRegister(){
         setPasswordConfirmation,
         errorValidation,
         handleSubmit,
-        loading
+        loading,
+        formRef
     }
 }

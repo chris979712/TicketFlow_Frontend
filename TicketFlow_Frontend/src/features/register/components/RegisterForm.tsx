@@ -5,7 +5,7 @@ import { useRegister } from "../hooks/useRegister";
 import { Loader } from "../../../components/Loader";
 
 export function RegisterForm(){
-    const {alert,setAlert,setName,setFirstlastname,setSecondlastname,setEmail,setUsername,setPassword,setPasswordConfirmation,errorValidation,handleSubmit,loading} = useRegister();
+    const {alert,formRef,setAlert,setName,setFirstlastname,setSecondlastname,setEmail,setUsername,setPassword,setPasswordConfirmation,errorValidation,handleSubmit,loading} = useRegister();
     return(
         <>
             {
@@ -15,7 +15,7 @@ export function RegisterForm(){
                         onClose={() => setAlert(null)} />
                 )
             }
-            <form onSubmit={handleSubmit} className="register-form">
+            <form ref={formRef} onSubmit={handleSubmit} className="register-form">
                 {
                     errorValidation && <p className="error-format-inputs" role="alert" aria-live="assertive">{errorValidation}</p>
                 }

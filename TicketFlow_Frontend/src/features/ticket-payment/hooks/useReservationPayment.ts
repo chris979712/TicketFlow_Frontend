@@ -177,6 +177,6 @@ export function useReservationPayment(){
         HandleAccept,
         HandleCancel,
         handleReturn,
-        isAttendee
+        isAttendee,
     }
 }

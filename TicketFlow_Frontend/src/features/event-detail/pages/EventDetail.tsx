@@ -15,12 +15,13 @@ export default function EventDetails(){
         alert,
         setAlert,
         selectedEvent,
-        seatsInventory
+        seatsInventory,
+        mainRef
     } = useEventDetail();
 
     return (
         isAttendee && (
-            <main className="main-event-details ed-unique">
+            <main ref={mainRef} className="main-event-details ed-unique">
                 {
                     alert && (
                         <div aria-live="assertive">

@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState, useRef} from "react";
 import { useAlert } from "../../../hooks/useAlert";
 import { useParams,useNavigate } from "react-router-dom";
 import { ObtainEventInventory } from "../services/EventSale";
@@ -16,6 +16,7 @@ export function useEventDetail(){
     const {setSelectedSeats,selectedSeats} = useTicketStore();
     const {eventName} = useParams();
     const Navigate = useNavigate();
+    const mainRef = useRef<HTMLElement|null>(null);
 
     async function GetEventInventory(){
         const ApiResponse = await ObtainEventInventory(selectedEvent!.event_id);
@@ -63,12 +64,20 @@ export function useEventDetail(){
         return () => setSelectedSeats([]);
     },[selectedEvent]);
 
+    useEffect(() => {
+        mainRef.current?.scrollIntoView({ 
+        behavior: 'auto', 
+        block: 'start' 
+        });
+    }, []);
+
     return {
         isAttendee,
         alert,
         setAlert,
         selectedEvent,
         seatsInventory,
-        eventName
+        eventName,
+        mainRef
     }
 }
