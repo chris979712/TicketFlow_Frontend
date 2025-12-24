@@ -32,11 +32,14 @@
     align-items: center;
     gap: 0.8rem;
     margin-top: 0.5rem;
+    background: white;
+    border-radius: 1rem;
 }
 
 .time-picker-label {
     font-weight: 600;
-    color: #1e3a8a;
+    color: black;
+    margin-bottom: 0;
 }
 
 .time-picker-inputs {
@@ -46,6 +49,23 @@
     flex-wrap: wrap;
     width: 100%;
     gap: 1rem
+}
+
+.time-picker-inputs > div {
+    background-color: #FFFFFF;
+    border-radius: 8px; 
+    padding: 2px 8px;
+}
+
+.time-picker-inputs .MuiInputLabel-root,
+.time-picker-inputs label {
+    color: #000000 !important;
+    font-weight: 600;
+}
+
+.time-picker-inputs .MuiInputLabel-root.Mui-focused,
+.time-picker-inputs .MuiInputLabel-root.MuiFormLabel-filled {
+    color: #000000 !important;
 }
 
 .submit-container {

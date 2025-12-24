@@ -1,8 +1,8 @@
 import dayjs from "dayjs"
-import React, { useState, useEffect } from "react"
 import { useAlert } from "../../../hooks/useAlert"
 import { useLoading } from "../../../hooks/useLoading"
 import { useEventStore } from "../hooks/useEventStore"
+import React, { useState, useEffect, useRef } from "react"
 import { useHandleSession } from "../../../hooks/useHandleSession"
 import { UpdateEventStatus, UpdateExistingEvent, UpdateImageEvent } from "../services/EditEventServices"
 import { ValidateEventEditionInformation, ValidateEventEditionStatus } from "../../../schemas/eventEdition.schema"
@@ -19,6 +19,7 @@ export function useEventEdition(){
     const [error, setErrorValidation] = useState("");
     const Event = useEventStore(state => state.selectedEvent);
     const {alerts,setAlerts, addAlert,alert,setAlert} = useAlert();
+    const formRef = useRef<HTMLFormElement | null>(null);
     const {loading,start,stop} = useLoading();
     const {handleLogout} = useHandleSession();
 
@@ -189,6 +190,7 @@ export function useEventEdition(){
     const SubmitChanges = async (e: React.FormEvent) => {
         e.preventDefault();
         setAlert(null);
+        setAlerts([]);
         setErrorValidation("");
         const { tasks, hasChanges } = buildEventTasks();
         if (!hasChanges) {
@@ -227,6 +229,15 @@ export function useEventEdition(){
         }
     };
 
+    useEffect(() => {
+        if(error != "" && formRef.current){
+            formRef.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        } 
+    },[error])
+
     return {
         SubmitChanges,
         alerts,
@@ -249,7 +260,8 @@ export function useEventEdition(){
         setEndingHour,
         loading,
         eventStartHour,
-        eventEndHour
+        eventEndHour,
+        formRef
     }
     
 }

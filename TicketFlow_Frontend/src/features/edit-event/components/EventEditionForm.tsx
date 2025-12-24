@@ -31,11 +31,12 @@ export function EventEditionForm(){
             setEndingHour,
             loading,
             eventStartHour,
-            eventEndHour
+            eventEndHour,
+            formRef
         } = useEventEdition();
         
     return (
-        <form onSubmit={SubmitChanges} className="event-edition-form">
+        <form ref={formRef} onSubmit={SubmitChanges} className="event-edition-form">
             {
                 alert && (
                     <Alert 
@@ -126,7 +127,7 @@ export function EventEditionForm(){
                 onChange={handleFileChange}
             />
             <div className="time-picker-group">
-                <label className="time-picker-label">Horario del evento:</label>
+                <p className="time-picker-label">Horario del evento:</p>
                 <div className="time-picker-inputs">
                     <ResponsiveTimePickers label="Hora de inicio:" value={dayjs(`2020-01-01T${eventStartHour}`)}  onChange={(newValue: Dayjs | null) => {
                         if (newValue) setStartingHour(newValue.format("HH:mm:ss"));

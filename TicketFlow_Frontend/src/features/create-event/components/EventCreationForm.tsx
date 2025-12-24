@@ -124,7 +124,7 @@ export function EventCreationForm(){
                     Seleccione una imagen promocional en formato JPG o PNG. El tamaño máximo recomendado es 5 MB.
                 </p>
                 <div className="time-picker-group">
-                    <label className="time-picker-label">Horario del evento:</label>
+                    <p className="time-picker-label">Horario del evento:</p>
                     <div className="time-picker-inputs">
                         <ResponsiveTimePickers label="Hora de inicio:" aria-label="Hora de inicio del evento" value={dayjs(`2020-01-01T${startingHour}`)}  onChange={(newValue: Dayjs | null) => {
                             if (newValue) setStartingHour(newValue.format("HH:mm:ss"));

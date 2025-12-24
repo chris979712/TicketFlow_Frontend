@@ -121,7 +121,6 @@
     padding: 0.7rem;
     box-sizing: border-box;
     transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
-    -webkit-appearance: none;
 }
 
 .ee-unique-9f3a .event-edition-form input::placeholder,
@@ -227,3 +226,6 @@
     border-radius: 8px !important;
 }
 
+@media (max-width: 480px){
+    .ee-unique-9f3a .div_welcome img { height:70px; width:auto; animation: slideInRight 1s ease; }
+}
