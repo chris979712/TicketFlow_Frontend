@@ -4,7 +4,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { Alert } from "../../../components/Alert";
 import { useTicketSelection } from "../hooks/useTicketSelection";
 import "./TicketSelected.css"
-const CAPTCHA_SITE_KEY = import.meta.env.VITE_CAPTCHA_SITE_KEY;
+const CAPTCHA_SITE = import.meta.env.VITE_CAPTCHA_SITE;
 
 export function TicketSelection(){
     const {selectedSeats,HandleQuitTicketFromList,total,handleReservation,alert,setAlert,isHuman,HandleVerifyHuman} = useTicketSelection();
@@ -43,7 +43,7 @@ export function TicketSelection(){
                         <strong className="str-total">Total: {total} pesos</strong>
                         <div className="captcha-container">
                             <ReCAPTCHA
-                                sitekey={CAPTCHA_SITE_KEY}
+                                sitekey={CAPTCHA_SITE}
                                 onChange={HandleVerifyHuman}
                                 theme="light"
                                 size="normal"
