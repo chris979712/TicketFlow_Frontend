@@ -18,10 +18,18 @@ export function SeatsMap(props: SeatMapProp){
         handleSeatLeave,
         setTooltipPosition,
         HandleSeatHover,
-        HandlerSeatSelection,
         setAlert,
-        alert
+        alert,
+        HandleSeatClick,
+        isMobile
     } = useSeatMap(locationName,apiSeats);
+
+    const handleSeatInteraction = (seat: any, event: React.MouseEvent | React.TouchEvent) => {
+        if (isMobile) {
+            HandleSeatHover(seat, event);
+        }
+        HandleSeatClick(seat, event);
+    };
 
     return (
         <section className={`location seats-from-${CssName(locationName)}`}>
@@ -50,9 +58,12 @@ export function SeatsMap(props: SeatMapProp){
             </div>
             {
                 hoveredSeat && (
-                    <section className="seat-tooltip" style={{
-                            left: `${tooltipPosition.x + 15}px`,
-                            top: `${tooltipPosition.y - 80}px`
+                    <section className="seat-tooltip" style={isMobile ? {
+                            left: '50%',
+                            top: '10px',
+                        } : {
+                            left: `${Math.min(tooltipPosition.x + 15, window.innerWidth - 200)}px`,
+                            top: `${Math.max(tooltipPosition.y - 80, 10)}px`
                         }}>
                         <strong className="tooltip-header">Asiento {hoveredSeat.display_label}</strong>
                         <div className="tooltip-details">
@@ -79,7 +90,7 @@ export function SeatsMap(props: SeatMapProp){
                                             <button key={seat.seat_id} 
                                                 className={`seat seat-${seat.available}`} 
                                                 disabled={!seat.available}
-                                                onClick={() => HandlerSeatSelection(seat)}
+                                                onClick={(event) => handleSeatInteraction(seat,event)}
                                                 onMouseEnter={(event) => HandleSeatHover(seat,event)}
                                                 onMouseMove={(event) => setTooltipPosition({x: event.clientX, y: event.clientY})}
                                                 onMouseLeave={handleSeatLeave}>
@@ -96,3 +107,4 @@ export function SeatsMap(props: SeatMapProp){
         </section>
     )
 }
+

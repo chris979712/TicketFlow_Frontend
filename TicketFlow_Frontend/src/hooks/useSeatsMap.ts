@@ -30,6 +30,7 @@ export function useSeatMap(locationName: string, apiSeats: any[]){
     const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
     const {selectedSeats,setSelectedSeats} = useTicketStore();
     const {alert,setAlert} = useAlert();
+    const isMobile = window.innerWidth <= 480;
 
     function CssName(name: string){
         return name
@@ -84,14 +85,42 @@ export function useSeatMap(locationName: string, apiSeats: any[]){
         }
     }
 
-    function HandleSeatHover(seat: Seat, event: React.MouseEvent){
+    function HandleSeatHover(seat: Seat, event: React.MouseEvent | React.TouchEvent){
         setHoveredSeat(seat);
-        setTooltipPosition({ x: event.clientX, y: event.clientY });
+        if ('clientX' in event) {
+            setTooltipPosition({ x: event.clientX, y: event.clientY });
+        } else if ('touches' in event && event.touches.length > 0) {
+            setTooltipPosition({ 
+                x: event.touches[0].clientX, 
+                y: event.touches[0].clientY 
+            });
+        }
     }
 
     function handleSeatLeave(){
         setHoveredSeat(null);
     }
+
+    function HandleSeatClick(seat: Seat, event: React.MouseEvent | React.TouchEvent){
+        if(isMobile){
+            HandleSeatHover(seat, event);
+            HandlerSeatSelection(seat);
+        }else{
+            HandlerSeatSelection(seat);
+        }
+    }
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (hoveredSeat) {
+                setHoveredSeat(null);
+            }
+        };
+        window.addEventListener('scroll', handleScroll, true); 
+        return () => {
+            window.removeEventListener('scroll', handleScroll, true);
+        };
+    }, [hoveredSeat]);
 
     useEffect(() => {
         if (!dataSeats || apiSeats.length === 0) return;
@@ -131,6 +160,8 @@ export function useSeatMap(locationName: string, apiSeats: any[]){
         HandleSeatHover,
         HandlerSeatSelection,
         alert,
-        setAlert
+        setAlert,
+        HandleSeatClick,
+        isMobile
     }
 }
