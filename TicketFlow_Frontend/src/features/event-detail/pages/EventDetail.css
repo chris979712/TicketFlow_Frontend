@@ -261,15 +261,24 @@
 
 @media (max-width: 480px) {
     .ed-unique .ed-section-wrap {
-        padding: 0.25rem; 
+        padding: 0rem; 
     }
 
     .ed-unique .ed-ticket-selection { 
-        padding: 0.6rem; 
+        width: 100% !important;
+        max-width: 100%;
+        padding: 0.8rem;
+        margin: 0;
+        border-radius: 0; 
     }
 
     .ed-unique .ed-seat-map {
         padding: 0.6rem;
+    }
+
+    .ed-unique .ed-seats-reservation {
+        gap: 0;
+        padding: 0;
     }
 
     .ed-unique .ed-div_welcome { 
@@ -279,7 +288,7 @@
         padding: 0.8rem 1rem; 
     }
     .ed-unique .ed-div_welcome img { 
-        height: 72px; 
+        height: 55px; 
     }
     .ed-unique .ed-page-title { 
         font-size: 1.5rem; 

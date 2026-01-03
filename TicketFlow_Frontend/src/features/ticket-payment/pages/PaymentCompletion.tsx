@@ -2,6 +2,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Alert } from "../../../components/Alert";
 import { Elements } from '@stripe/react-stripe-js';
 import { useCompletionContent } from '../hooks/useCompletionContent';
+import './PaymentCompletion.css'
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE);
 
 function CompletionContent() {
