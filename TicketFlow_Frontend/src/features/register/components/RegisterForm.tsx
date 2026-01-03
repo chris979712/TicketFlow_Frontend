@@ -15,9 +15,9 @@ export function RegisterForm(){
                         onClose={() => setAlert(null)} />
                 )
             }
-            <form ref={formRef} onSubmit={handleSubmit} className="register-form">
+            <form ref={formRef} onSubmit={handleSubmit} className="rg-register-form">
                 {
-                    errorValidation && <p className="error-format-inputs" role="alert" aria-live="assertive">{errorValidation}</p>
+                    errorValidation && <p className="rg-error-format-inputs" role="alert" aria-live="assertive">{errorValidation}</p>
                 }
                 <Input
                     label="Nombres(s):"
@@ -93,7 +93,7 @@ export function RegisterForm(){
                     aria-describedby="passwordRules"
                 />
                 <p id="passwordRules"><strong>Recuerde que su contraseña debe incluir al menos ocho caracteres, incluyendo por lo menos una letra mayúscula, una letra minúscula, un número y un caracter especial. </strong></p>
-                <button type="submit" className="btn-submit" disabled={loading}>{loading ? <Loader /> : "Registrarse"}</button>
+                <button type="submit" className="rg-btn-submit" disabled={loading}>{loading ? <Loader /> : "Registrarse"}</button>
             </form>
         </>
     )

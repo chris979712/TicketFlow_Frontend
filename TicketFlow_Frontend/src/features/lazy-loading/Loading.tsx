@@ -3,14 +3,14 @@ import "./Loading.css";
 
 export function Loading() {
     return (
-        <div className="loading-container">
+        <div className="lld-loading-container">
         <motion.div
-            className="loading-spinner"
+            className="lld-loading-spinner"
             animate={{ rotate: 360 }}
             transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
         />
         <motion.p
-            className="loading-text"
+            className="lld-loading-text"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, repeat: Infinity, repeatType: "reverse" }}

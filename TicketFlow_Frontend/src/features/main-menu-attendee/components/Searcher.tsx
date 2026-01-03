@@ -10,7 +10,7 @@ export function SearcherEvent(){
     const {alert,ValidateEventCategory,ValidateEventDate,ValidateEventName,setAlert} = useSearcher();
     
     return (
-        <section className="search-event-section">
+        <section className="ma-search-event-section">
             {alert && (
                 <Alert
                     type={alert.type}
@@ -18,9 +18,9 @@ export function SearcherEvent(){
                     onClose={() => setAlert(null)}
                 />
             )}
-            <div className="search-group">
-                <Search className="search-icon" />
-                <div className="search-input">
+            <div className="ma-search-group">
+                <Search className="ma-search-icon" />
+                <div className="ma-search-input">
                     <Input
                         id="txt_name"
                         label="nombre de evento"
@@ -30,7 +30,7 @@ export function SearcherEvent(){
                         onChange={ValidateEventName}
                     />
                 </div>
-                <div className="search-select">
+                <div className="ma-search-select">
                     <Select 
                         name="category"
                         label="categoria"
@@ -45,7 +45,7 @@ export function SearcherEvent(){
                         onChange={ValidateEventCategory}
                     />
                 </div>
-                <div className="date-select">
+                <div className="ma-date-select">
                     <Input 
                         id="dtp_eventDate"
                         name="eventDate"

@@ -36,7 +36,7 @@ export function EventEditionForm(){
         } = useEventEdition();
         
     return (
-        <form ref={formRef} onSubmit={SubmitChanges} className="event-edition-form">
+        <form ref={formRef} onSubmit={SubmitChanges} className="ee-event-edition-form">
             {
                 alert && (
                     <Alert 
@@ -61,7 +61,7 @@ export function EventEditionForm(){
             }
             <h2>Información general del evento</h2>
             {
-                error && <p className="error-format-inputs">{error}</p>
+                error && <p className="ee-error-format-inputs">{error}</p>
             }
             <Input 
                 name="eventname"
@@ -126,9 +126,9 @@ export function EventEditionForm(){
                 accept="image/*"
                 onChange={handleFileChange}
             />
-            <div className="time-picker-group">
-                <p className="time-picker-label">Horario del evento:</p>
-                <div className="time-picker-inputs">
+            <div className="ee-time-picker-group">
+                <p className="ee-time-picker-label">Horario del evento:</p>
+                <div className="ee-time-picker-inputs">
                     <ResponsiveTimePickers label="Hora de inicio:" value={dayjs(`2020-01-01T${eventStartHour}`)}  onChange={(newValue: Dayjs | null) => {
                         if (newValue) setStartingHour(newValue.format("HH:mm:ss"));
                     }}/>
@@ -137,8 +137,8 @@ export function EventEditionForm(){
                     }}/>
                 </div>
             </div>
-            <div className="submit-container">
-                <button type="submit" className="btn_submit" disabled={loading}>{loading ? <Loader /> : 'Actualizar evento'}</button>
+            <div className="ee-submit-container">
+                <button type="submit" className="ee-btn_submit" disabled={loading}>{loading ? <Loader /> : 'Actualizar evento'}</button>
             </div>
         </form>
     )

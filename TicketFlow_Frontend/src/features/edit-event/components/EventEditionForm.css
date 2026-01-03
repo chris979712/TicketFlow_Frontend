@@ -1,4 +1,4 @@
-.event-edition-form {
+.ee-event-edition-form {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     gap: 1.4rem;
@@ -7,26 +7,26 @@
     margin-right: 5rem;
     border: 0.15rem solid #1e3a8a;
     border-radius: 0.8rem;
-    background-color: #f8fafc;
+    background: rgba(255, 255, 255, 0.1);
     align-items: start;
 }
 
-.event-edition-form h2 {
+.ee-event-edition-form h2 {
     grid-column: 1 / -1;
     font-size: 2.0rem;
     margin-bottom: 0.5rem;
     text-align: center;
-    color: #1e3a8a;
+    color: white;
 }
 
-.error-format-inputs {
+.ee-error-format-inputs {
     grid-column: 1 / -1;
     text-align: center;
     color: red;
     font-size: 1.2rem;
 }
 
-.time-picker-group {
+.ee-time-picker-group {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,13 +36,13 @@
     border-radius: 1rem;
 }
 
-.time-picker-label {
+.ee-time-picker-label {
     font-weight: 600;
     color: black;
     margin-bottom: 0;
 }
 
-.time-picker-inputs {
+.ee-time-picker-inputs {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -51,31 +51,31 @@
     gap: 1rem
 }
 
-.time-picker-inputs > div {
+.ee-time-picker-inputs > div {
     background-color: #FFFFFF;
     border-radius: 8px; 
     padding: 2px 8px;
 }
 
-.time-picker-inputs .MuiInputLabel-root,
-.time-picker-inputs label {
+.ee-time-picker-inputs .MuiInputLabel-root,
+.ee-time-picker-inputs label {
     color: #000000 !important;
     font-weight: 600;
 }
 
-.time-picker-inputs .MuiInputLabel-root.Mui-focused,
-.time-picker-inputs .MuiInputLabel-root.MuiFormLabel-filled {
+.ee-time-picker-inputs .MuiInputLabel-root.Mui-focused,
+.ee-time-picker-inputs .MuiInputLabel-root.MuiFormLabel-filled {
     color: #000000 !important;
 }
 
-.submit-container {
+.ee-submit-container {
     grid-column: 1 / -1;
     display: flex;
     justify-content: center;
     margin-top: 1rem;
 }
 
-.btn_submit {
+.ee-btn_submit {
     background-color: #1e3a8a;
     color: white;
     padding: 0.75rem 1.4rem;
@@ -86,22 +86,22 @@
     transition: background-color 0.25s ease;
 }
 
-.btn_submit:hover:not(:disabled) {
+.ee-btn_submit:hover:not(:disabled) {
     background-color: #163785;
 }
 
-.btn_submit:disabled {
+.ee-btn_submit:disabled {
     opacity: 0.7;
     cursor: not-allowed;
 }
 
 @media (max-width: 768px) {
-    .event-edition-form {
+    .ee-event-edition-form {
         grid-template-columns: 1fr;
         padding: 1.4rem;
     }
 
-    .time-picker-inputs {
+    .ee-time-picker-inputs {
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;

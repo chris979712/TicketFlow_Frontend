@@ -1,10 +1,10 @@
 
-.payment-page-container{
+.tp-payment-page-container{
     background:  url('/fondoConcierto.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
-.div_welcome {
+.tp-div_welcome {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,13 +16,13 @@
     animation: fadeIn 0.6s ease-in-out;
 }
 
-.div_welcome img {
+.tp-div_welcome img {
     height: 100px;
     width: auto;
     animation: slideInRight 1s ease;
 }
 
-.page-warning{
+.tp-page-warning{
     font-size: 1.5rem;
     text-align: center;
     color: white;
@@ -31,7 +31,7 @@
     margin-top: 1.5rem;
 }
 
-.link-return {
+.tp-link-return {
     color: white;
     text-decoration: none;
     font-weight: 500;
@@ -40,7 +40,7 @@
     font-size: 22px;
 }
 
-.link-return::after {
+.tp-link-return::after {
     content: "";
     position: absolute;
     left: 0;
@@ -51,15 +51,15 @@
     transition: width 0.3s ease;
 }
 
-.link-return:hover::after {
+.tp-link-return:hover::after {
     width: 100%;
 }
 
-.link-return:hover {
+.tp-link-return:hover {
     color: #9fc5ff;
 }
 
-.page-title{
+.tp-page-title{
     font-size: 3rem;
     text-align: center;
     color: white;
@@ -67,14 +67,14 @@
     margin-bottom: 0;
 }
 
-.payment-section {
+.tp-payment-section {
     max-width: 1200px;
     margin: 3rem auto;
     padding: 2rem;
     animation: fadeInUp 0.6s ease;
 }
 
-.payment-form {
+.tp-payment-form {
     background: white;
     border-radius: 12px;
     padding: 2.5rem;
@@ -82,7 +82,7 @@
     border: 2px solid #e5e7eb;
 }
 
-.pay-button {
+.tp-pay-button {
     width: 100%;
     background: linear-gradient(135deg, #0c1d57 0%, #1e3a8a 100%);
     color: white;
@@ -97,18 +97,18 @@
     box-shadow: 0 4px 12px rgba(12, 29, 87, 0.2);
 }
 
-.pay-button:hover:not(:disabled) {
+.tp-pay-button:hover:not(:disabled) {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(12, 29, 87, 0.3);
 }
 
-.pay-button:active:not(:disabled) {
+.tp-pay-button:active:not(:disabled) {
     transform: translateY(0);
     box-shadow: 0 2px 8px rgba(12, 29, 87, 0.2);
 }
 
-.pay-button:disabled {
+.tp-pay-button:disabled {
     background: #9ca3af;
     cursor: not-allowed;
     transform: none;
@@ -116,7 +116,7 @@
     opacity: 0.6;
 }
 
-.payment-message {
+.tp-payment-message {
     margin-top: 1rem;
     padding: 12px 16px;
     border-radius: 8px;
@@ -126,20 +126,20 @@
     animation: fadeIn 0.3s ease;
 }
 
-.payment-message[data-type="error"],
-.payment-message {
+.tp-payment-message[data-type="error"],
+.tp-payment-message {
     background-color: #fee2e2;
     color: #991b1b;
     border: 1px solid #fca5a5;
 }
 
-.payment-message[data-type="success"] {
+.tp-payment-message[data-type="success"] {
     background-color: #d1fae5;
     color: #065f46;
     border: 1px solid #6ee7b7;
 }
 
-.pay-button:disabled::before {
+.tp-pay-button:disabled::before {
     content: "";
     display: inline-block;
     width: 16px;
@@ -152,7 +152,7 @@
     vertical-align: middle;
 }
 
-.countdown-container {
+.tp-countdown-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -165,14 +165,14 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.countdown-timer {
+.tp-countdown-timer {
     display: flex;
     align-items: center;
     gap: 8px;
     font-family: 'Courier New', monospace;
 }
 
-.countdown-time {
+.tp-countdown-time {
     font-size: 2rem;
     font-weight: bold;
     color: white;
@@ -183,13 +183,13 @@
     text-align: center;
 }
 
-.countdown-separator {
+.tp-countdown-separator {
     font-size: 2.5rem;
     color: white;
     font-weight: bold;
 }
 
-.countdown-label {
+.tp-countdown-label {
     margin-top: 1px;
     margin-bottom: 10px;
     color: white;
@@ -197,18 +197,18 @@
     text-align: center;
 }
 
-.payment-layout{
+.tp-payment-layout{
     display: flex;
     gap: 2.5rem;
     align-items: flex-start;   
 }
 
-.payment-form {
+.tp-payment-form {
     flex: 2;                   
     background: #ffffff;
 }
 
-.summary-content {
+.tp-summary-content {
     flex: 1;
     background: #ffffff;
     padding: 2rem;
@@ -220,11 +220,11 @@
     transition: all 0.2s ease-in-out;
 }
 
-.summary-content:hover {
+.tp-summary-content:hover {
     box-shadow: 0 8px 28px rgba(0, 0, 120, 0.12);
 }
 
-.summary-title {
+.tp-summary-title {
     margin-bottom: 1.5rem;
     font-weight: 700;
     font-size: 1.4rem;
@@ -232,7 +232,7 @@
     color: #0c1d57;
 }
 
-.resume-grid {
+.tp-resume-grid {
     display: grid;
     grid-template-columns: 1fr auto;
     row-gap: 1.1rem;
@@ -242,25 +242,25 @@
     color: #1a1a1a;
 }
 
-.resume-grid span {
+.tp-resume-grid span {
     opacity: 0.85;
 }
 
-.resume-separator {
+.tp-resume-separator {
     grid-column: 1 / -1;
     height: 1px;
     background: #e0e7ff;
     margin: 0.5rem 0;
 }
 
-.summary-total {
+.tp-summary-total {
     font-weight: 700;
     font-size: 1.2rem;
     color: #02147a;
     opacity: 1 !important;
 }
 
-.summary-total-value {
+.tp-summary-total-value {
     text-align: right;
     font-weight: 700;
     font-size: 1.2rem;
@@ -307,69 +307,69 @@
 
 @media (max-width: 768px) {
 
-    .div_welcome {
+    .tp-div_welcome {
         gap: 0.6rem;
         padding: 0.8rem 1rem;
     }
 
-    .div_welcome img {
+    .tp-div_welcome img {
         height: 80px;
     }
 
-    .link-return {
+    .tp-link-return {
         font-size: 18px;
     }
 
-    .page-title {
+    .tp-page-title {
         font-size: 2rem;
         margin-top: 1rem;
     }
 
-    .payment-layout {
+    .tp-payment-layout {
         display: flex;
         flex-direction: column;
         gap: 2.5rem;
         margin: 0 auto;
     }
 
-    .summary-content {
+    .tp-summary-content {
         position: static;
         width: 65%;
         order: -1;
     }
 
-    .payment-section {
+    .tp-payment-section {
         margin: 2rem auto;
         padding: 1rem;
         margin-left: 17%;
     }
 
-    .payment-form {
+    .tp-payment-form {
         padding: 1.2rem;
     }
 
-    .pay-button {
+    .tp-pay-button {
         padding: 14px 20px;
         font-size: 16px;
     }
 
-    .countdown-time {
+    .tp-countdown-time {
         font-size: 1.5rem;
         padding: 8px 14px;
         min-width: 60px;
     }
 
-    .countdown-separator {
+    .tp-countdown-separator {
         font-size: 2rem;
     }
 
-    .countdown-label {
+    .tp-countdown-label {
         font-size: 1.2rem;
     }
 }
 
 @media (max-width: 480px){
-    .payment-layout {
+    .tp-payment-layout {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -378,21 +378,21 @@
         margin: 0 auto;
     }
 
-    .div_welcome img {
+    .tp-div_welcome img {
         height: 60px;
     }
 
-    .payment-section {
+    .tp-payment-section {
         margin: 2rem auto;
         padding: 1rem;
         margin-left: 0;
     }
     
-    .payment-form{
+    .tp-payment-form{
         order: 2;
     }
 
-    .summary-content {
+    .tp-summary-content {
         position: static;
         width: 75%; 
         order: -1;

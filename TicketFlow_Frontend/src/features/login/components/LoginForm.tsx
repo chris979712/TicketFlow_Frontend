@@ -17,9 +17,9 @@ export function LoginForm(){
                         onClose={() => setAlert(null)} />
                 )
             }
-            <form onSubmit={handleSubmit} className="Form">
+            <form onSubmit={handleSubmit} className="lg-form">
                 <Input 
-                    id="txt_username"
+                    id="lg-txt_username"
                     name="username"
                     label="Nombre de usuario: "
                     placeholder="user1234"
@@ -28,7 +28,7 @@ export function LoginForm(){
                     onChange={(e) => setUsername(e.target.value)}
                     required/>
                 <Input 
-                    id="txt_password"
+                    id="lg-txt_password"
                     name="password"
                     label="Contraseña"
                     type="password"
@@ -36,15 +36,15 @@ export function LoginForm(){
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                <p id="passwordHelp" className="sr-only">
+                <p id="passwordHelp" className="lg-sr-only">
                     Tu contraseña se ingresará de manera segura.
                 </p>
                 {
-                    errorValidation && <p className="error-format-inputs" role="alert" aria-live="assertive">{errorValidation}</p>
+                    errorValidation && <p className="lg-error-format-inputs" role="alert" aria-live="assertive">{errorValidation}</p>
                 }
-                <button type="submit" className="btn_submit" disabled={loading}>{loading ? <Loader /> : "Iniciar sesión"}</button>
-                <Link to="/password-recovery" className="a-recovery-password"  aria-label="Recuperar mi contraseña de acceso">Recuperar mi contraseña</Link>
-                <Link to="/sign-in" className="a-register" aria-label="Registrarse para crear una cuenta nueva">Registrarse</Link>
+                <button type="submit" className="lg-btn_submit" disabled={loading}>{loading ? <Loader /> : "Iniciar sesión"}</button>
+                <Link to="/password-recovery" className="lg-a-recovery-password"  aria-label="Recuperar mi contraseña de acceso">Recuperar mi contraseña</Link>
+                <Link to="/sign-in" className="lg-a-register" aria-label="Registrarse para crear una cuenta nueva">Registrarse</Link>
             </form>
         </>
     )

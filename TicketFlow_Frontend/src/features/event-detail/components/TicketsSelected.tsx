@@ -22,26 +22,26 @@ export function TicketSelection(){
             }
             {
                 selectedSeats.length > 0 &&  (
-                    <section className="ticket-selection">
-                        <h2 className="section-ticket-title">Boletos seleccionados</h2>
+                    <section className="ed-ticket-selection">
+                        <h2 className="ed-section-ticket-title">Boletos seleccionados</h2>
                         
                         {
                             selectedSeats.map(ticket => (
-                                <div className="ticket-details" key={ticket.seat_id}>
+                                <div className="ed-ticket-details" key={ticket.seat_id}>
                                     <TicketIcon size={40}/>
-                                    <div className="ticket-prices">
+                                    <div className="ed-ticket-prices">
                                         <p>Asiento: {ticket.display_label}</p>
                                         <strong>Precio: {ticket.base_price} pesos</strong>
                                     </div>
                                     
-                                    <button className="btn-quit-ticket" onClick={() => HandleQuitTicketFromList(ticket.seat_id)}>
+                                    <button className="ed-btn-quit-ticket" onClick={() => HandleQuitTicketFromList(ticket.seat_id)}>
                                         <TrashIcon size={25} />
                                     </button>
                                 </div>
                             ))
                         }
-                        <strong className="str-total">Total: {total} pesos</strong>
-                        <div className="captcha-container">
+                        <strong className="ed-str-total">Total: {total} pesos</strong>
+                        <div className="ed-captcha-container">
                             <ReCAPTCHA
                                 sitekey={CAPTCHA_SITE}
                                 onChange={HandleVerifyHuman}
@@ -50,7 +50,7 @@ export function TicketSelection(){
                             />
                         </div>
                         <button 
-                            className="btn-reservate" 
+                            className="ed-btn-reservate" 
                             onClick={handleReservation}
                             disabled={!isHuman}
                         >

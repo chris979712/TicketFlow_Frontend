@@ -1,4 +1,4 @@
-.search-event-form {
+.mo-search-event-form {
     display: flex;
     align-items: center;         
     justify-content: space-between; 
@@ -9,7 +9,7 @@
     background: transparent;
 }
 
-.search-group {
+.mo-search-group {
     display: flex;
     align-items: center;       
     justify-content: center;  
@@ -23,7 +23,7 @@
     box-sizing: border-box;
 }
 
-.search-icon {
+.mo-search-icon {
     font-size: 1.15rem;
     color: rgba(255,255,255,0.85);
     margin: 0;
@@ -32,7 +32,7 @@
     align-items: center;
 }
 
-.search-input {
+.mo-search-input {
     flex: 1.6;               
     display: flex;
     align-items: center;
@@ -41,7 +41,7 @@
     min-width:160px;
 }
 
-.search-event-form input {
+.mo-search-event-form input {
     width: 100%;
     max-width: 290px;
     height: 48px;
@@ -57,7 +57,7 @@
 	margin-bottom: -20px;
 }
 
-.search-select {
+.mo-search-select {
     flex: 1;
     display: flex;
     align-items: center;
@@ -67,7 +67,7 @@
     min-width: 120px;
 }
 
-.search-event-form select {
+.mo-search-event-form select {
     width: 100%;
     height: 48px;
     padding: 0 1rem;
@@ -86,12 +86,12 @@
 	max-width: 200px;
 }
 
-.search-event-form select option {
+.mo-search-event-form select option {
     color: #000;
     background: #fff;
 }
 
-.btn-submit {
+.mo-btn-submit {
     padding: 0 1.8rem;
     height: 53px;             
     font-size: 1rem;
@@ -111,11 +111,11 @@
     justify-content: center;
 }
 
-.btn-submit:hover:not(:disabled) {
+.mo-btn-submit:hover:not(:disabled) {
     transform: translateY(-3px);
     box-shadow: 0 12px 36px rgba(16,44,107,0.28);
 }
-.btn-submit:disabled {
+.mo-btn-submit:disabled {
     opacity: 0.6;
     cursor: not-allowed;
     transform: none;
@@ -123,17 +123,17 @@
 }
 
 @media (max-width: 1110px) {
-    .search-event-form {
+    .mo-search-event-form {
         flex-wrap: wrap;
         gap: 0.75rem;
     }
     
-    .search-group {
+    .mo-search-group {
         flex: 1 1 100%;
         max-width: 100%;
     }
     
-    .btn-submit {
+    .mo-btn-submit {
         flex: 1 1 100%;
         margin-left: 0;
         max-width: 100%;
@@ -141,35 +141,35 @@
 }
 
 @media (max-width: 780px) {
-    .search-event-form {
+    .mo-search-event-form {
         flex-direction: column;
         align-items: stretch;
         gap: 1rem;
     }
-    .search-group {
+    .mo-search-group {
         flex-direction: column;
         align-items: stretch;
         height: auto;
         padding: 0.6rem;
         border-radius: 12px;
     }
-    .search-input,
-    .search-select { flex: unset; width: 100%; padding-left: 0; }
-    .search-event-form input { border-radius: 10px; height: 48px; }
-    .search-event-form select { height: 48px; border-radius: 10px; background: rgba(255,255,255,0.10); color: #fff; }
-    .btn-submit { width: 100%; margin-left: 0; height: 50px; border-radius: 10px; }
-    .search-icon { display: none; }
+    .mo-search-input,
+    .mo-search-select { flex: unset; width: 100%; padding-left: 0; }
+    .mo-search-event-form input { border-radius: 10px; height: 48px; }
+    .mo-search-event-form select { height: 48px; border-radius: 10px; background: rgba(255,255,255,0.10); color: #fff; }
+    .mo-btn-submit { width: 100%; margin-left: 0; height: 50px; border-radius: 10px; }
+    .mo-search-icon { display: none; }
 }
 
 @media (max-width: 480px) {
-    .search-event-form {
+    .mo-search-event-form {
         flex-direction: column;
         align-items: stretch;
         gap: 0.75rem;
         padding: 0;
     }
 
-    .search-group {
+    .mo-search-group {
         flex-direction: column;
         align-items: stretch;
         height: auto;
@@ -178,17 +178,17 @@
         gap: 0.5rem;
     }
 
-    .search-icon {
+    .mo-search-icon {
         display: none;
     }
 
-    .search-input {
+    .mo-search-input {
         flex: unset;
         width: 100%;
         min-width: unset;
     }
 
-    .search-event-form input {
+    .mo-search-event-form input {
         max-width: 100%;
         height: 44px;
         padding: 0 1rem;
@@ -197,14 +197,14 @@
         margin-bottom: 0;
     }
 
-    .search-select {
+    .mo-search-select {
         flex: unset;
         width: 100%;
         padding-left: 0;
         min-width: unset;
     }
 
-    .search-event-form select {
+    .mo-search-event-form select {
         max-width: 100%;
         height: 44px;
         padding: 0 0.75rem;
@@ -219,7 +219,7 @@
         margin-bottom: 0;
     }
 
-    .btn-submit {
+    .mo-btn-submit {
         width: 100%;
         height: 46px;
         padding: 0 1.5rem;
@@ -229,7 +229,7 @@
         font-weight: 700;
     }
 
-    .btn-submit:hover:not(:disabled) {
+    .mo-btn-submit:hover:not(:disabled) {
         transform: translateY(-2px);
     }
 }

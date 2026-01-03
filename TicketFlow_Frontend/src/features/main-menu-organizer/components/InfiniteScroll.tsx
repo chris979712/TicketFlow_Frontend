@@ -39,22 +39,22 @@ export function InfiniteScrollEvents(){
             >
                 {
                     items.map(event => (
-                        <section className="event-section" key={event.event_id}>
-                            <img className="event-image" src={event.imageUrl ? event.imageUrl : ImageLogo} alt={`Promocial del evento ${event.event_name}`}/>
-                            <div className="event-details">
-                                <div className="event-main-details">
-                                    <h3 className="event-name">{event.event_name}</h3>
-                                    <p className="event-description">{event.description}</p>
+                        <section className="mo-event-section" key={event.event_id}>
+                            <img className="mo-event-image" src={event.imageUrl ? event.imageUrl : ImageLogo} alt={`Promocial del evento ${event.event_name}`}/>
+                            <div className="mo-event-details">
+                                <div className="mo-event-main-details">
+                                    <h3 className="mo-event-name">{event.event_name}</h3>
+                                    <p className="mo-event-description">{event.description}</p>
                                 </div>
-                                <p className="event-category"><strong>Tipo de evento: </strong>{event.category}</p>
-                                <p className="event-location"><strong>Ubicación: </strong>{GetEventLocation(event.event_location_id)}</p>
-                                <p className="event-state"><strong>Estado del evento: </strong>{GetEventStatusLabel(event.event_status_id)}</p>
-                                <p className="event-schedule"><strong>Horario de evento: </strong> {event.event_date} en horario de {event.start_time} - {event.end_time}</p>
+                                <p className="mo-event-category"><strong>Tipo de evento: </strong>{event.category}</p>
+                                <p className="mo-event-location"><strong>Ubicación: </strong>{GetEventLocation(event.event_location_id)}</p>
+                                <p className="mo-event-state"><strong>Estado del evento: </strong>{GetEventStatusLabel(event.event_status_id)}</p>
+                                <p className="mo-event-schedule"><strong>Horario de evento: </strong> {event.event_date} en horario de {event.start_time} - {event.end_time}</p>
                                 <p><strong></strong>Creado el: {FormatDate(event.created_at)} - Actualizado por última vez: {FormatDate(event.updated_at)}</p>
                             </div>
                             {
                                 (event.event_status_id !== EVENT_STATUS.CLOSED && event.event_status_id !== EVENT_STATUS.COMPLETED) && (
-                                    <Link to="/dashboard-organizer/event-edition" className="edit-event-btn" onClick={() => setSelectedEvent({
+                                    <Link to="/dashboard-organizer/event-edition" className="mo-edit-event-btn" onClick={() => setSelectedEvent({
                                         ...event,
                                         start_time: event.start_time.slice(0,8),
                                         end_time: event.end_time.slice(0,8)

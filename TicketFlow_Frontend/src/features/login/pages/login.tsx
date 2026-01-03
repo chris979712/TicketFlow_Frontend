@@ -4,15 +4,15 @@ import './login.css'
 
 export default function Login(){
     return(
-        <div className="login">
-            <section className="welcome-messages-section">
-                <img src ={ticketFlow_horizontal} alt="Logo de TicketFlow en posición horizontal" title="TicketFlowH" className="img_logo_horizontal"/>
+        <div className="lg-login">
+            <section className="lg-welcome-messages-section">
+                <img src ={ticketFlow_horizontal} alt="Logo de TicketFlow en posición horizontal" title="TicketFlowH" className="lg-img_logo_horizontal"/>
                 <h2>Bienvenido</h2>
-                <p className="p_welcomeMessage">Descubre eventos, recibe alertas sobre tus artistas favoritos, obras de teatro y más. Además de la impresión de tus boletos de forma rápida y segura.</p>
+                <p className="lg-p_welcomeMessage">Descubre eventos, recibe alertas sobre tus artistas favoritos, obras de teatro y más. Además de la impresión de tus boletos de forma rápida y segura.</p>
             </section>
-            <section className="register-section">
+            <section className="lg-register-section">
                 <h2>Iniciar sesión</h2>
-                <p className="p_indications"><strong>Si no tiene una cuenta, de click en registrarse.</strong></p>
+                <p className="lg-p_indications"><strong>Si no tiene una cuenta, de click en registrarse.</strong></p>
                 <LoginForm />
             </section>
         </div>

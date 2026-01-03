@@ -9,11 +9,11 @@ export default function DashboardAttendee(){
     const {isAttendee} = useNavigationAttendee();
     return (
         isAttendee && (
-            <main className="menu-attendee-root">
+            <main className="ma-menu-attendee-root">
                 <Header></Header>
                 <MainMenuAttendeeProvider>
-                    <section className="even-search">
-                        <h2 className="event-indication-search">Búsqueda de eventos</h2>
+                    <section className="ma-even-search">
+                        <h2 className="ma-event-indication-search">Búsqueda de eventos</h2>
                         <SearcherEvent />
                     </section>
                     <InfiniteScrollEventsAttendee />

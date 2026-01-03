@@ -30,7 +30,7 @@ export default function ReservationPayment(){
 
     return (
         isAttendee && (
-            <div className='payment-page-container'>
+            <div className='tp-payment-page-container'>
                 {
                     alert && (
                         <div aria-live="assertive">
@@ -42,8 +42,8 @@ export default function ReservationPayment(){
                         </div>
                     )
                 }
-                <header className="header-attendee" role="banner">
-                    <div className='div_welcome'>
+                <header className="tp-header-attendee" role="banner">
+                    <div className='tp-div_welcome'>
                         <img
                             src={TicketFlowWhiteLogo}
                             alt=""
@@ -60,12 +60,12 @@ export default function ReservationPayment(){
                         </Link>
                     </div>
 
-                    <h1 className="page-title">
+                    <h1 className="tp-page-title">
                         Pago de reserva de boletos
                     </h1>
 
                     <strong
-                        className='page-warning'
+                        className='tp-page-warning'
                         role="alert"
                     >
                         Abandonar esta página hará inválida su reserva y deberá volver a realizarla o esperar a que los asientos estén disponibles.
@@ -73,7 +73,7 @@ export default function ReservationPayment(){
                 </header>
 
                 <section
-                    className='payment-section'
+                    className='tp-payment-section'
                     aria-label="Proceso de pago de reserva"
                 >
                     <ConfirmModal 
@@ -87,9 +87,9 @@ export default function ReservationPayment(){
                     {
                         clientSecret && (
                             <Elements stripe={StripePromise} options={{ clientSecret }}>
-                                <div className='payment-layout'>
+                                <div className='tp-payment-layout'>
                                     <div
-                                        className='payment-form'
+                                        className='tp-payment-form'
                                         aria-live="polite"
                                     >
                                         <Countdown
@@ -100,22 +100,22 @@ export default function ReservationPayment(){
                                         <CheckOutForm />
                                     </div>
                                     <aside
-                                        className='summary-content'
+                                        className='tp-summary-content'
                                         aria-label="Resumen de la compra"
                                     >
-                                        <h2 className='summary-title'>
+                                        <h2 className='tp-summary-title'>
                                             Resúmen de compra
                                         </h2>
-                                        <div className="resume-grid">
+                                        <div className="tp-resume-grid">
                                             <span>Cantidad de boletos a comprar:</span>
                                             <span>{reservation?.payment_snapshot.ticketQuantity} boleto(s)</span>
                                             <span>Subtotal:</span>
                                             <span>$ {reservation?.payment_snapshot.subtotal} pesos</span>
                                             <span>Impuestos IVA({reservation?.payment_snapshot.tax_percentage}%):</span>
                                             <span>$ {reservation?.payment_snapshot.tax_amount} pesos</span>
-                                            <div className="resume-separator"></div>
-                                            <span className="summary-total">Total a pagar:</span>
-                                            <span className="summary-total-value">
+                                            <div className="tp-resume-separator"></div>
+                                            <span className="tp-summary-total">Total a pagar:</span>
+                                            <span className="tp-summary-total-value">
                                                 $ {reservation?.payment_snapshot.total_amount} pesos
                                             </span>
                                         </div>

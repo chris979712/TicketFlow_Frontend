@@ -39,7 +39,7 @@ export function EventCreationForm(){
     } = useCreateEvent();
 
     return (
-        <section className="event-forms" aria-labelledby="event-info-title">
+        <section className="cre-event-forms" aria-labelledby="event-info-title">
             {
                 alert && (
                     <Alert type={alert.type} 
@@ -47,10 +47,10 @@ export function EventCreationForm(){
                         onClose={() => setAlert(null)} />
                 )
             }
-            <form ref={formRef} className="event-creation-form" onSubmit={(e) => {e.preventDefault(); setShowModal(true)}}>
+            <form ref={formRef} className="cre-event-creation-form" onSubmit={(e) => {e.preventDefault(); setShowModal(true)}}>
                 <h2>Información general del evento</h2>
                 {
-                    errorValidationDeatils && <p className="error-format-inputs">{'Verifique los datos: '+errorValidationDeatils}</p>
+                    errorValidationDeatils && <p className="cre-error-format-inputs">{'Verifique los datos: '+errorValidationDeatils}</p>
                 }
                 <ConfirmModal 
                     isOpen={showModal}
@@ -120,12 +120,12 @@ export function EventCreationForm(){
                     required
                     aria-describedby="promo-img-help"
                 />
-                <p className="images-restrictions">
+                <p className="cre-images-restrictions">
                     Seleccione una imagen promocional en formato JPG o PNG. El tamaño máximo recomendado es 5 MB.
                 </p>
-                <div className="time-picker-group">
-                    <p className="time-picker-label">Horario del evento:</p>
-                    <div className="time-picker-inputs">
+                <div className="cre-time-picker-group">
+                    <p className="cre-time-picker-label">Horario del evento:</p>
+                    <div className="cre-time-picker-inputs">
                         <ResponsiveTimePickers label="Hora de inicio:" aria-label="Hora de inicio del evento" value={dayjs(`2020-01-01T${startingHour}`)}  onChange={(newValue: Dayjs | null) => {
                             if (newValue) setStartingHour(newValue.format("HH:mm:ss"));
                         }}/>
@@ -134,19 +134,19 @@ export function EventCreationForm(){
                         }}/>
                     </div>
                 </div>
-                <div className="prices-config" aria-labelledby="price-config-title"> 
+                <div className="cre-prices-config" aria-labelledby="price-config-title"> 
                     <h2>Configuración de precios de boletos</h2>
-                    <p className="prices-warning">Recuerde que la configuración en el precio de boletos, no podrá ser modificado una vez creado el evento.</p>
+                    <p className="cre-prices-warning">Recuerde que la configuración en el precio de boletos, no podrá ser modificado una vez creado el evento.</p>
                     {
-                        errorSections && <p className="error-format-inputs" role="alert">{errorSections}</p>
+                        errorSections && <p className="cre-error-format-inputs" role="alert">{errorSections}</p>
                     }
                     {
                         sections.length > 0 ? (
                             sections.map((section,index) => (
-                                <div key={index} className="section-price-config"> 
+                                <div key={index} className="cre-section-price-config"> 
                                     <h3 >{section.sectionName}</h3>
                                     <p>Total de asientos: {section.totalSeats}</p>
-                                    <section className="section-inputs">
+                                    <section className="cre-section-inputs">
                                         <Input 
                                             name={`price_${index}`}
                                             id={`price_${index}`}
@@ -170,17 +170,17 @@ export function EventCreationForm(){
                                         />
                                     </section>
                                     {
-                                        sectionErrors[index] && <p className="error-format-inputs" role="alert">{sectionErrors[index]}</p>
+                                        sectionErrors[index] && <p className="cre-error-format-inputs" role="alert">{sectionErrors[index]}</p>
                                     }
                                 </div>
                             ))
                         ) : (
-                            <p className="no-sections-available">No hay secciones disponibles.</p>
+                            <p className="cre-no-sections-available">No hay secciones disponibles.</p>
                         )
                     }
                 </div>
-                <div className="submit-container">
-                    <button type="submit" className="btn_submit" disabled={loading}>{loading ? <Loader /> : 'Crear evento'}</button>
+                <div className="cre-submit-container">
+                    <button type="submit" className="cre-btn_submit" disabled={loading}>{loading ? <Loader /> : 'Crear evento'}</button>
                 </div>
             </form>
         </section>

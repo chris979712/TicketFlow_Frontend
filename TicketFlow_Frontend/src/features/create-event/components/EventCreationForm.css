@@ -1,4 +1,4 @@
-.event-creation-form {
+.cre-event-creation-form {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
@@ -15,11 +15,11 @@
     box-sizing: border-box;
 }
 
-.event-creation-form .input-wrapper .input-label {
+.cre-event-creation-form .input-wrapper .input-label {
     color: #FFFFFF !important;
 }
 
-.event-creation-form h2 {
+.cre-event-creation-form h2 {
     grid-column: 1 / -1;
     text-align: center;
     font-size: 1.8rem;
@@ -28,14 +28,14 @@
     margin-bottom: 1rem;
 }
 
-.images-restrictions{
+.cre-images-restrictions{
     color: white;
     text-align: center;
     margin-top: 0;
     font-size: 0.9rem;
 }
 
-.error-format-inputs {
+.cre-error-format-inputs {
     grid-column: 1 / -1;
     text-align: center;
     color: #F87171; 
@@ -43,14 +43,14 @@
     font-weight: 600;
 }
 
-.event-creation-form input,
-.event-creation-form select,
-.event-creation-form textarea {
+.cre-event-creation-form input,
+.cre-event-creation-form select,
+.cre-event-creation-form textarea {
     width: 100%;
     box-sizing: border-box;
 }
 
-.time-picker-group {
+.cre-time-picker-group {
     grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
@@ -58,45 +58,46 @@
     background: white;
 }
 
-.time-picker-label {
+.cre-time-picker-label {
     font-weight: 600;
     color: black; 
     text-align: center;
     margin-bottom: 0.5rem;
 }
 
-.time-picker-inputs {
+.cre-time-picker-inputs {
     display: flex;
     gap: 1rem;
     justify-content: center;
     max-width: 70%;
+    margin-left: 15%;
 }
 
-.time-picker-inputs > div {
+.cre-time-picker-inputs > div {
     background-color: #FFFFFF;
     border-radius: 8px; 
     padding: 2px 8px;
 }
 
-.time-picker-inputs .MuiInputLabel-root,
-.time-picker-inputs label {
+.cre-time-picker-inputs .MuiInputLabel-root,
+.cre-time-picker-inputs label {
     color: #000000 !important;
     font-weight: 600;
 }
 
-.time-picker-inputs .MuiInputLabel-root.Mui-focused,
-.time-picker-inputs .MuiInputLabel-root.MuiFormLabel-filled {
+.cre-time-picker-inputs .MuiInputLabel-root.Mui-focused,
+.cre-time-picker-inputs .MuiInputLabel-root.MuiFormLabel-filled {
     color: #000000 !important;
 }
 
 
-.time-picker-inputs label,
-.time-picker-inputs input,
-.time-picker-inputs button svg {
+.cre-time-picker-inputs label,
+.cre-time-picker-inputs input,
+.cre-time-picker-inputs button svg {
     color: #000000 !important; 
 }
 
-.prices-config {
+.cre-prices-config {
     grid-column: 1 / -1;
     padding: 2rem;
     background: rgba(0, 0, 0, 0.1);
@@ -105,20 +106,20 @@
     box-sizing: border-box;
 }
 
-.prices-config h2 {
+.cre-prices-config h2 {
     text-align: center;
     font-size: 1.8rem;
     color: #FFFFFF;
     margin-bottom: 1rem;
 }
 
-.prices-warning {
+.cre-prices-warning {
     color: white;
     text-align: center;
     text-transform: uppercase;
 }
 
-.section-price-config {
+.cre-section-price-config {
     margin-bottom: 1.5rem;
     padding: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -126,41 +127,41 @@
     background-color: rgba(255, 255, 255, 0.05); 
 }
 
-.section-price-config h3 {
+.cre-section-price-config h3 {
     color: #f0f0f0; 
     margin-bottom: 0.5rem;
 }
-.section-price-config p {
+.cre-section-price-config p {
     color: #d1d1d1; 
 }
 
 
-.no-sections-available {
+.cre-no-sections-available {
     font-size: 1.5rem;
     justify-content: center;
     text-align: center;
     color: #f0f0f0; 
 }
 
-.section-inputs {
+.cre-section-inputs {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
-.section-inputs .input-wrapper {
+.cre-section-inputs .input-wrapper {
     flex: 1;
     min-width: 240px;
 }
 
-.submit-container {
+.cre-submit-container {
     grid-column: 1 / -1;
     display: flex;
     justify-content: center;
     margin-top: 1.5rem;
 }
 
-.btn_submit {
+.cre-btn_submit {
     width: 170px;
     background-color: #3b82f6; 
     color: white;
@@ -173,7 +174,7 @@
     transition: background-color 0.3s ease;
 }
 
-.btn_submit:hover {
+.cre-btn_submit:hover {
     background-color: #2563eb; 
 }
 
@@ -194,167 +195,168 @@ input[type="file"]:hover {
 
 @media (max-width: 768px) {
 
-    .event-creation-form {
+    .cre-event-creation-form {
         grid-template-columns: 1fr;
         padding: 1.5rem 1rem;
         gap: 1.25rem;
         margin: 1rem auto;
     }
 
-    .event-creation-form h2 {
+    .cre-event-creation-form h2 {
         font-size: 1.5rem;
         margin-bottom: 0.75rem;
     }
 
-    .error-format-inputs {
+    .cre-error-format-inputs {
         font-size: 1rem;
     }
 
-    .time-picker-group {
+    .cre-time-picker-group {
         gap: 0.5rem;
     }
 
-    .time-picker-label {
+    .cre-time-picker-label {
         font-size: 0.95rem;
         margin-bottom: 0.5rem;
     }
 
-    .time-picker-inputs {
+    .cre-time-picker-inputs {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         gap: 0.75rem;
+        margin-left: 15%;
     }
 
-    .time-picker-inputs > div {
+    .cre-time-picker-inputs > div {
         width: 100%;
         padding: 4px 10px;
     }
 
-    .prices-config {
+    .cre-prices-config {
         padding: 1.25rem 1rem;
     }
 
-    .prices-config h2 {
+    .cre-prices-config h2 {
         font-size: 1.3rem;
     }
 
-    .prices-warning {
+    .cre-prices-warning {
         font-size: 0.85rem;
     }
 
-    .section-price-config {
+    .cre-section-price-config {
         padding: 0.75rem;
     }
 
-    .section-price-config h3 {
+    .cre-section-price-config h3 {
         font-size: 1.1rem;
     }
 
-    .section-inputs {
+    .cre-section-inputs {
         flex-direction: column;
         gap: 0.75rem;
     }
 
-    .section-inputs .input-wrapper {
+    .cre-section-inputs .input-wrapper {
         min-width: 100%;
     }
 
-    .btn_submit {
+    .cre-btn_submit {
         width: 100%;
         font-size: 1.1rem;
         padding: 0.75rem 1rem;
     }
 
-    .no-sections-available {
+    .cre-no-sections-available {
         font-size: 1.2rem;
     }
 }
 
 @media (max-width: 480px) {
-    .event-creation-form {
+    .cre-event-creation-form {
         grid-template-columns: 1fr;
         padding: 1.25rem 0.75rem;
         gap: 1rem;
         margin: 0.75rem auto;
     }
 
-    .event-creation-form h2 {
+    .cre-event-creation-form h2 {
         font-size: 1.4rem;
         margin-bottom: 0.5rem;
     }
 
-    .error-format-inputs {
+    .cre-error-format-inputs {
         font-size: 0.9rem;
         padding: 0 0.5rem;
     }
 
-    .time-picker-group {
+    .cre-time-picker-group {
         gap: 0.5rem;
     }
 
-    .time-picker-label {
+    .cre-time-picker-label {
         font-size: 0.9rem;
         margin-bottom: 0.5rem;
     }
 
-    .time-picker-inputs {
+    .cre-time-picker-inputs {
         max-width: 100%;
         flex-direction: column;
         gap: 0.75rem;
         padding: 0;
     }
 
-    .time-picker-inputs > div {
+    .cre-time-picker-inputs > div {
         width: 100%;
         max-width: 100%;
         padding: 10px 12px;
         box-sizing: border-box;
     }
 
-    .prices-config {
+    .cre-prices-config {
         padding: 1rem 0.75rem;
     }
 
-    .prices-config h2 {
+    .cre-prices-config h2 {
         font-size: 1.25rem;
     }
 
-    .prices-warning {
+    .cre-prices-warning {
         font-size: 0.8rem;
         line-height: 1.3;
     }
 
-    .section-price-config {
+    .cre-section-price-config {
         padding: 0.75rem;
         margin-bottom: 1rem;
     }
 
-    .section-price-config h3 {
+    .cre-section-price-config h3 {
         font-size: 1rem;
     }
 
-    .section-price-config p {
+    .cre-section-price-config p {
         font-size: 0.9rem;
     }
 
-    .section-inputs {
+    .cre-section-inputs {
         flex-direction: column;
         gap: 0.75rem;
     }
 
-    .section-inputs .input-wrapper {
+    .cre-section-inputs .input-wrapper {
         min-width: 100%;
     }
 
-    .btn_submit {
+    .cre-btn_submit {
         width: 100%;
         font-size: 1rem;
         padding: 0.7rem 1rem;
     }
 
-    .no-sections-available {
+    .cre-no-sections-available {
         font-size: 1.1rem;
     }
 

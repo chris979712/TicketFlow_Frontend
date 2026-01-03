@@ -1,4 +1,4 @@
-.login {
+.lg-login {
     display: flex;
     height: 100vh;
     max-height: 100vh;
@@ -7,7 +7,7 @@
     font-size: clamp(14px, 1vw + 0.5rem, 18px); 
 }
 
-.welcome-messages-section {
+.lg-welcome-messages-section {
     background-color: #e6eef9;
     flex: 0.35;
     display: flex;
@@ -20,7 +20,7 @@
     overflow: hidden;
 }
 
-.welcome-messages-section h2 {
+.lg-welcome-messages-section h2 {
     font-size: 3rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -31,14 +31,14 @@
     letter-spacing: 1px;
 }
 
-.p_welcomeMessage {
+.lg-p_welcomeMessage {
     font-size: 1.5rem;
     line-height: 1.5;
     max-width: 320px;
     color: #2f2f2f;
 }
 
-.register-section {
+.lg-register-section {
     flex: 0.65;
     background-color: #fff;
     display: flex;
@@ -50,20 +50,20 @@
     overflow-y: hidden;
 }
 
-.register-section h2 {
+.lg-register-section h2 {
     font-size: 3.5rem;
     font-weight: 700;
     color: #0c1d57;
 }
 
-.p_indications {
+.lg-p_indications {
     font-size: 1.25rem;
     padding-bottom: 1rem;
     padding-top: 0.5rem;
     color: #333;
 }
 
-.img_logo {
+.lg-img_logo {
     width: 60%;
     max-width: 300px;
     height: auto;
@@ -71,13 +71,13 @@
     padding: 0.25rem;
 }
 
-.img_logo_horizontal {
+.lg-img_logo_horizontal {
     width: 80%;
     max-width: 300px;
     height: auto;
 }
 
-.register-section button.btn_submit {
+.lg-register-section button.btn_submit {
     background-color: #0c63e4;
     color: white;
     border: none;
@@ -87,11 +87,11 @@
     font-weight: bold;
 }
 
-.register-section button.btn_submit:hover {
+.lg-register-section button.btn_submit:hover {
     background-color: #0a4fb3;
 }
 
-.register-section form {
+.lg-register-section form {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     padding: 2.5rem;
     border-radius: 10px;
@@ -101,45 +101,45 @@
     margin: 0;
 }
 
-.register-section Input {
+.lg-register-section Input {
     font-size: 1rem;
 }
 
 
 @media (max-width: 900px) {
-    .login {
+    .lg-login {
         flex-direction: column;
         height: auto;
         max-height: none;
         font-size: clamp(14px, 2vw, 16px);
     }
 
-    .welcome-messages-section,
-    .register-section {
+    .lg-welcome-messages-section,
+    .lg-register-section {
         flex: none;
         width: 100%;
         height: auto;
         padding: 1rem;
     }
 
-    .img_logo {
+    .lg-img_logo {
         width: 200px;
     }
 
-    .img_logo_horzontal{
+    .lg-img_logo_horzontal{
         width: 800px;
     }
 }
 
 @media (max-width: 480px) {
-    .login {
+    .lg-login {
         flex-direction: column;
         height: auto;
         max-height: none;
         overflow-y: auto;
     }
 
-    .welcome-messages-section {
+    .lg-welcome-messages-section {
         flex: none;
         width: 100%;
         height: auto;
@@ -151,20 +151,20 @@
         text-align: center;
     }
 
-    .welcome-messages-section h2 {
+    .lg-welcome-messages-section h2 {
         font-size: 1.8rem;
         border-bottom-width: 3px;
         padding-bottom: 0.4rem;
         margin-bottom: 0.75rem;
     }
 
-    .p_welcomeMessage {
+    .lg-p_welcomeMessage {
         font-size: 1rem;
         max-width: 90%;
         padding: 0 0.5rem;
     }
 
-    .register-section {
+    .lg-register-section {
         flex: none;
         width: 100%;
         height: auto;
@@ -172,7 +172,7 @@
         box-sizing: border-box;
     }
 
-    .register-section form {
+    .lg-register-section form {
         width: 100%;
         max-width: 100%;
         padding: 1.5rem;
@@ -180,36 +180,36 @@
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    .register-section h2 {
+    .lg-register-section h2 {
         font-size: 2rem;
         margin-bottom: 0.5rem;
     }
 
-    .p_indications {
+    .lg-p_indications {
         font-size: 1rem;
         padding-bottom: 0.75rem;
         padding-top: 0.25rem;
     }
 
-    .register-section form {
+    .lg-register-section form {
         justify-content: center;
         max-width: 400px;
         padding: 1.25rem;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    .img_logo {
+    .lg-img_logo {
         width: 70%;
         max-width: 200px;
         margin-bottom: 0.75rem;
     }
 
-    .img_logo_horizontal {
+    .lg-img_logo_horizontal {
         width: 90%;
         max-width: 250px;
     }
 
-    .register-section button.btn_submit {
+    .lg-register-section button .lg-btn_submit {
         padding: 0.7rem 1rem;
         font-size: 0.95rem;
     }

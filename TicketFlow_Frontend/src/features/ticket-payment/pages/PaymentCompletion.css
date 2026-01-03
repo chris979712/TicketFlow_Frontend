@@ -1,4 +1,4 @@
-.completion-section {
+.tp-completion-section {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -8,7 +8,7 @@
     padding: 2rem;
 }
 
-.loading-container {
+.tp-loading-container {
     text-align: center;
     padding: 3rem;
     background: white;
@@ -17,7 +17,7 @@
     animation: fadeIn 0.3s ease;
 }
 
-.spinner {
+.tp-spinner {
     width: 50px;
     height: 50px;
     border: 4px solid #e5e7eb;
@@ -27,7 +27,7 @@
     animation: spin 0.8s linear infinite;
 }
 
-.loading-container p {
+.tp-loading-container p {
     color: #0c1d57;
     font-size: 18px;
     font-weight: 500;

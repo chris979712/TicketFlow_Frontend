@@ -14,9 +14,9 @@ export function CheckOutForm() {
                         onClose={() => setAlert(null)}
                     />
                 )}
-            <form onSubmit={handleSubmit} className="payment-form">
+            <form onSubmit={handleSubmit} className="tp-payment-form">
                 <PaymentElement options={paymentElementOptions} />
-                <button disabled={isLoading || !stripe || !elements}className="pay-button">
+                <button disabled={isLoading || !stripe || !elements}className="tp-pay-button">
                     {isLoading ? 'Procesando...' : 'Pagar ahora'}
                 </button>
                 {message && <p className="payment-message">{message}</p>}

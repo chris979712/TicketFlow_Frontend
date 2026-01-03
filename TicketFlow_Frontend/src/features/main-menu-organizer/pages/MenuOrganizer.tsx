@@ -11,11 +11,11 @@ export default function DashboardOrganizer(){
     return (
         isOrganizer && (
             <>
-                <main className="dashboard-page">
+                <main className="mo-dashboard-page">
                     <Header></Header>
                     <MainMenuOrganizerProvider>
-                        <section className="event-form-search">
-                            <h2 className="event-indication-search">Búsqueda de eventos</h2>
+                        <section className="mo-event-form-search">
+                            <h2 className="mo-event-indication-search">Búsqueda de eventos</h2>
                             <SearchEventForm />
                         </section>
                         <InfiniteScrollEvents />

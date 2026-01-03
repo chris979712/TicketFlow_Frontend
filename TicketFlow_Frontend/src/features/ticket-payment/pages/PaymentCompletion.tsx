@@ -9,15 +9,15 @@ function CompletionContent() {
     const {isChecking,alert,setAlert} = useCompletionContent()
 
     return (
-        <section className="completion-section">
+        <section className="tp-completion-section">
             {isChecking ? (
-                <div className="loading-container">
+                <div className="tp-loading-container">
                     <div className="spinner"></div>
                     <p>Verificando el estado de tu pago...</p>
                 </div>
             ) : (
                 alert && (
-                    <div className="loading-container">
+                    <div className="tp-loading-container">
                         <Alert
                             type={alert.type}
                             message={alert.message}

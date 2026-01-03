@@ -1,4 +1,4 @@
-.btn-submit {
+.rg-btn-submit {
     width: 100%;
     padding: 10px;
     border: none;
@@ -12,11 +12,11 @@
     height: auto;
 }
 
-.btn-submit:hover{
+.rg-btn-submit:hover{
     background-color: #2a84ea;
 }
 
-.Form {
+.rg-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +32,7 @@
     overflow-x: hidden;
 }
 
-.error-format-inputs{
+.rg-error-format-inputs{
     color: red;
     font-size: 1rem;
     justify-content: center;

@@ -1,4 +1,4 @@
-.Form {
+.lg-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +12,7 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.btn_submit {
+.lg-btn_submit {
     width: 100%;
     padding: 10px;
     height: auto;
@@ -26,24 +26,24 @@
     transition: background-color 0.2s ease;
 }
 
-.error-format-inputs{
+.lg-error-format-inputs{
     color: red;
     font-size: 1rem;
 }
 
-.btn_submit:hover {
+.lg-btn_submit:hover {
     background-color: #274bb1;
 }
 
-.a-recovery-password{
+.lg-a-recovery-password{
     color: gray;
 }
 
-.a-register {
+.lg-a-register {
     color: blue;
 }
 
-.sr-only {
+.lg-sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -55,7 +55,7 @@
 }
 
 @media (max-width: 480px) {
-    .Form{
+    .lg-form{
         gap: 0.65rem;
         padding: 0.65rem;
         max-width: 90%;
@@ -64,23 +64,23 @@
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    #txt_username,
-    #txt_password {
+    #lg-txt_username,
+    #lg-txt_password {
         max-width: 90%;
     }
 
-    .btn_submit {
+    .lg-btn_submit {
         padding: 0.7rem;
         font-size: 0.95rem;
         border-radius: 6px;
     }
 
-    .error-format-inputs {
+    .lg-error-format-inputs {
         font-size: 0.8rem;
     }
 
-    .a-recovery-password,
-    .a-register {
+    .lg-a-recovery-password,
+    .lg-a-register {
         font-size: 0.85rem;
     }
 }

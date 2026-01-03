@@ -40,19 +40,19 @@ export function InfiniteScrollEventsAttendee(){
                 loader={<Loader />}
                 endMessage={<EndMessage />}
             >
-                <section className="events">
+                <section className="ma-events">
                     {
                         events.map(event => (
-                            <div className="event-item" key={event.event_id}>
-                                <img className="event-image" src={event.imageUrl ? event.imageUrl : ImageLogo} alt={`Promocial del evento ${event.event_name}`}/>
-                                <div className="event-details">
-                                    <h3 className="event-name">{event.event_name}</h3>
-                                    <p className="event-description">{event.description}</p>
+                            <div className="ma-event-item" key={event.event_id}>
+                                <img className="ma-event-image" src={event.imageUrl ? event.imageUrl : ImageLogo} alt={`Promocial del evento ${event.event_name}`}/>
+                                <div className="ma-event-details">
+                                    <h3 className="ma-event-name">{event.event_name}</h3>
+                                    <p className="ma-event-description">{event.description}</p>
                                 </div>
-                                <div className="reveal">
-                                    <p className="event-schedule">Fecha: {event.event_date} en horario de {event.start_time} - {event.end_time}</p>
-                                    <p className="event-location"><strong>Ubicación: </strong>{GetEventLocation(event.event_location_id)}</p>
-                                    <strong className="event-status">Estado del evento: {GetEventStatusLabel(event.event_status_id)}</strong>
+                                <div className="ma-reveal">
+                                    <p className="ma-event-schedule">Fecha: {event.event_date} en horario de {event.start_time} - {event.end_time}</p>
+                                    <p className="ma-event-location"><strong>Ubicación: </strong>{GetEventLocation(event.event_location_id)}</p>
+                                    <strong className="ma-event-status">Estado del evento: {GetEventStatusLabel(event.event_status_id)}</strong>
                                     {
                                         event.event_status_id === EVENT_STATUS_CODE.on_sale && (
                                             <Link to={`/dashboard-attendee/event-details/${event.event_name}`} onClick={() => setSelectedEvent({

@@ -4,8 +4,8 @@ import './Header.css'
 
 export function Header(){
     return (
-        <header className="header-menu-attendee">
-            <div className='div_welcome'>
+        <header className="ma-header-menu-attendee">
+            <div className='ma-div_welcome'>
                 <img src={TicketFlowWhiteLogo} alt="Ticket flog logo color blanco" title="logo de ticket flow"/>
             </div>
             <NavBar></NavBar>

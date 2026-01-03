@@ -19,7 +19,7 @@ export function SearchEventForm() {
     } = useSearchEvent();
     
     return (
-        <form className="search-event-form" onSubmit={ObtainEvents}>
+        <form className="mo-search-event-form" onSubmit={ObtainEvents}>
             {alert && (
                 <Alert
                     type={alert.type}
@@ -27,9 +27,9 @@ export function SearchEventForm() {
                     onClose={() => setAlert(null)}
                 />
             )}
-            <div className="search-group">
-                <Search className="search-icon" />
-                <div className="search-input">
+            <div className="mo-search-group">
+                <Search className="mo-search-icon" />
+                <div className="mo-search-input">
                     <Input
                         id="txt_name"
                         name="event_name"
@@ -38,7 +38,7 @@ export function SearchEventForm() {
                         onChange={ValidateEventName}
                     />
                 </div>
-                <div className="search-select">
+                <div className="mo-search-select">
                     <Select 
                         name="category"
                         id="cmb_category"
@@ -52,7 +52,7 @@ export function SearchEventForm() {
                         onChange={ValidateEventCategory}
                     />
                 </div>
-                <div className="search-select">
+                <div className="mo-search-select">
                     <Select 
                         name="event_status"
                         id="cmb_eventStatus"
@@ -65,7 +65,7 @@ export function SearchEventForm() {
                     />
                 </div>
             </div>
-            <button type="submit" className="btn-submit" disabled={loading}>{loading ? <Loader /> : "Buscar"}</button>
+            <button type="submit" className="mo-btn-submit" disabled={loading}>{loading ? <Loader /> : "Buscar"}</button>
         </form>
     );
 }

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@400;600&display=swap');
 
-.notfound-page {
+.nf-notfound-page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +16,7 @@
     overflow: hidden;
 }
 
-.notfound-page h1 {
+.nf-notfound-page h1 {
     font-family: 'Oswald', sans-serif;
     font-size: 3.5rem;
     text-transform: uppercase;
@@ -25,14 +25,14 @@
     margin: 1.5rem 0 0.5rem 0;
 }
 
-.notfound-page p {
+.nf-notfound-page p {
     font-size: 1.25rem;
     color: #d1d5db;
     margin-bottom: 2rem;
     max-width: 400px;
 }
 
-.back-link-btn {
+.nf-back-link-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
@@ -49,7 +49,7 @@
     box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
 }
 
-.back-link-btn:hover {
+.nf-back-link-btn:hover {
     background-color: #2563eb;
     transform: translateY(-2px);
     box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
@@ -67,7 +67,7 @@
     }
 }
 
-.ticket-container {
+.nf-ticket-container {
     display: flex;
     max-width: 400px;
     width: 100%;
@@ -75,12 +75,12 @@
     animation: float 6s ease-in-out infinite;
 }
 
-.ticket-stub, .ticket-main {
+.nf-ticket-stub, .nf-ticket-main {
     background-color: #f1f1f1;
     color: #111;
 }
 
-.ticket-stub {
+.nf-ticket-stub {
     width: 120px;
     padding: 1.5rem;
     border-radius: 12px 0 0 12px;
@@ -93,18 +93,18 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
-.ticket-stub .code {
+.nf-ticket-stub .nf-code {
     font-size: 1.5rem;
     font-weight: 700;
     color: #1e3a8a;
 }
-.ticket-stub .number {
+.nf-ticket-stub .nf-number {
     font-size: 1.1rem;
     font-weight: 700;
     color: #e63946;
 }
 
-.ticket-main {
+.nf-ticket-main {
     flex: 1;
     display: flex;
     align-items: center;
@@ -113,7 +113,7 @@
     border-radius: 0 12px 12px 0;
 }
 
-.ticket-main-text {
+.nf-ticket-main-text {
     font-family: 'Oswald', sans-serif;
     font-size: 7rem;
     font-weight: 700;
@@ -121,7 +121,7 @@
     line-height: 1;
 }
 
-.ticket-stub::before, .ticket-main::after {
+.nf-ticket-stub::before, .nf-ticket-main::after {
     content: '';
     position: absolute;
     background-color: #0c1d57; 
@@ -130,11 +130,11 @@
     border-radius: 50%;
     z-index: 1;
 }
-.ticket-stub::before {
+.nf-ticket-stub::before {
     top: -10px;
     right: -10px;
 }
-.ticket-main::after {
+.nf-ticket-main::after {
     bottom: -10px;
     left: -10px;
 }
