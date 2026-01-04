@@ -19,10 +19,10 @@ export default function EventCreation(){
           </div>
         </header>
 
-        <div className="event-creation">
+        <section className="event-creation">
           <h1>Creación de evento</h1>
           <EventCreationForm />
-        </div>
+        </section>
       </main>
     )
   );

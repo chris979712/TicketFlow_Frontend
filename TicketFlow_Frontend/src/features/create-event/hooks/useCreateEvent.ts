@@ -197,9 +197,7 @@ export function useCreateEvent(){
             },2000)
         }else if(PutApiResponse.status === 401){
             setAlert({type: "error", message: PutApiResponse.message!})
-            setTimeout(() => {
-                Navigate("/")
-            },2000)
+            setTimeout(() => { handleLogout() }, 5000);
         }else if(PutApiResponse.status >= 400 && PutApiResponse.status <= 499){
             setAlert({type: "warning", message: PutApiResponse.message!});
         }else{

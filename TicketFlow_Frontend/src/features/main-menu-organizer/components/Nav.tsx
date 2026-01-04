@@ -11,7 +11,7 @@ export function NavBar(){
             <div className="mo-navbar-center">
                 <ul className="mo-navbar-links">
                     <li><Link to="/dashboard-organizer/event-creation">Crear evento</Link></li>
-                    <li><Link to="/reporte-evento">Reporte de evento</Link></li>
+                    <li><Link to="/dashboard-organizer/sales-report">Reporte de evento</Link></li>
                 </ul>
             </div>
             <button className="mo-btn-logout" onClick={handleLogout}><LogOutIcon size={20} aria-hidden="true"></LogOutIcon><span className="visually-hidden">Cerrar sesión</span></button>

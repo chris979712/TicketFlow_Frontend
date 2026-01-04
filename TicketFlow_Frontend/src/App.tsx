@@ -16,6 +16,7 @@ const ReservationPayment = lazy(() => import("./features/ticket-payment/pages/Re
 const Completion = lazy(() => import("./features/ticket-payment/pages/PaymentCompletion"));
 const MyTickets = lazy(() => import("./features/show-tickets/pages/MyTickets"));
 const TicketDetails = lazy(() => import("./features/show-tickets/pages/TicketDetails"));
+const SalesReport = lazy(() => import("./features/sales-report/pages/SalesReport"));
 
 function App() {
 
@@ -25,14 +26,15 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />}/>
             <Route path="/sign-in" element={<Register />}/>
+            <Route path="/password-recovery" element={<PasswordRecoveryProvider><PasswordRecovery/></PasswordRecoveryProvider>} />
             <Route path="/dashboard-organizer" element={<DashboardOrganizer/>}/>
             <Route path="/dashboard-organizer/event-creation" element={<EventCreation/>}/>
             <Route path="/dashboard-organizer/event-edition" element={<EventEdition />}/>
+            <Route path="/dashboard-organizer/sales-report" element={<SalesReport />}/>
             <Route path="/dashboard-attendee" element={<DashboardAttendee/>}/>
             <Route path="/dashboard-attendee/event-details/:eventName" element={<EventSaleDetails />} />
             <Route path="/dashboard-attendee/payment-reservation" element={<ReservationPayment />}/>
             <Route path="/dashboard-attendee/payment-reservation/completion" element={<Completion />}/>
-            <Route path="/password-recovery" element={<PasswordRecoveryProvider><PasswordRecovery/></PasswordRecoveryProvider>} />
             <Route path="/dashboard-attendee/my-tickets" element={<MyTickets/>}/>
             <Route path="/dashboard-attendee/my-tickets/:ticketId" element={<TicketDetails/>}/>
             <Route path="*" element={<NotFound />}></Route>

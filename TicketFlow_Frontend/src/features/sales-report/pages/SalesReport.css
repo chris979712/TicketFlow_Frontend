@@ -1,0 +1,52 @@
+.sr-sales-report-main {
+    background: url('/fondoConcierto.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sr-sales-report-header {
+    padding: 2rem;
+    border-bottom: 2px solid rgb(48, 89, 211);
+}
+.sr-page-welcome-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sr-page-welcome-div img{
+    max-width: 780px;
+    height: auto;
+}
+
+.sr-return-link {
+    margin: 1.5rem 0rem 0.5rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .3s ease, background-color .3s ease;
+    font-size: 18px;
+    padding: .5rem 1rem;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.sr-return-link:hover {
+    background-color: rgb(55, 55, 244);
+    transform: translateY(-2.5px);
+}
+
+.sr-sales-report-section-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sr-sales-report-title {
+    color: white;
+    font-size: 2.75rem;
+}
