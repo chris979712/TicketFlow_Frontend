@@ -110,6 +110,10 @@ export function useSeatMap(locationName: string, apiSeats: any[]){
         }
     }
 
+    function IsSeatSelected(seat: Seat): boolean {
+        return selectedSeats.some(s => s.seat_id === seat.seat_id);
+    }
+
     useEffect(() => {
         const handleScroll = () => {
             if (hoveredSeat) {
@@ -162,6 +166,7 @@ export function useSeatMap(locationName: string, apiSeats: any[]){
         alert,
         setAlert,
         HandleSeatClick,
-        isMobile
+        isMobile,
+        IsSeatSelected
     }
 }

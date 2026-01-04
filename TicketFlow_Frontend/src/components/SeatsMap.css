@@ -285,6 +285,20 @@
     border-color: #dc2626;
 }
 
+.seat-is-selected {
+    color: #2563eb !important;
+    border-color: #1d4ed8 !important;
+}
+
+.seat-selected {
+    color: #2563eb !important;
+}
+
+.seat-selected {
+    color: #3c60d5;
+    border-color: #0c1d57;
+}
+
 .seat:not(:disabled):hover {
     transform: scale(1.15);
     box-shadow: 0 4px 10px rgba(0,0,0,0.25);

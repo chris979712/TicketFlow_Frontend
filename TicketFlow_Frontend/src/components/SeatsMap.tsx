@@ -21,7 +21,8 @@ export function SeatsMap(props: SeatMapProp){
         setAlert,
         alert,
         HandleSeatClick,
-        isMobile
+        isMobile,
+        IsSeatSelected
     } = useSeatMap(locationName,apiSeats);
 
     const handleSeatInteraction = (seat: any, event: React.MouseEvent | React.TouchEvent) => {
@@ -50,6 +51,10 @@ export function SeatsMap(props: SeatMapProp){
                     <div className="seat-simbology-item">
                         <ArmchairIcon size={40} className='seat-disabled'></ArmchairIcon>
                         <b>Asiento no disponible</b>
+                    </div>
+                    <div className="seat-simbology-item">
+                        <ArmchairIcon size={40} className='seat-selected'></ArmchairIcon>
+                        <b>Asiento seleccionado</b>
                     </div>
                 </div>
             </div>
@@ -86,17 +91,20 @@ export function SeatsMap(props: SeatMapProp){
                                 <div key={rowName} className="row-block">
                                     <div className="row-label">{rowName}</div>
                                     <div className="seats-row">
-                                        {seats.map(seat => (
-                                            <button key={seat.seat_id} 
-                                                className={`seat seat-${seat.available}`} 
-                                                disabled={!seat.available}
-                                                onClick={(event) => handleSeatInteraction(seat,event)}
-                                                onMouseEnter={(event) => HandleSeatHover(seat,event)}
-                                                onMouseMove={(event) => setTooltipPosition({x: event.clientX, y: event.clientY})}
-                                                onMouseLeave={handleSeatLeave}>
-                                                <ArmchairIcon size={27} className={seat.available ? `seat-available` : `seat-disabled`}/>
-                                            </button>
-                                        ))}
+                                        {seats.map(seat => {
+                                            const isSelected = IsSeatSelected(seat);
+                                            return (
+                                                <button key={seat.seat_id} 
+                                                    className={`seat seat-${seat.available} ${isSelected ? 'seat-is-selected' : ''}`} 
+                                                    disabled={!seat.available || isSelected}
+                                                    onClick={(event) => handleSeatInteraction(seat,event)}
+                                                    onMouseEnter={(event) => HandleSeatHover(seat,event)}
+                                                    onMouseMove={(event) => setTooltipPosition({x: event.clientX, y: event.clientY})}
+                                                    onMouseLeave={handleSeatLeave}>
+                                                    <ArmchairIcon size={27} className={isSelected ? 'seat-selected' : (seat.available ? 'seat-available' : 'seat-disabled')}/>
+                                                </button>
+                                            )
+                                        })}
                                     </div>
                                 </div>
                             ))}
