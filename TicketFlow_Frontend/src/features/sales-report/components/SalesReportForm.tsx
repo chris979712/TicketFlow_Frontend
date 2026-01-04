@@ -1,126 +1,31 @@
-import { useState } from "react";
 import { Input } from "../../../components/Input";
-import { ValidateSalesReportSearchingInformation } from "../../../schemas/salesReport.schema";
-import './SalesReportForm.css'
-import { useOrganizerStore } from "../../main-menu-organizer/hooks/useOrganizerStore";
-import { GetSalesReport } from "../services/salesReportService";
-import { useAlert } from "../../../hooks/useAlert";
 import { Alert } from "../../../components/Alert";
-import { useHandleSession } from "../../../hooks/useHandleSession";
 import { Loader } from "../../../components/Loader";
+import { useSalesReport } from "../hooks/useSalesReport";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Download, DollarSign, Ticket, Calendar, TrendingUp } from 'lucide-react';
-
-type EventInformation = {
-    company_id: number,
-    organizacion: string,
-    event_id: number,
-    evento: string,
-    fecha_evento: string,
-    cantidad_boletos_vendidos: string,
-    total_ingresos: string
-}
+import './SalesReportForm.css'
 
 export function SalesReportForm(){
-    const [startDate, setStartDate] = useState("");
-    const [endDate, setEndDate] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-    const [errorValidation, setErrorValidation] = useState("");
-    const [reportData, setReportData] = useState<EventInformation[]>([]);
-    const {handleLogout} = useHandleSession();
-    const {alert,setAlert} = useAlert();
-    const {idCompany} = useOrganizerStore();
-    const Today = new Date().toISOString().split('T')[0];
-    const oneYearAgo = new Date();
-    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-    const MinDate = oneYearAgo.toISOString().split('T')[0];
-
-    const FormatCurrency = (amount: string|number) => {
-        return new Intl.NumberFormat('es-MX', {
-            style: 'currency',
-            currency: 'MXN',
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0
-        }).format(typeof amount === 'string' ? parseFloat(amount) : amount);
-    }
-
-    const CalculateMetrics = () => {
-        if(reportData.length !== 0){
-            const totalTickets = reportData.reduce((sum, e) => sum + parseInt(e.cantidad_boletos_vendidos), 0);
-            const totalRevenue = reportData.reduce((sum, e) => sum + parseFloat(e.total_ingresos), 0);
-            const avgTicketPrice = totalRevenue / totalTickets;
-            const avgTicketsPerEvent = totalTickets / reportData.length;
-            const avgRevenuePerEvent = totalRevenue / reportData.length;
-            return {
-                totalTickets,
-                totalRevenue,
-                avgTicketPrice,
-                avgTicketsPerEvent,
-                avgRevenuePerEvent,
-                totalEvents: reportData.length
-            };
-        }else{
-            return null;
-        }
-    }
-
-    const prepareChartData = () => {
-        if (reportData.length === 0) return { barData: [], pieData: [], lineData: [] };
-        
-        const sortedData = [...reportData].sort((a, b) => 
-            new Date(a.fecha_evento).getTime() - new Date(b.fecha_evento).getTime()
-        );
-        
-        const barData = sortedData.map(event => ({
-            name: event.evento.length > 15 ? event.evento.substring(0, 15) + '...' : event.evento,
-            boletos: parseInt(event.cantidad_boletos_vendidos),
-            ingresos: parseFloat(event.total_ingresos) / 1000
-        }));
-        
-        const pieData = reportData.map(event => ({
-            name: event.evento,
-            value: parseFloat(event.total_ingresos)
-        }));
-
-        const lineData = sortedData.map(event => ({
-            fecha: new Date(event.fecha_evento).toLocaleDateString('es-MX', { month: 'short', day: 'numeric' }),
-            ingresos: parseFloat(event.total_ingresos)
-        }));
-        
-        return { barData, pieData, lineData };
-    };
-
-    const metrics = CalculateMetrics();
-    const { barData } = prepareChartData();
-
-    async function GenerateReport(event: React.FormEvent) {
-        event.preventDefault();
-        setErrorValidation("");
-        setAlert(null);
-        setIsLoading(true);
-        const ValidationResult = ValidateSalesReportSearchingInformation(idCompany!,startDate,endDate);
-        if(!ValidationResult.error){
-            if(!(new Date(startDate) >= new Date(endDate))){
-                const ApiResponse = await GetSalesReport(idCompany!,startDate,endDate);
-                if(ApiResponse.status === 200){
-                    setAlert({type: "success", message: "Datos obtenidos"});
-                    setReportData(ApiResponse.data);
-                }else if(ApiResponse.status === 401){
-                    setAlert({type: "warning", message: ApiResponse.message!});
-                    setTimeout(() =>{handleLogout()},4000);
-                }else if(ApiResponse.status >= 400 && ApiResponse.status <= 499){
-                    setAlert({type: "warning", message: ApiResponse.message!});
-                }else{
-                    setAlert({type: "error", message: ApiResponse.message!});
-                }
-            }else{
-                setErrorValidation("La fecha de incio de búsqueda no puede ser mayor o igual a la fecha de fin de búsqueda.");
-            }
-        }else{
-            setErrorValidation(ValidationResult.error.details[0].message);
-        }
-        setIsLoading(false);
-    }
+    
+    const {alert,
+        setAlert,
+        GenerateReport,
+        MinDate,
+        setEndDate,
+        setStartDate,
+        isLoading,
+        errorValidation,
+        metrics,
+        reportData,
+        startDate,
+        endDate,
+        HandleExportPDF,
+        isExporting,
+        FormatCurrency,
+        chartRef,
+        barData
+    } = useSalesReport();
 
     return (
         <section className="sr-form-section">
@@ -133,6 +38,7 @@ export function SalesReportForm(){
             }
             <form onSubmit={GenerateReport} className="sr-form">
                 <h1 className="sr-title-form">Reporte general en ingresos y compra de boletos</h1>
+                <p className="sr-indications">Atención: Las fechas de búsqueda se basan en el horario de los eventos.</p>
                 <div className="sr-inputs-wrapper">
                     <Input 
                         id="dtp_reportstartsearch"
@@ -140,7 +46,6 @@ export function SalesReportForm(){
                         label="Fecha de inicio de búsqueda"
                         type="date"
                         min={MinDate}
-                        max={Today}
                         required
                         onChange={(e) => setStartDate(e.target.value)}
                     />
@@ -150,7 +55,6 @@ export function SalesReportForm(){
                         label="Fecha fin de búsqueda"
                         type="date"
                         min={MinDate}
-                        max={Today}
                         required
                         onChange={(e) => setEndDate(e.target.value)}
                     />
@@ -168,6 +72,10 @@ export function SalesReportForm(){
                                 {startDate} a {endDate}
                             </p>
                         </div>  
+                        <button onClick={HandleExportPDF} className="sr-export-btn" disabled={isExporting}>
+                            {isExporting ? <Loader /> : <Download size={18} />}
+                            {isExporting ? "Exportando..." : "Exportar PDF"}
+                        </button>
                     </article>
                     <section className="sr-metrics-grid">
                         <article className="sr-metric-card sr-metric-blue">
@@ -224,7 +132,7 @@ export function SalesReportForm(){
                         </article>
                     </section>
                     <section className="sr-charts-grid">
-                        <article className="sr-chart-card">
+                        <article className="sr-chart-card" ref={chartRef}>
                             <h3 className="sr-chart-title">Boletos vendidos por evento</h3>
                             <ResponsiveContainer width="100%" height={300}>
                                 <BarChart data={barData}>

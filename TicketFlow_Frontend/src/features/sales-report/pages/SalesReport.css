@@ -50,3 +50,118 @@
     color: white;
     font-size: 2.75rem;
 }
+
+css.sr-sales-report-main {
+    background: url('/fondoConcierto.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sr-sales-report-header {
+    padding: 2rem;
+    border-bottom: 2px solid rgb(48, 89, 211);
+}
+
+.sr-page-welcome-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sr-page-welcome-div img{
+    max-width: 780px;
+    height: auto;
+    width: 100%;
+}
+
+.sr-return-link {
+    margin: 1.5rem 0rem 0.5rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .3s ease, background-color .3s ease;
+    font-size: 18px;
+    padding: .5rem 1rem;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.sr-return-link:hover {
+    background-color: rgb(55, 55, 244);
+    transform: translateY(-2.5px);
+}
+
+.sr-sales-report-section-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sr-sales-report-title {
+    color: white;
+    font-size: 2.75rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .sr-sales-report-header {
+        padding: 1.5rem;
+    }
+
+    .sr-page-welcome-div img {
+        max-width: 600px;
+        padding: 0 1rem;
+    }
+
+    .sr-sales-report-title {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+
+    .sr-return-link {
+        font-size: 16px;
+        padding: 0.5rem 1.25rem;
+        margin: 1rem 0rem 0.5rem;
+    }
+
+    .sr-sales-report-section-chart {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sr-sales-report-main {
+        background-attachment: scroll; 
+    }
+
+    .sr-sales-report-header {
+        padding: 1rem;
+    }
+
+    .sr-page-welcome-div img {
+        max-width: 100%;
+        padding: 0 0.75rem;
+    }
+
+    .sr-sales-report-title {
+        font-size: 1.5rem;
+        padding: 0 0.75rem;
+        line-height: 1.3;
+    }
+
+    .sr-return-link {
+        font-size: 14px;
+        padding: 0.5rem 1rem;
+        margin: 0.75rem 0rem 0.5rem;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .sr-sales-report-section-chart {
+        padding: 0 0.5rem;
+    }
+}
