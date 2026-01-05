@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAlert } from "../../../hooks/useAlert";
 import type { Seat } from "../../../hooks/useSeatsMap";
 import { useTicketStore } from "./useTicketReservationStore";
@@ -26,7 +26,11 @@ export function useTicketSelection(){
         }
     }
 
-    function HandleQuitTicketFromList(seatId: number){
+    function HandleQuitTicketFromList(seatId: number, event?: React.MouseEvent | React.TouchEvent){
+        if(event){
+            event.preventDefault();
+            event.stopPropagation();
+        }
         setAlert(null);
         const SeatsUpdated = selectedSeats.filter((seat: Seat) => seat.seat_id !== seatId);
         setSelectedSeats(SeatsUpdated);

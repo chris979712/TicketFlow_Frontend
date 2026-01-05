@@ -1,6 +1,7 @@
 import { Alert } from "./Alert";
 import { ArmchairIcon } from "lucide-react";
 import { useSeatMap } from "../hooks/useSeatsMap";
+import { useTicketSelection } from "../features/event-detail/hooks/useTicketSelection";
 import "./SeatsMap.css"
 
 type SeatMapProp = {
@@ -22,10 +23,10 @@ export function SeatsMap(props: SeatMapProp){
         alert,
         HandleSeatClick,
         isMobile,
-        IsSeatSelected
+        IsSeatSelected,
     } = useSeatMap(locationName,apiSeats);
-
-    const handleSeatInteraction = (seat: any, event: React.MouseEvent | React.TouchEvent) => {
+    const {HandleQuitTicketFromList} = useTicketSelection();
+    const HandleSeatInteraction = (seat: any, event: React.MouseEvent | React.TouchEvent) => {
         if (isMobile) {
             HandleSeatHover(seat, event);
         }
@@ -96,8 +97,8 @@ export function SeatsMap(props: SeatMapProp){
                                             return (
                                                 <button key={seat.seat_id} 
                                                     className={`seat seat-${seat.available} ${isSelected ? 'seat-is-selected' : ''}`} 
-                                                    disabled={!seat.available || isSelected}
-                                                    onClick={(event) => handleSeatInteraction(seat,event)}
+                                                    disabled={!seat.available}
+                                                    onClick={(event) => isSelected ? HandleQuitTicketFromList(seat.seat_id, event) : HandleSeatInteraction(seat, event)}
                                                     onMouseEnter={(event) => HandleSeatHover(seat,event)}
                                                     onMouseMove={(event) => setTooltipPosition({x: event.clientX, y: event.clientY})}
                                                     onMouseLeave={handleSeatLeave}>

@@ -12,7 +12,7 @@ export const TicketsList: React.FC = () => {
 
   if (loading) return <p className="mt-ticket-detail-list">Cargando boletos…</p>;
   if (error) return <p className="mt-ticket-detail-list">Error al obtener los boletos</p>;
-  if (tickets.length === 0) return <p className="mt-ticket-detail-list">No tienes boletos.</p>;
+  if (tickets.length === 0) return <p className="mt-ticket-detail-list">No tienes boletos comprados.</p>;
 
   return (
     <section className="mt-tickets-list">

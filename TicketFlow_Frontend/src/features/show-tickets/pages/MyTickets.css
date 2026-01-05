@@ -15,8 +15,14 @@
 }
 
 .mt-ticket-detail-list{
-  color: white;
-  font-size: 1.5rem;
+  background-color: white;
+  color: black;
+  font-size: 2.25rem;
+  padding: 2rem;
+  margin: 2rem;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 12px 12px 2px 1px #0862bd;
 }
 
 .mt-div_welcome {
