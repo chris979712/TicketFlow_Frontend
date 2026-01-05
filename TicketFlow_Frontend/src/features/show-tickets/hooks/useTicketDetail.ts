@@ -14,7 +14,7 @@ export function useTicketDetail(){
     const ticket = state?.ticket;
     
     const handleDownloadImage = async () => {
-        const element = document.getElementById("ticket-capture");
+        const element = document.getElementById("td-ticket-capture");
         if (!element) return;
 
         const canvas = await html2canvas(element, {
