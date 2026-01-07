@@ -16,7 +16,7 @@ export default function NotFound(){
             <div className="nf-ticket-container">
                 <div className="nf-ticket-stub">
                     <span className="nf-code">TKTFLW</span>
-                    <span className="nf-number">Nº 404</span>
+                    <span className="nf-number">N° 404</span>
                 </div>
                 <div className="nf-ticket-main">
                     <span className="nf-ticket-main-text">404</span>
