@@ -1,4 +1,3 @@
-import QRCode from "react-qr-code";
 import { Link } from "react-router-dom";
 import { useTicketDetail } from "../hooks/useTicketDetail";
 import TicketFlowWhiteLogo from "../../../../public/Logo_Blanco_horizontal.png";
@@ -9,9 +8,10 @@ export const TicketDetails: React.FC = () => {
     ticket,
     loading,
     error,
-    qr,
+    canvasRef,
     handleDownloadImage
   } = useTicketDetail();
+
 
   if (!ticket) {
     return <p role="alert">No se encontró información del boleto.</p>;
@@ -37,10 +37,12 @@ export const TicketDetails: React.FC = () => {
           <div className="td-ticket-info">
             <p><strong>Fecha:</strong> {ticket.date}</p>
             <p><strong>Lugar:</strong> {ticket.location}</p>
+            {ticket.seat_label && <p><strong>Asiento:</strong> {ticket.seat_label}</p>}
+            {ticket.category_label && <p><strong>Categoria:</strong> {ticket.category_label}</p>}
           </div>
 
           <section className="td-ticket-content">
-            <QRCode size={200} value={qr!} />
+            <canvas ref={canvasRef} />
           </section>
         </div>
 

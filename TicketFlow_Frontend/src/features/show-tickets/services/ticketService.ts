@@ -68,7 +68,6 @@ export async function getTicketQr(ticketId: number): Promise<ApiResponse> {
         },
       }
     );
-
     return {
       status: response.status,
       data: response.data
@@ -115,7 +114,6 @@ export async function refundTicket(ticketId: number, reason: string): Promise<Ap
         },
       }
     );
-
     return {
       status: response.status,
       data: response.data,
