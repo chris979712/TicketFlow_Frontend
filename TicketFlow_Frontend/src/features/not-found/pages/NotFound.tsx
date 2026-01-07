@@ -1,8 +1,16 @@
-import { ArrowLeftSquareIcon as ReturnIcon } from "lucide-react";
-import { Link } from "react-router-dom";
 import './NotFound.css'
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeftSquareIcon as ReturnIcon } from "lucide-react";
+import { useSessionHandler } from "../../../hooks/useSessionHandler";
 
 export default function NotFound(){
+    const {DeleteTokenCookie} = useSessionHandler();
+
+    useEffect(() => {
+        DeleteTokenCookie();
+    }, []);
+
     return (
         <main className="nf-notfound-page">
             <div className="nf-ticket-container">
