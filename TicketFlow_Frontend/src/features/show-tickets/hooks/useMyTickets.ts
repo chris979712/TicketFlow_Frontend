@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchMyTickets, type Ticket } from "../services/ticketService";
+import { useSessionHandler } from "../../../hooks/useSessionHandler";
 
 interface UseMyTicketsResult {
   tickets: Ticket[];
@@ -11,6 +12,7 @@ export function useMyTickets(refreshKey: number = 0): UseMyTicketsResult {
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const {GetTokenCookie} = useSessionHandler();
 
   useEffect(() => {
     async function loadTickets() {
@@ -18,7 +20,7 @@ export function useMyTickets(refreshKey: number = 0): UseMyTicketsResult {
       const data = await fetchMyTickets();
       
       if (data.length === 0) {        
-        const token = localStorage.getItem("authToken");
+        const token = GetTokenCookie();
         if (!token) {
           setError("Sesión expirada. Inicie sesión nuevamente.");
         }

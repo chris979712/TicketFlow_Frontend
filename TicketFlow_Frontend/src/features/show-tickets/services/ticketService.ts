@@ -1,6 +1,8 @@
 import axios from "axios";
 import { type ApiResponse } from "../../../schemas/api";
+import { useSessionHandler } from "../../../hooks/useSessionHandler";
 const API_URL = import.meta.env.VITE_API_URL;
+const {GetTokenCookie} = useSessionHandler();
 
 export interface Ticket {
   eventId: number;
@@ -12,7 +14,7 @@ export interface Ticket {
 
 export async function fetchMyTickets(): Promise<Ticket[]> {
   try {
-    const token = localStorage.getItem("authToken");
+    const token = GetTokenCookie();
 
     const response = await axios.get(`${API_URL}/v1/ticket/my-event`, {
       headers: {
@@ -58,7 +60,7 @@ export async function fetchMyTickets(): Promise<Ticket[]> {
 
 export async function getTicketQr(ticketId: number): Promise<ApiResponse> {
   try {
-    const token = localStorage.getItem("authToken");
+    const token = GetTokenCookie();
 
     const response = await axios.get(
       `${API_URL}/v1/ticket/${ticketId}/qr`,
@@ -103,7 +105,7 @@ export async function getTicketQr(ticketId: number): Promise<ApiResponse> {
 
 export async function refundTicket(ticketId: number, reason: string): Promise<ApiResponse> {
   try {
-    const token = localStorage.getItem("authToken");
+    const token = GetTokenCookie();
 
     const response = await axios.post(
       `${API_URL}/v1/ticket/${ticketId}/refund`,

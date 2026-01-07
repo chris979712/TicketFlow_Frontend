@@ -1,4 +1,5 @@
 import { jwtDecode } from "jwt-decode";
+import { useSessionHandler } from "../hooks/useSessionHandler";
 
 type TokenPayload = {
     id: number,
@@ -9,7 +10,8 @@ type TokenPayload = {
 }
 
 export function GetUserFromToken(): TokenPayload | null {
-    const token = localStorage.getItem("authToken");
+    const {GetTokenCookie} = useSessionHandler();
+    const token = GetTokenCookie();
     if(!token) return null;
     try{
         return jwtDecode<TokenPayload>(token);

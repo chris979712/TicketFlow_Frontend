@@ -1,10 +1,12 @@
 import axios from "axios";
 import { type ApiResponse } from "../../../schemas/api";
+import { useSessionHandler } from "../../../hooks/useSessionHandler";
 const API_URL = import.meta.env.VITE_API_URL;
+const {GetTokenCookie} = useSessionHandler();
 
 export async function GetSalesReport(companyID: number, startDate: string, endDate: string): Promise<ApiResponse>{
     try{
-        const token = localStorage.getItem("authToken");
+        const token = GetTokenCookie();
         const ResponseAPI = await axios.get(`${API_URL}/v1/report/sales?companyId=${companyID}&startDate=${startDate}&endDate=${endDate}`,{
             headers: {
                 Authorization: `Bearer ${token}`

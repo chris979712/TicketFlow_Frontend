@@ -1,6 +1,8 @@
 import axios from "axios";
 import { type ApiResponse } from "../../../schemas/api";
+import { useSessionHandler } from "../../../hooks/useSessionHandler";
 const API_URL = import.meta.env.VITE_API_URL;
+const {GetTokenCookie} = useSessionHandler();
 
 export async function GetEvents(limit: number, offset: number, statusEvent?: number, name?: string, date?: string, category?: string):Promise<ApiResponse>{
     try{
@@ -9,7 +11,7 @@ export async function GetEvents(limit: number, offset: number, statusEvent?: num
         if(name) params.name = name;
         if(date) params.date = date;
         if(category) params.category = category;
-        const token = localStorage.getItem("authToken");
+        const token = GetTokenCookie();
         const ApiResponse = await axios.get(`${API_URL}/v1/event/search`,{
             params,
             headers: {
@@ -33,7 +35,7 @@ export async function GetEvents(limit: number, offset: number, statusEvent?: num
 
 export async function GetEventImage(eventId: number): Promise<ApiResponse>{
     try{
-        const token = localStorage.getItem("authToken");
+        const token = GetTokenCookie();
         const ApiResponse = await axios.get(`${API_URL}/v1/event/img/${eventId}/images`,{
             headers: {
                 "Authorization": `Bearer ${token}`

@@ -1,6 +1,8 @@
 import axios from "axios";
 import { type ApiResponse } from "../../../schemas/api";
+import { useSessionHandler } from "../../../hooks/useSessionHandler";
 const API_URL = import.meta.env.VITE_API_URL;
+const {GetTokenCookie} = useSessionHandler();
 
 export async function PostStripePayment(seatsId: number[]): Promise<ApiResponse>{
     try{
@@ -15,7 +17,7 @@ export async function PostStripePayment(seatsId: number[]): Promise<ApiResponse>
                 holdMinutes: 10
             }
         }
-        const Token = localStorage.getItem("authToken");
+        const Token = GetTokenCookie();
         const ApiResponse = await axios.post(`${API_URL}/v1/ticket/buy`,Body,{
             headers: {
                 "Authorization": `Bearer ${Token}`

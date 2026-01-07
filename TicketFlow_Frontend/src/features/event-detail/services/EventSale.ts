@@ -1,6 +1,8 @@
 import axios from "axios";
 import { type ApiResponse } from "../../../schemas/api";
+import { useSessionHandler } from "../../../hooks/useSessionHandler";
 const API_URL = import.meta.env.VITE_API_URL;
+const {GetTokenCookie} = useSessionHandler();
 
 export type SeatReservationType ={
     event_id: number,
@@ -10,7 +12,7 @@ export type SeatReservationType ={
 
 export async function ObtainEventInventory(eventId: number):Promise<ApiResponse>{
     try{
-        const token = localStorage.getItem("authToken");
+        const token = GetTokenCookie();
         const ApiResponse = await axios.get(`${API_URL}/v1/eventseats/${eventId}/seats`,{
             headers:{
                 "Authorization": `Bearer ${token}`
@@ -39,7 +41,7 @@ export async function CreateReservation(seats: SeatReservationType[]): Promise<A
             event_seat_id: seats.map(seat => seat.event_seat_id),
             expiration_at: seats[0]!.expiration_at
         }
-        const token = localStorage.getItem("authToken");
+        const token = GetTokenCookie();
         const ApiResponse = await axios.post(`${API_URL}/v1/reservations/reserve`,body,{
             headers:{
                 "Authorization": `Bearer ${token}`

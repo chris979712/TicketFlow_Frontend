@@ -1,11 +1,13 @@
 import axios from "axios";
 import {type ApiResponse} from "../../../schemas/api.ts";
 import type { SeatProps } from "../hooks/useCreateEvent.ts";
+import { useSessionHandler } from "../../../hooks/useSessionHandler.ts";
 const API_URL = import.meta.env.VITE_API_URL;
+const {GetTokenCookie} = useSessionHandler();
 
 export async function GetEventAllLocations(): Promise<ApiResponse>{
     try{
-        const token = localStorage.getItem("authToken");
+        const token = GetTokenCookie();
         const ResponseFromApi = await axios.get(`${API_URL}/v1/location/search/all`,{
             headers: {
                 Authorization: `Bearer ${token}`
@@ -28,7 +30,7 @@ export async function GetEventAllLocations(): Promise<ApiResponse>{
 
 export async function GetAllLocationSeats(idlocation: number){
     try{
-        const token = localStorage.getItem("authToken");
+        const token = GetTokenCookie();
         const ResponseFromApi = await axios.get(`${API_URL}/v1/location/${idlocation}/layout`,{
             headers: {
                 Authorization: `Bearer ${token}`
@@ -51,7 +53,7 @@ export async function GetAllLocationSeats(idlocation: number){
 
 export async function PostEventWithSeats(eventName: string, category: string, description: string, event_date: string, start_time: string, end_time: string, company_id: number, event_location_id: number, seats: SeatProps[]): Promise<ApiResponse>{
     try{
-        const token = localStorage.getItem("authToken");
+        const token = GetTokenCookie();
         const body = {
             event: {
                 event_name: eventName,
@@ -88,7 +90,7 @@ export async function PostEventWithSeats(eventName: string, category: string, de
 
 export async function PutImageForAnEvent(image: File,imageType: string, altText: string, sortOrder: number,eventId:number){
     try{
-        const token = localStorage.getItem("authToken");
+        const token = GetTokenCookie();
         const formData = new FormData();
         formData.append("image", image); 
         formData.append("imageType", imageType);

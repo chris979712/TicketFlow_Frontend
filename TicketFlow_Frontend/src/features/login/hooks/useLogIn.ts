@@ -4,6 +4,7 @@ import { loginUser } from "../services/authService";
 import { ValidateLogIn } from "../../../schemas/login.Schema";
 import { useAlert } from "../../../hooks/useAlert";
 import { GetUserFromToken } from "../../../utils/userData";
+import { useSessionHandler } from "../../../hooks/useSessionHandler";
 import { useLoading } from "../../../hooks/useLoading";
 const ATTENDEE_URL = import.meta.env.VITE_MENU_ATTENDEE;
 const ORGANIZER_URL = import.meta.env.VITE_MENU_ORGANIZER;
@@ -15,6 +16,7 @@ export const useLogIn = () =>{
     const [password, setPassword] = useState("");
     const [errorValidation,setErrorValidation] = useState("");
     const {start,stop,loading} = useLoading();
+    const {SetTokenCookie} = useSessionHandler();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -25,7 +27,7 @@ export const useLogIn = () =>{
             const response = await loginUser(username,password);
             if(response.status === 200){
                 const {token} = response.data;
-                localStorage.setItem("authToken",token);
+                SetTokenCookie(token);
                 const User = GetUserFromToken();
                 if(User?.typeUser === parseInt(ATTENDEE_URL)){
                     navigate("/dashboard-attendee")
